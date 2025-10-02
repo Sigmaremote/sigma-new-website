@@ -7,7 +7,7 @@ export type AtAGlance = {
   annualLeaveDays?: number | string;
   publicHolidays?: number | string;
   hoursPerWeek?: number | string;
-  thirteenthSalary: "Yes" | "No" | "Optional";
+  thirteenthSalary: "Yes" | "No" | "Optional" | string;
   probationMax?: string;
   noticeSeveranceShort?: string;
   onboardingTimeDays?: string; // e.g. "1–3"
@@ -57,6 +57,7 @@ export type CountryGuideContent = {
     dailyRate: string;
     monthlyRate: string;
     northernBorder?: string;
+    transportSubsidy?: string;
     source: string;
   };
   atAGlance: AtAGlance;
