@@ -8,8 +8,14 @@ export const countryIndexList: CountryGuideIndexItem[] = [
     shortDescription: 'Employment regulations and hiring practices in Mexico',
     image: '/countries-images/Mexico_City_Reforma_Street.jpg',
     capital: 'Mexico City',
-    currency: 'Mexican Peso (MXN)',
-    officialLanguage: 'Spanish'
+    currency: 'Mexican Peso\u00A0(MXN)',
+    language: 'Spanish',
+    employerOnCostHint: '~25–30%',
+    payrollCycleHint: 'Bi-weekly',
+    requires13th: true,
+    flagEmoji: '🇲🇽',
+    hoverHighlights: ['13th salary required', 'Onboarding ~3 days', 'Termination requires severance'],
+    tags: ['Low cost', 'USD wallet friendly', 'Fast onboarding']
   },
   {
     slug: 'colombia',
@@ -19,16 +25,28 @@ export const countryIndexList: CountryGuideIndexItem[] = [
     image: '/countries-images/columbia.jpg',
     capital: 'Bogotá',
     currency: 'Colombian Peso (COP)',
-    officialLanguage: 'Spanish'
+    language: 'Spanish',
+    employerOnCostHint: '~30–35%',
+    payrollCycleHint: 'Monthly',
+    requires13th: true,
+    flagEmoji: '🇨🇴',
+    hoverHighlights: ['13th salary required', 'Onboarding ~5 days', 'Health insurance mandatory'],
+    tags: ['Low cost', 'USD wallet friendly']
   },
   {
     slug: 'argentina',
     name: 'Argentina',
     region: 'South America',
     shortDescription: 'Employment regulations and hiring practices in Argentina',
-    image: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=800&h=600&fit=crop&crop=center',
+    image: '/countries-images/argentina.jpeg',
     capital: 'Buenos Aires',
-    currency: 'Argentine Peso (ARS)',
-    officialLanguage: 'Spanish'
+    currency: 'Argentine Peso\u00A0(ARS)',
+    language: 'Spanish',
+    employerOnCostHint: '~35–40%',
+    payrollCycleHint: 'Monthly',
+    requires13th: true,
+    flagEmoji: '🇦🇷',
+    hoverHighlights: ['13th salary required', 'Onboarding ~5 days', 'High inflation considerations'],
+    tags: ['Low cost']
   },
 ];

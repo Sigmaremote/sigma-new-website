@@ -147,7 +147,7 @@ export default function ColombiaPage() {
           />
 
           {/* At-a-Glance */}
-          <AtAGlance data={content.atAGlance} />
+          <AtAGlance data={content.atAGlance} countryName={content.name} />
 
           {/* Hiring Options */}
           <HiringOptions content={content} />

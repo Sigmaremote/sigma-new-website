@@ -1,4 +1,4 @@
-export type Region = "North America" | "South America";
+export type Region = "Africa" | "Asia" | "Europe" | "North America" | "South America" | "Oceania" | "Middle East";
 
 export type AtAGlance = {
   currency: string;
@@ -39,9 +39,15 @@ export type CountryGuideIndexItem = {
   region: Region;
   shortDescription: string;
   image: string;
-  capital: string;
-  currency: string;
-  officialLanguage: string;
+  capital?: string;
+  currency?: string;
+  language?: string;
+  employerOnCostHint?: string; // e.g. "~25–30%"
+  payrollCycleHint?: string;   // e.g. "Semi-monthly"
+  requires13th?: boolean;      // quick icon flag
+  flagEmoji?: string;          // 🇲🇽
+  hoverHighlights?: string[];  // ["13th salary required", "Onboarding ~3 days"]
+  tags?: ("Low cost" | "USD wallet friendly" | "Crypto-friendly" | "Fast onboarding")[];
 };
 
 export type CountryGuideContent = {

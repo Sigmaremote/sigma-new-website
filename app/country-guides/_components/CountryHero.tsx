@@ -49,18 +49,22 @@ export default function CountryHero({ content, heroImage }: CountryHeroProps) {
 
         {/* Primary CTAs */}
         <div className="flex flex-col sm:flex-row gap-4 pt-4">
-          <Link
-            href="/get-started"
+          <a
+            href="https://www.sigmaremote.com/contact"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center px-6 py-3 bg-[#D6FF57] text-black font-semibold rounded-full hover:brightness-95 transition-colors focus:outline-none focus:ring-2 focus:ring-[#D6FF57] focus:ring-offset-2"
           >
             Get a Free Payroll Setup
-          </Link>
-          <Link
-            href="/contact"
+          </a>
+          <a
+            href="https://cal.com/globalpayroll/demo-25"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center px-6 py-3 bg-[#F2F3F1] text-[#0C2E1C] font-semibold rounded-full hover:bg-[#F2F3F1]/80 transition-colors focus:outline-none focus:ring-2 focus:ring-[#F2F3F1] focus:ring-offset-2"
           >
             Talk to Sales
-          </Link>
+          </a>
         </div>
       </div>
 

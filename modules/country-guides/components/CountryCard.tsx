@@ -40,7 +40,7 @@ export default function CountryCard({ country }: CountryCardProps) {
             </div>
             <div className="flex items-center gap-2 text-sm text-black/70">
               <Users className="h-4 w-4 text-purple-500" />
-              <span>Language: {country.officialLanguage}</span>
+              <span>Language: {country.language}</span>
             </div>
           </div>
           

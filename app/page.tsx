@@ -20,7 +20,9 @@ export default function HomePage() {
               Explore Country Guides
             </a>
             <a 
-              href="/book-a-demo" 
+              href="https://cal.com/globalpayroll/demo-25" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="border border-black text-black px-8 py-4 rounded-full font-semibold hover:bg-black hover:text-white transition-colors"
             >
               Book a Demo

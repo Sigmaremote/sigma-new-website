@@ -8,15 +8,37 @@ import {
   Gift, 
   UserCheck, 
   AlertTriangle, 
-  Zap 
+  Zap,
+  Info 
 } from 'lucide-react';
 import { AtAGlance as AtAGlanceType } from '../../../modules/country-guides/types';
 
 interface AtAGlanceProps {
   data: AtAGlanceType;
+  countryName?: string;
 }
 
-export default function AtAGlance({ data }: AtAGlanceProps) {
+interface TooltipProps {
+  content: string;
+  children: React.ReactNode;
+}
+
+function Tooltip({ content, children }: TooltipProps) {
+  return (
+    <div className="relative inline-block group">
+      <div className="inline-flex items-center gap-1">
+        {children}
+        <Info className="h-3 w-3 text-black/40" />
+      </div>
+      <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-black/90 text-white text-xs rounded-lg shadow-lg z-10 max-w-xs opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+        {content}
+        <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-black/90"></div>
+      </div>
+    </div>
+  );
+}
+
+export default function AtAGlance({ data, countryName = 'this country' }: AtAGlanceProps) {
   const items = [
     { 
       label: 'Currency', 
@@ -29,9 +51,10 @@ export default function AtAGlance({ data }: AtAGlanceProps) {
       icon: Calendar 
     },
     { 
-      label: 'Employer On-Cost', 
+      label: 'Employer Contributions (%)', 
       value: data.employerOnCostPct || 'N/A', 
-      icon: Percent 
+      icon: Percent,
+      tooltip: `Mandatory employer contributions in ${countryName} (social security, health, pension, housing, etc.) typically add ${data.employerOnCostPct || '25-30%'} on top of gross salary.`
     },
     { 
       label: 'Annual Leave', 
@@ -45,7 +68,7 @@ export default function AtAGlance({ data }: AtAGlanceProps) {
     },
     { 
       label: 'Hours/Week', 
-      value: `${data.hoursPerWeek} hours`, 
+      value: data.hoursPerWeek, 
       icon: Clock 
     },
     { 
@@ -83,7 +106,15 @@ export default function AtAGlance({ data }: AtAGlanceProps) {
             >
               <div className="flex items-center gap-2">
                 <IconComponent className="h-4 w-4 text-black/55" />
-                <span className="text-[10px] font-semibold uppercase tracking-wide text-black/45">{item.label}</span>
+                <span className="text-[10px] font-semibold uppercase tracking-wide text-black/45">
+                  {item.tooltip ? (
+                    <Tooltip content={item.tooltip}>
+                      {item.label}
+                    </Tooltip>
+                  ) : (
+                    item.label
+                  )}
+                </span>
               </div>
               <div className="text-base font-semibold text-black leading-tight">{item.value}</div>
             </div>

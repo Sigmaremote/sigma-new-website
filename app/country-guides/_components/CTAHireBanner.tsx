@@ -12,18 +12,22 @@ export default function CTAHireBanner() {
           with full compliance and zero hassle.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href="/get-started"
+          <a
+            href="https://www.sigmaremote.com/contact"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center px-8 py-3 bg-brand-yellow text-ink-900 font-semibold rounded-lg hover:bg-brand-yellow/90 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:ring-offset-2 focus:ring-offset-ink-900"
           >
             Get Started Free
-          </Link>
-          <Link
-            href="/contact"
+          </a>
+          <a
+            href="https://cal.com/globalpayroll/demo-25"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center px-8 py-3 border border-white/20 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink-900"
           >
             Talk to Sales
-          </Link>
+          </a>
         </div>
       </div>
     </section>
