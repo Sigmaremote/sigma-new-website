@@ -1,7 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import Navbar from '@/components/shared/Navbar';
-import Footer from '@/components/shared/Footer';
+import Header from './_components/header/Header';
+import Footer from './_components/footer/Footer';
 
 export const metadata: Metadata = {
   title: 'SigmaRemote',
@@ -12,7 +12,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className="min-h-screen bg-white text-black antialiased">
-        <Navbar />
+        <Header />
         <main className="min-h-[60vh]">{children}</main>
         <Footer />
       </body>
