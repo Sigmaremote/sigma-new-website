@@ -31,7 +31,7 @@ export default function EmptyState({ onClearFilters }: EmptyStateProps) {
         </p>
         <button
           onClick={onClearFilters}
-          className="bg-lime text-black px-6 py-3 rounded-full font-medium hover:bg-lime-fallback transition-colors duration-200"
+          className="bg-[#D1FF94] text-black px-6 py-3 rounded-full font-medium hover:bg-[#C8FF66] transition-colors duration-200"
         >
           Clear filters
         </button>

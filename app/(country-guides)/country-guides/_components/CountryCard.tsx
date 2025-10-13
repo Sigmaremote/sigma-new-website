@@ -123,7 +123,7 @@ export default function CountryCard({ country, isSelected = false, onToggleSelec
           <button
             onClick={handleCheckboxClick}
             className={`absolute top-3 left-3 rounded-md border border-black/20 bg-white/90 backdrop-blur p-1 shadow-sm transition-all hover:bg-white hover:shadow-md focus:outline-none focus:ring-2 focus:ring-black/30 ${
-              isSelected ? 'bg-[#D6FF57] border-[#D6FF57]' : ''
+              isSelected ? 'bg-[#D1FF94] border-[#D1FF94]' : ''
             }`}
             aria-label={`${isSelected ? 'Remove' : 'Add'} ${country.name} to comparison`}
           >

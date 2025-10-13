@@ -53,7 +53,7 @@ export default function CountryHero({ content, heroImage }: CountryHeroProps) {
             href="https://www.sigmaremote.com/contact"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center px-6 py-3 bg-[#D6FF57] text-black font-semibold rounded-full hover:brightness-95 transition-colors focus:outline-none focus:ring-2 focus:ring-[#D6FF57] focus:ring-offset-2"
+            className="inline-flex items-center justify-center px-6 py-3 bg-[#D1FF94] text-black font-semibold rounded-full hover:brightness-95 transition-colors focus:outline-none focus:ring-2 focus:ring-[#D1FF94] focus:ring-offset-2"
           >
             Get a Free Payroll Setup
           </a>

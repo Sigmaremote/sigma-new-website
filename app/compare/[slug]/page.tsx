@@ -201,7 +201,7 @@ export default function ComparePage({ params }: ComparePageProps) {
             <p className="text-xl text-black/70 mb-8">The comparison page you're looking for doesn't exist.</p>
             <Link
               href="/"
-              className="inline-flex items-center justify-center rounded-full bg-[#D6FF57] px-8 py-4 text-base font-semibold text-black hover:brightness-95 transition-colors"
+              className="inline-flex items-center justify-center rounded-full bg-[#D1FF94] px-8 py-4 text-base font-semibold text-black hover:brightness-95 transition-colors"
             >
               Go home
             </Link>
@@ -278,7 +278,7 @@ export default function ComparePage({ params }: ComparePageProps) {
                         {row.feature}
                       </td>
                       <td className="px-6 py-4 text-center text-sm text-black">
-                        <span className="inline-flex items-center rounded-full bg-[#D6FF57] px-3 py-1 text-xs font-medium">
+                        <span className="inline-flex items-center rounded-full bg-[#D1FF94] px-3 py-1 text-xs font-medium">
                           {row.sigma}
                         </span>
                       </td>
@@ -305,7 +305,7 @@ export default function ComparePage({ params }: ComparePageProps) {
                 href="https://cal.com/globalpayroll/demo-25"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full bg-[#D6FF57] px-8 py-4 text-base font-semibold text-black hover:brightness-95 transition-colors"
+                className="inline-flex items-center justify-center rounded-full bg-[#D1FF94] px-8 py-4 text-base font-semibold text-black hover:brightness-95 transition-colors"
               >
                 Book a demo
               </a>

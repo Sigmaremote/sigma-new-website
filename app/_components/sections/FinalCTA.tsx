@@ -16,7 +16,7 @@ export default function FinalCTA() {
               href="https://cal.com/globalpayroll/demo-25"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-full bg-[#D6FF57] px-8 py-4 text-base font-semibold text-black hover:brightness-95 transition-colors"
+              className="inline-flex items-center justify-center rounded-full bg-[#D1FF94] px-8 py-4 text-base font-semibold text-black hover:brightness-95 transition-colors"
             >
               Talk to Sales
             </Link>

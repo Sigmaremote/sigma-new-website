@@ -12,9 +12,12 @@ const nav = [
 ];
 
 const resources = [
-  { label: 'Press', href: '/press' },
   { label: 'Blog', href: '/blog' },
   { label: 'Glossary', href: '/glossary' },
+  { label: 'Press', href: '/press' },
+  { label: 'Country Guides', href: '/country-guides' },
+  { label: 'Network Coverage', href: '/network-coverage' },
+  { label: 'All Resources', href: '/resources' },
 ];
 
 export default function Navbar() {
@@ -87,14 +90,14 @@ export default function Navbar() {
         {/* Right CTAs (desktop) */}
         <div className="hidden items-center gap-3 md:flex">
           <Link
-            href="/login"
-            className="rounded-full bg-[#F2F3F1] px-4 py-2 text-[15px] font-semibold text-[#0C2E1C] hover:opacity-80"
+            href="https://app.sigmaremote.com/login"
+            className="rounded-full bg-transparent px-4 py-2 text-[15px] font-semibold text-black hover:bg-black/5"
           >
             Log in
           </Link>
           <Link
-            href="/book-a-demo"
-            className="rounded-full bg-[#D6FF57] px-5 py-2 text-[15px] font-semibold text-black hover:brightness-95"
+            href="https://cal.com/globalpayroll/demo-25"
+            className="rounded-full bg-[hsl(64,83%,65%)] px-5 py-2 text-[15px] font-semibold text-black hover:shadow-[0_6px_24px_rgba(0,0,0,0.12)]"
           >
             Book a Demo
           </Link>
@@ -148,10 +151,10 @@ function MobileSheet({ onClose }: { onClose: () => void }) {
             )}
 
             <div className="mt-2 flex items-center gap-2">
-              <Link href="/login" className="flex-1 rounded-full bg-[#F2F3F1] px-4 py-2 text-center text-[15px] font-semibold text-[#0C2E1C]" onClick={onClose}>
+              <Link href="https://app.sigmaremote.com/login" className="flex-1 rounded-full bg-transparent border border-black/10 px-4 py-2 text-center text-[15px] font-semibold text-black hover:bg-black/5" onClick={onClose}>
                 Log in
               </Link>
-              <Link href="/book-a-demo" className="flex-1 rounded-full bg-[#D6FF57] px-4 py-2 text-center text-[15px] font-semibold text-black" onClick={onClose}>
+              <Link href="https://cal.com/globalpayroll/demo-25" className="flex-1 rounded-full bg-[hsl(64,83%,65%)] px-4 py-2 text-center text-[15px] font-semibold text-black" onClick={onClose}>
                 Book a Demo
               </Link>
             </div>

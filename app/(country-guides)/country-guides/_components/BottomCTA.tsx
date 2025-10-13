@@ -15,7 +15,7 @@ export default function BottomCTA() {
       <div className="flex flex-col sm:flex-row gap-3">
         <a 
           href="/country-guides/compare?countries=mexico,colombia,argentina"
-          className="bg-lime text-black px-6 py-3 rounded-full font-medium hover:bg-lime-fallback transition-colors duration-200 text-center"
+          className="bg-[#D1FF94] text-black px-6 py-3 rounded-full font-medium hover:bg-[#C8FF66] transition-colors duration-200 text-center"
         >
           See LATAM Comparison
         </a>

@@ -179,7 +179,7 @@ export default function ComparePage() {
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link 
                   href="/country-guides/compare?countries=mexico,colombia,argentina"
-                  className="bg-[#D6FF57] text-black px-6 py-3 rounded-full font-medium hover:bg-[#C4E84A] transition-colors duration-200 text-center"
+                  className="bg-[#D1FF94] text-black px-6 py-3 rounded-full font-medium hover:bg-[#C8FF66] transition-colors duration-200 text-center"
                 >
                   See Countries Comparison
                 </Link>
@@ -211,7 +211,7 @@ export default function ComparePage() {
                     behavior: 'smooth' 
                   });
                 }}
-                className="px-6 py-3 bg-[#D6FF57] text-black rounded-full font-medium hover:bg-[#C4E84A] transition-colors"
+                className="px-6 py-3 bg-[#D1FF94] text-black rounded-full font-medium hover:bg-[#C8FF66] transition-colors"
               >
                 Select Countries
               </button>

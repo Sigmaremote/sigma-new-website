@@ -32,7 +32,7 @@ export default function SearchBar({ onSearch, placeholder = "Search countries...
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        className="block w-full pl-10 pr-10 py-3 border border-black/10 rounded-lg focus:ring-2 focus:ring-[#D6FF57] focus:border-[#D6FF57] transition-colors"
+        className="block w-full pl-10 pr-10 py-3 border border-black/10 rounded-lg focus:ring-2 focus:ring-[#D1FF94] focus:border-[#D1FF94] transition-colors"
         placeholder={placeholder}
       />
       {query && (

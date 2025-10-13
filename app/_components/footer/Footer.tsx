@@ -1,6 +1,5 @@
 import {
   Linkedin,
-  Twitter,
   Shield,
   Building2,
   BookOpen,
@@ -13,8 +12,8 @@ import Image from 'next/image';
 import { routes } from '@/lib/routes';
 
 const data = {
-  linkedinLink: 'https://www.linkedin.com/company/sigmaremote/',
-  twitterLink: 'https://twitter.com/',
+  linkedinLink: 'https://www.linkedin.com/company/sigma-remote/',
+  twitterLink: 'https://x.com/sigma_remote',
   contact: {
     email: 'hello@sigmaremote.com',
     phone: '+1 (555) 123-4567',
@@ -28,9 +27,16 @@ const data = {
   },
 };
 
+// Custom X (Twitter) icon component
+const XIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
+
 const socialLinks = [
-  { icon: Twitter, label: 'Twitter', href: data.twitterLink },
   { icon: Linkedin, label: 'LinkedIn', href: data.linkedinLink },
+  { icon: XIcon, label: 'X (Twitter)', href: data.twitterLink },
 ];
 
 const aboutLinks = [
@@ -71,17 +77,17 @@ const contactInfo = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#EAFDB3] dark:bg-secondary/20 mt-16 w-full place-self-end rounded-t-xl">
+    <footer className="bg-[#D1FF94] dark:bg-secondary/20 mt-16 w-full place-self-end rounded-t-xl">
       <div className="mx-auto max-w-screen-xl px-4 pt-16 pb-6 sm:px-6 lg:px-8 lg:pt-24">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
-            <div className="text-primary flex justify-center gap-2 sm:justify-start">
+            <div className="text-primary flex justify-center sm:justify-start">
               <Image
-                src={data.company.logo || '/placeholder.svg'}
-                alt="Sigma logo"
-                width={32}
-                height={32}
-                className="h-8 w-8 rounded-full"
+                src="/logo/sigma-logo-1.avif"
+                alt="Sigma"
+                width={120}
+                height={40}
+                className="h-8 w-auto"
                 priority
               />
             </div>
@@ -90,17 +96,17 @@ export default function Footer() {
               {data.company.description}
             </p>
 
-            <ul className="mt-8 flex justify-center gap-6 sm:justify-start md:gap-8">
+            <ul className="mt-8 flex justify-center gap-4 sm:justify-start">
               {socialLinks.map(({ icon: Icon, label, href }) => (
                 <li key={label}>
                   <Link
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-black hover:text-black/80 transition rounded-full bg-[#0C2E1C] p-2 text-white hover:opacity-90"
+                    className="flex items-center justify-center rounded-full bg-[#0C2E1C] p-2.5 text-white transition hover:opacity-80"
                   >
                     <span className="sr-only">{label}</span>
-                    <Icon className="size-4" />
+                    <Icon className="size-5" strokeWidth={2} />
                   </Link>
                 </li>
               ))}
@@ -229,13 +235,9 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 border-t border-black/20 pt-6">
-          <div className="text-center sm:flex sm:justify-between sm:text-left">
+          <div className="text-center sm:text-left">
             <p className="text-sm text-black/70">
-              <span className="block sm:inline">All rights reserved.</span>
-            </p>
-
-            <p className="text-black/70 mt-4 text-sm transition sm:order-first sm:mt-0">
-              &copy; 2025 {data.company.name}
+              &copy; 2025 {data.company.name}. All rights reserved.
             </p>
           </div>
         </div>

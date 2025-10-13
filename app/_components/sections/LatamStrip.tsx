@@ -3,7 +3,7 @@ import { routes } from '@/lib/routes';
 
 export default function LatamStrip() {
   return (
-    <section className="bg-[#EAFDB3] py-12">
+    <section className="bg-[#D1FF94] py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-black mb-4">

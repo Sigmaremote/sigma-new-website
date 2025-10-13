@@ -42,7 +42,7 @@ export default function FinancialHub() {
             return (
               <div key={hub.title} className="rounded-2xl border border-black/10 p-8">
                 <div className="flex items-center mb-6">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#D6FF57] mr-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#D1FF94] mr-4">
                     <Icon className="h-6 w-6 text-black" />
                   </div>
                   <div>
@@ -57,7 +57,7 @@ export default function FinancialHub() {
                 <ul className="space-y-3">
                   {hub.features.map((feature, index) => (
                     <li key={index} className="flex items-start">
-                      <div className="h-2 w-2 rounded-full bg-[#D6FF57] mt-2 mr-3 flex-shrink-0"></div>
+                      <div className="h-2 w-2 rounded-full bg-[#D1FF94] mt-2 mr-3 flex-shrink-0"></div>
                       <span className="text-black/70">{feature}</span>
                     </li>
                   ))}

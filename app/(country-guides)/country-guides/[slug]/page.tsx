@@ -122,7 +122,7 @@ export default function CountryPage({ params }: CountryPageProps) {
                 <ul className="space-y-3">
                   {content.complianceBullets.map((bullet, index) => (
                     <li key={index} className="flex items-start">
-                      <span className="flex-shrink-0 w-2 h-2 bg-[#D6FF57] rounded-full mt-2 mr-3"></span>
+                      <span className="flex-shrink-0 w-2 h-2 bg-[#D1FF94] rounded-full mt-2 mr-3"></span>
                       <span className="text-black/70">{bullet}</span>
                     </li>
                   ))}

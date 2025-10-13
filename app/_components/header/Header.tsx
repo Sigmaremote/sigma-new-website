@@ -13,9 +13,12 @@ const nav = [
 ];
 
 const resources = [
-  { label: 'Press', href: '/press' },
   { label: 'Blog', href: '/blog' },
   { label: 'Glossary', href: '/glossary' },
+  { label: 'Press', href: '/press' },
+  { label: 'Country Guides', href: '/country-guides' },
+  { label: 'Network Coverage', href: '/network-coverage' },
+  { label: 'All Resources', href: '/resources' },
 ];
 
 export default function Header() {
@@ -88,8 +91,8 @@ export default function Header() {
         {/* Right CTAs (desktop) */}
         <div className="hidden items-center gap-3 md:flex">
           <Link
-            href="/login"
-            className="rounded-full bg-[#F2F3F1] px-4 py-2 text-[15px] font-semibold text-[#0C2E1C] hover:opacity-80"
+            href="https://app.sigmaremote.com/login"
+            className="rounded-full bg-black/[0.03] px-4 py-2 text-[15px] font-semibold text-black hover:bg-black/[0.06]"
           >
             Log in
           </Link>
@@ -97,7 +100,7 @@ export default function Header() {
             href="https://cal.com/globalpayroll/demo-25"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full bg-[#D6FF57] px-5 py-2 text-[15px] font-semibold text-black hover:brightness-95"
+            className="rounded-full bg-[hsl(64,83%,65%)] px-5 py-2 text-[15px] font-semibold text-black hover:shadow-[0_6px_24px_rgba(0,0,0,0.12)]"
           >
             Book a Demo
           </Link>
@@ -151,10 +154,10 @@ function MobileSheet({ onClose }: { onClose: () => void }) {
             )}
 
             <div className="mt-2 flex items-center gap-2">
-              <Link href="/login" className="flex-1 rounded-full bg-[#F2F3F1] px-4 py-2 text-center text-[15px] font-semibold text-[#0C2E1C]" onClick={onClose}>
+              <Link href="https://app.sigmaremote.com/login" className="flex-1 rounded-full bg-black/[0.03] px-4 py-2 text-center text-[15px] font-semibold text-black hover:bg-black/[0.06]" onClick={onClose}>
                 Log in
               </Link>
-              <Link href="https://cal.com/globalpayroll/demo-25" target="_blank" rel="noopener noreferrer" className="flex-1 rounded-full bg-[#D6FF57] px-4 py-2 text-center text-[15px] font-semibold text-black" onClick={onClose}>
+              <Link href="https://cal.com/globalpayroll/demo-25" target="_blank" rel="noopener noreferrer" className="flex-1 rounded-full bg-[hsl(64,83%,65%)] px-4 py-2 text-center text-[15px] font-semibold text-black" onClick={onClose}>
                 Book a Demo
               </Link>
             </div>

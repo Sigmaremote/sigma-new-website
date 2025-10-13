@@ -13,7 +13,7 @@ export default function CtaBlock({
   title = "Ready to hire globally?",
   subtitle = "Get started with compliant payroll and hiring in minutes.",
   primaryButtonText = "Get a Free Payroll Setup",
-  primaryButtonHref = "/book-a-demo",
+  primaryButtonHref = "https://cal.com/globalpayroll/demo-25",
   secondaryButtonText = "Talk to Sales",
   secondaryButtonHref = "/contact"
 }: CtaBlockProps) {
@@ -24,7 +24,7 @@ export default function CtaBlock({
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <Link
           href={primaryButtonHref}
-          className="bg-[#D6FF57] text-black px-6 py-3 rounded-full font-semibold hover:brightness-95 transition-colors"
+          className="bg-[#D1FF94] text-black px-6 py-3 rounded-full font-semibold hover:brightness-95 transition-colors"
         >
           {primaryButtonText}
         </Link>

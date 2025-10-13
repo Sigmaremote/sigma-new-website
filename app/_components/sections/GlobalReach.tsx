@@ -1,77 +1,83 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
+import FlagMarquee from '@/components/flags/FlagMarquee';
 
 export default function GlobalReach() {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
   return (
-    <section aria-label="Global reach" className="relative isolate">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div aria-label="Global reach" className="relative isolate">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" ref={sectionRef}>
         <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-[minmax(280px,1fr)_minmax(420px,1.1fr)_minmax(420px,1fr)]">
           {/* Left copy + CTA */}
-          <div className="flex flex-col justify-center">
-            <h2 className="text-4xl font-extrabold tracking-tight text-black sm:text-5xl">
+          <div className="flex flex-col pt-6 sm:pt-8">
+            <motion.h2 
+              className="font-satoshi text-black tracking-tight leading-[1.15] font-semibold text-[32px] sm:text-[36px] md:text-[38px]"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            >
               We get you to every
               <br className="hidden sm:block" /> country
-            </h2>
-            <p className="mt-4 max-w-md text-black/70">
-              From Buenos Aires to Manila, hire contractors
-              and employees anywhere with Sigma.
-            </p>
-            <div className="mt-6">
+            </motion.h2>
+            <motion.p 
+              className="font-satoshi text-[16px] leading-relaxed text-black/70 mt-3"
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+            >
+              From Buenos Aires to Manila, hire contractors and employees anywhere with Sigma.
+            </motion.p>
+            <motion.div 
+              className="mt-6"
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+            >
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-full bg-[#D6FF57] px-5 py-3 text-sm font-semibold text-black shadow-sm ring-1 ring-black/10 hover:bg-lime-200"
+                className="inline-flex items-center justify-center font-satoshi font-medium text-[15px] md:text-[16px] bg-[#E8F843] text-black rounded-full h-11 px-5 hover:shadow-[0_6px_24px_rgba(0,0,0,0.12)]"
                 aria-label="Get a Free Payroll Setup"
               >
                 Get a Free Payroll Setup <span aria-hidden className="ml-2">→</span>
               </Link>
-            </div>
+            </motion.div>
           </div>
 
-          {/* Middle: 160+ countries (flags grid placeholder) */}
-          <div className="rounded-3xl bg-[#EAFDB3] p-6 shadow-[0_12px_36px_rgba(0,0,0,0.06)] sm:p-8">
-            <h3 className="text-center text-2xl font-extrabold tracking-tight text-black">
-              160+ countries
-            </h3>
-
-            {/* Flags grid placeholder – replace each box with a flag image later */}
-            <div className="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-4">
-              {Array.from({ length: 20 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="flex h-10 items-center justify-center rounded-xl bg-white text-xs text-black/40 ring-1 ring-black/10"
-                  title="Flag placeholder"
-                  aria-hidden
-                >
-                  {/* <Image src="/flags/xx.svg" alt="Country" fill /> */}
-                  image
-                </div>
-              ))}
-            </div>
-
-            <p className="mt-4 text-center text-sm text-black/60">To hire from.</p>
+          {/* Middle: 160+ countries (animated flag marquee) */}
+          <div className="w-full">
+            <FlagMarquee />
           </div>
 
           {/* Right: Incorporated outside of the U.S.? (map placeholder) */}
-          <div className="rounded-3xl bg-[#0C2E1C] p-6 text-white shadow-[0_12px_36px_rgba(0,0,0,0.06)] sm:p-8">
-            <h3 className="text-2xl font-extrabold tracking-tight">Incorporated outside of the U.S.?</h3>
+          <div className="rounded-3xl bg-[hsl(156,82%,13%)] p-6 text-white shadow-[0_12px_36px_rgba(0,0,0,0.06)] sm:p-8">
+            <h3 className="font-satoshi text-white font-semibold tracking-tight leading-[1.2] text-[20px] sm:text-[22px]">Incorporated outside of the U.S.?</h3>
 
-            {/* Map image placeholder – replace with your world map later */}
+            {/* World map image */}
             <div
-              className="mt-4 aspect-[16/10] w-full rounded-2xl bg-white/10 ring-1 ring-white/15"
-              title="World map placeholder"
-              aria-hidden
+              className="mt-4 aspect-[16/10] w-full rounded-2xl overflow-hidden"
+              title="World map coverage"
             >
-              {/* <Image src="/maps/world.png" alt="Global map" fill className="object-contain" /> */}
+              <Image 
+                src="/landing-page-images/We get you to every country part/world-map-coverage.svg" 
+                alt="Global map showing Sigma coverage" 
+                width={500}
+                height={312}
+                className="h-full w-full object-contain" 
+              />
             </div>
 
-            <p className="mt-4 text-sm text-white/80">
-              International companies can also use Sigma.
-              <br />Book a demo to learn more.
+            <p className="mt-4 font-satoshi text-[14px] sm:text-[15px] leading-relaxed text-white/75">
+              International companies can also use Sigma. Book a demo to learn more.
             </p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

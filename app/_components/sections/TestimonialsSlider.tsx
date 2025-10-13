@@ -21,9 +21,22 @@ const DATA: Testimonial[] = [
       'Many of our startup clients want to nearshore talent but worry about compliance. Sigma handles it all, making it ideal for busy founders hiring in Latam for the first time.',
     authorName: 'Sergio de la Zerda',
     authorTitle: 'Founder, FoundersCFO',
-    // avatarSrc: '/avatars/sergio.png',
+    avatarSrc: '/landing-page-images/Testemonials part/Sergio De La Zara.jpeg',
   },
-  // Add more as needed…
+  {
+    logoText: 'nortech',
+    quote:
+      'Sigma made paying our LATAM contractors straightforward. The USD wallet removed FX guesswork and support via mobile is quick.',
+    authorName: 'Sofía Álvarez',
+    authorTitle: 'HR Lead, Nortech',
+  },
+  {
+    logoText: 'fieldsquare',
+    quote:
+      'We switched from Payoneer to Sigma for the simpler pricing. Onboarding was fast and our first payroll ran without issues.',
+    authorName: 'Daniel Okoye',
+    authorTitle: 'Founder, FieldSquare',
+  },
 ];
 
 export default function TestimonialsSlider() {

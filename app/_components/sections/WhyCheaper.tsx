@@ -55,7 +55,7 @@ export default function WhyCheaper() {
                       {row.feature}
                     </td>
                     <td className="px-6 py-4 text-center text-sm text-black">
-                      <span className="inline-flex items-center rounded-full bg-[#D6FF57] px-3 py-1 text-xs font-medium">
+                      <span className="inline-flex items-center rounded-full bg-[#D1FF94] px-3 py-1 text-xs font-medium">
                         {row.sigma}
                       </span>
                     </td>

@@ -1,10 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Image from 'next/image';
+import { motion, useInView } from 'framer-motion';
 
 export default function ScaleWorkforce() {
-  const [expandedCard, setExpandedCard] = useState<string | null>('retain');
+  const [expandedCard, setExpandedCard] = useState<string | null>('contractors');
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   const toggleCard = (cardId: string) => {
     setExpandedCard(expandedCard === cardId ? null : cardId);
@@ -33,17 +36,35 @@ export default function ScaleWorkforce() {
     }
   ];
 
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.5,
+        ease: [0.22, 1, 0.36, 1],
+      }
+    })
+  };
+
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="py-16 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={sectionRef}>
         {/* Main Green Box Container */}
         <div className="bg-lime rounded-3xl p-8 lg:p-12 relative overflow-hidden">
-          {/* Main Headline - Full Width at Top */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-near-black">
+          {/* Main Headline - Left Aligned */}
+          <motion.div 
+            className="text-left mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <h2 className="text-3xl md:text-4xl font-semibold text-near-black">
               Scale your workforce
             </h2>
-          </div>
+          </motion.div>
 
           {/* Dashboard Image - Positioned in Lower Left */}
           <div className="absolute bottom-0 left-0 -mb-8 -ml-8 lg:-mb-12 lg:-ml-12">
@@ -67,9 +88,13 @@ export default function ScaleWorkforce() {
             <div>
               {/* Expandable Cards */}
               <div className="space-y-4">
-                {cards.map((card) => (
-                  <div
+                {cards.map((card, i) => (
+                  <motion.div
                     key={card.id}
+                    custom={i}
+                    initial="hidden"
+                    animate={isInView ? "visible" : "hidden"}
+                    variants={cardVariants}
                     className="bg-white rounded-2xl p-6 shadow-sm transition-all duration-300 hover:shadow-md"
                   >
                     <div
@@ -89,19 +114,25 @@ export default function ScaleWorkforce() {
                     </div>
                     
                     {expandedCard === card.id && (
-                      <div className="mt-4 pt-4 border-t border-gray-100">
+                      <motion.div 
+                        className="mt-4 pt-4 border-t border-gray-100"
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
                         <p className="text-gray-700 leading-relaxed">
                           {card.description}
                         </p>
-                      </div>
+                      </motion.div>
                     )}
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

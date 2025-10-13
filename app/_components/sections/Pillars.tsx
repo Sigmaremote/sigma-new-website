@@ -45,7 +45,7 @@ export default function Pillars() {
             const Icon = pillar.icon;
             return (
               <div key={pillar.title} className="text-center">
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#D6FF57]">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#D1FF94]">
                   <Icon className="h-8 w-8 text-black" />
                 </div>
                 <h3 className="text-xl font-semibold text-black mb-2">

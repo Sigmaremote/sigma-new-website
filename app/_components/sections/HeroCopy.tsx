@@ -1,64 +1,123 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { HeroTitle, Subhead, Body } from '@/components/ui/typography';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { routes } from '@/lib/routes';
+import AnnouncementBar from '@/components/AnnouncementBar';
 
 export default function HeroCopy() {
+  const titleVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1], // Custom cubic bezier for smooth easing
+      }
+    }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.3,
+      }
+    }
+  };
+
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: [0.22, 1, 0.36, 1],
+      }
+    }
+  };
+
   return (
     <section aria-labelledby="hero-heading" className="relative isolate">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* News pill */}
-        <div className="flex justify-center pt-16 sm:pt-20">
-          <Link
-            href="/press"
-            className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-1 text-xs text-black/70 hover:bg-black/5"
-          >
-            <span className="inline-block h-2 w-2 rounded-full bg-red-500" aria-hidden />
-            Flat-Fee USD Payroll Across El Salvador, Panama &amp; Costa Rica — No FX Markups, Ever
-          </Link>
+        {/* Dynamic announcement bar */}
+        <div>
+          <AnnouncementBar darkSurface={false} showViewAll />
         </div>
 
-        <div className="mx-auto max-w-4xl py-8 text-center sm:py-10">
-          <h1
-            id="hero-heading"
-            className="text-5xl font-extrabold tracking-tight text-black sm:text-6xl"
+        <div className="mx-auto max-w-4xl py-8 pb-2 text-center sm:py-10 sm:pb-2">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={titleVariants}
           >
-            Sigma helps you hire, pay
-            <br className="hidden sm:block" /> and retain anyone
-          </h1>
+            <HeroTitle id="hero-heading" className="text-black leading-[1.05] tracking-tight">
+              Sigma helps you hire, pay
+              <br className="hidden sm:block" /> and retain anyone
+            </HeroTitle>
+          </motion.div>
 
-          <div className="mx-auto mt-5 max-w-2xl text-base text-black/70 sm:text-lg">
-            <p>
-              Easily hire and pay your global workforce. We handle W-8BEN forms, local
-              payments, and provide USD Wallets &amp; health benefits for your staff.
-            </p>
-            <p className="mt-3">
-              Make onboarding, payments, retention, and compliance painless with Sigma.
-            </p>
-          </div>
+          <motion.div
+            className="mx-auto mt-5 max-w-2xl"
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+          >
+            <motion.div variants={fadeInUp}>
+              <Subhead className="leading-relaxed max-w-prose">
+                Easily hire and pay your global workforce. We handle W-8BEN forms, local
+                payments, and provide USD Wallets &amp; health benefits for your staff.
+              </Subhead>
+            </motion.div>
+            <motion.div variants={fadeInUp}>
+              <Body className="mt-3 leading-relaxed max-w-prose">
+                Make onboarding, payments, retention, and compliance painless with Sigma.
+              </Body>
+            </motion.div>
+          </motion.div>
 
           {/* CTAs */}
-          <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link
-              href={routes?.contact ?? '/contact'}
-              aria-label="Get a Free Payroll Setup"
-              className="inline-flex items-center justify-center rounded-full bg-[#D6FF57] px-5 py-3 text-sm font-semibold text-black shadow-sm ring-1 ring-black/10 hover:bg-lime-200"
-            >
-              Get a Free Payroll Setup <span aria-hidden className="ml-2">→</span>
-            </Link>
+          <motion.div
+            className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row"
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+          >
+            <motion.div variants={fadeInUp}>
+              <Button 
+                variant="primary" 
+                size="lg" 
+                href={routes?.contact ?? '/contact'}
+              >
+                Get a Free Payroll Setup <span aria-hidden="true" className="ml-2">→</span>
+              </Button>
+            </motion.div>
 
-            <Link
-              href="/signup"
-              aria-label="Create Account"
-              className="inline-flex items-center justify-center rounded-full border border-black/10 bg-white px-5 py-3 text-sm font-semibold text-black hover:bg-black/5"
-            >
-              Create Account
-            </Link>
-          </div>
+            <motion.div variants={fadeInUp}>
+              <Button 
+                variant="ghost" 
+                size="lg" 
+                href="/signup"
+              >
+                Create Account
+              </Button>
+            </motion.div>
+          </motion.div>
 
           {/* Product Hunt badges */}
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-4">
+          <motion.div
+            className="mt-10 flex flex-wrap items-center justify-center gap-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 0.6 }}
+          >
             <Image
               src="/landing-page-images/ProductHuntBadge.svg"
               alt="Product Hunt Badge"
@@ -73,7 +132,7 @@ export default function HeroCopy() {
               height={60}
               className="h-12 w-auto"
             />
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -1,6 +1,9 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 
 type CTAShowcaseProps = {
   eyebrow?: string;
@@ -19,16 +22,24 @@ export default function CTAShowcase({
   ctaHref = '/contact',
   className = '',
 }: CTAShowcaseProps) {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
   return (
-    <section aria-label="Call to action" className={`relative isolate ${className}`}>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div aria-label="Call to action" className={`relative isolate ${className}`}>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" ref={sectionRef}>
         {/* dark green card */}
-        <div className="rounded-3xl bg-[#0C2E1C] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.10)] sm:p-10 lg:p-14">
+        <motion.div 
+          className="rounded-3xl bg-[#0C2E1C] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.10)] sm:p-10 lg:p-14"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        >
           <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[minmax(520px,1fr)_minmax(480px,560px)] lg:gap-12">
             {/* Left copy */}
             <div className="text-white">
               <div className="text-sm/5 text-white/80">{eyebrow}</div>
-              <h2 className="mt-2 text-4xl font-extrabold tracking-tight sm:text-5xl">
+              <h2 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">
                 {title}
               </h2>
               {description && (
@@ -39,85 +50,40 @@ export default function CTAShowcase({
                 <Link
                   href={ctaHref}
                   aria-label={ctaLabel}
-                  className="inline-flex items-center justify-center rounded-full bg-[#D6FF57] px-5 py-3 text-sm font-semibold text-black shadow-sm ring-1 ring-black/10 hover:bg-lime-200"
+                  className="inline-flex items-center justify-center rounded-full bg-[#E8F843] px-5 py-3 text-sm font-semibold text-black shadow-sm ring-1 ring-black/10 hover:bg-[#CFF86A]"
                 >
                   {ctaLabel} <span aria-hidden className="ml-2">→</span>
                 </Link>
               </div>
             </div>
 
-            {/* Right: UI mock cards (placeholders) */}
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-[minmax(280px,1fr)_minmax(260px,1fr)] sm:items-start">
-              {/* Team list card */}
-              <div className="rounded-3xl bg-white p-5 ring-1 ring-black/10">
-                <div className="text-sm font-semibold text-black">Team</div>
-                <div className="mt-4 space-y-4">
-                  {[
-                    { name: 'Ara Cristaldo', role: 'Content Marketer', country: '🇦🇷 Argentina', time: '11:00 AM' },
-                    { name: 'Majah Ravago', role: 'Contact Support', country: '🇵🇭 Philippines', time: '2:20 PM' },
-                    { name: 'Damian Pérez', role: 'Software Engineer', country: '🇨🇴 Colombia', time: '09:00 AM' },
-                  ].map((m, i) => (
-                    <div key={i} className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        {/* avatar placeholder */}
-                        <span className="grid h-10 w-10 place-items-center rounded-full bg-black/5 text-xs text-black/40 ring-1 ring-black/10">
-                          img
-                        </span>
-                        <div>
-                          <div className="text-sm font-semibold text-black">{m.name}</div>
-                          <div className="text-xs text-black/60">{m.role}</div>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-xs text-black/60">{m.country}</div>
-                        <div className="text-xs text-black/40">{m.time}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+            {/* Right: UI showcase images */}
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:items-start">
+              {/* Image 1 */}
+              <div className="rounded-3xl overflow-hidden ring-1 ring-black/10">
+                <Image
+                  src="/landing-page-images/Repeatable CTA above the footer part/image1.1.avif"
+                  alt="Sigma platform interface"
+                  width={400}
+                  height={500}
+                  className="w-full h-auto object-cover"
+                />
               </div>
 
-              {/* Add Payroll card */}
-              <div className="rounded-3xl bg-white p-5 ring-1 ring-black/10">
-                <div className="text-lg font-semibold text-black">Add Payroll</div>
-
-                {/* Team Player selector mock */}
-                <div className="mt-4">
-                  <div className="text-xs text-black/60">Team Player</div>
-                  <div className="mt-2 flex items-center justify-between rounded-xl border border-black/10 bg-white px-3 py-2">
-                    <div className="flex items-center gap-2">
-                      <span className="grid h-8 w-8 place-items-center rounded-full bg-black/5 text-[10px] text-black/40 ring-1 ring-black/10">
-                        img
-                      </span>
-                      <span className="text-sm font-medium text-black">Javier Ojeda</span>
-                    </div>
-                    <span className="text-black/40">▾</span>
-                  </div>
-                </div>
-
-                {/* Amount input mock */}
-                <div className="mt-4">
-                  <div className="text-xs text-black/60">Amount</div>
-                  <div className="mt-2 rounded-xl border border-black/10 bg-white px-3 py-3 text-sm text-black/80">
-                    $ 2500.00
-                  </div>
-                </div>
-
-                <button
-                  type="button"
-                  className="mt-5 w-full rounded-full bg-[#D6FF57] px-5 py-3 text-sm font-semibold text-black ring-1 ring-black/10 hover:bg-lime-200"
-                  aria-label="Submit Payroll"
-                >
-                  Submit Payroll
-                </button>
+              {/* Image 2 */}
+              <div className="rounded-3xl overflow-hidden ring-1 ring-black/10">
+                <Image
+                  src="/landing-page-images/Repeatable CTA above the footer part/image1.2.avif"
+                  alt="Sigma payroll interface"
+                  width={400}
+                  height={500}
+                  className="w-full h-auto object-cover"
+                />
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Optional lime background tail like the screenshot */}
-        <div className="h-10 w-full bg-[#D6FF57] lg:h-14" aria-hidden />
+        </motion.div>
       </div>
-    </section>
+    </div>
   );
 }

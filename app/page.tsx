@@ -6,7 +6,7 @@ import BusinessFeatures from './_components/sections/BusinessFeatures';
 import ScaleWorkforce from './_components/sections/ScaleWorkforce';
 import FinancialComplianceHubs from './_components/sections/FinancialComplianceHubs';
 import GlobalReach from './_components/sections/GlobalReach';
-import TestimonialsSlider from './_components/sections/TestimonialsSlider';
+import TestimonialsCarousel from './_components/sections/TestimonialsCarousel';
 import CTAShowcase from './_components/sections/CTAShowcase';
 
 export const metadata: Metadata = {
@@ -86,7 +86,7 @@ export default function HomePage() {
           <GlobalReach />
         </div>
         <div className="py-16 lg:py-24">
-          <TestimonialsSlider />
+          <TestimonialsCarousel />
         </div>
         <div className="py-16 lg:py-24">
           <CTAShowcase />

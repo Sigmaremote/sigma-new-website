@@ -29,7 +29,7 @@ export default function Hero() {
       <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
         <Link 
           href="#countries" 
-          className="bg-lime text-black px-8 py-3 rounded-full font-medium hover:bg-lime-fallback transition-colors duration-200"
+          className="bg-[#D1FF94] text-black px-8 py-3 rounded-full font-medium hover:bg-[#C8FF66] transition-colors duration-200"
         >
           Explore All Countries
         </Link>

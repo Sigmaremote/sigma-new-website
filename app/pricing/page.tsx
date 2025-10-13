@@ -1,9 +1,15 @@
 import { Metadata } from 'next';
 import { buildJsonLd } from '@/lib/seo';
+import { Pricing } from '@/components/ui/pricing-cards';
+import { GlobalPayrollSection } from '@/components/ui/global-payroll-section';
+import { CompetitorReplacementSection } from '@/components/ui/competitor-replacement';
+import { FeaturesCompare } from '@/components/ui/features-compare';
+import FaqSection from '@/components/ui/FaqSection';
+import GlobalReachSection from '@/components/ui/GlobalReachSection';
 
 export const metadata: Metadata = {
   title: 'Pricing - SigmaRemote',
-  description: 'Transparent pricing for global payroll. 2% platform fee with no hidden costs.',
+  description: 'Fair pricing for global payroll. Contractors, Employer of Record, and Gig Pay solutions.',
   alternates: {
     canonical: 'https://sigmaremote.com/pricing',
   },
@@ -13,9 +19,19 @@ export default function PricingPage() {
   const jsonLd = buildJsonLd({
     type: 'home',
     title: 'Pricing - SigmaRemote',
-    description: 'Transparent pricing for global payroll. 2% platform fee with no hidden costs.',
+    description: 'Fair pricing for global payroll. Contractors, Employer of Record, and Gig Pay solutions.',
     url: 'https://sigmaremote.com/pricing',
   });
+
+  const columns = ['Sigma', 'Deel', 'Remote.com', 'Gusto'];
+  const rows = [
+    { feature: 'Global Payroll', values: [true, true, true, true] },
+    { feature: 'USD Savings Wallet for workers', values: [true, false, false, false] },
+    { feature: 'Local Benefits', values: [true, false, false, false] },
+    { feature: 'Crypto and Local bank transfers', values: [true, true, false, false] },
+    { feature: 'Slack Support', values: [true, false, false, false] },
+    { feature: 'Instant payouts', values: [true, true, false, false] },
+  ];
 
   return (
     <>
@@ -23,37 +39,16 @@ export default function PricingPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="bg-white py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-black mb-6">
-              Simple, transparent pricing
-            </h1>
-            <p className="text-xl text-black/70 mb-12 max-w-2xl mx-auto">
-              No setup fees, no monthly minimums, no hidden costs. Just a simple 2% platform fee.
-            </p>
-            
-            <div className="bg-[#EAFDB3] rounded-2xl p-8 max-w-md mx-auto">
-              <div className="text-4xl font-bold text-black mb-2">2%</div>
-              <div className="text-lg text-black/70 mb-4">Platform fee</div>
-              <div className="text-sm text-black/60">
-                Per transaction, no hidden fees
-              </div>
-            </div>
-            
-            <div className="mt-12 text-center">
-              <a
-                href="https://cal.com/globalpayroll/demo-25"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full bg-[#D6FF57] px-8 py-4 text-base font-semibold text-black hover:brightness-95 transition-colors"
-              >
-                Book a demo
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Pricing />
+      <GlobalPayrollSection />
+      <CompetitorReplacementSection />
+      <FeaturesCompare
+        title="Features"
+        columns={columns}
+        rows={rows}
+      />
+      <FaqSection />
+      <GlobalReachSection />
     </>
   );
 }

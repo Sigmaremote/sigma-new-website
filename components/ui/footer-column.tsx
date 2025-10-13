@@ -53,7 +53,7 @@ const aboutLinks = [
   { text: 'About us', href: data.about.history },
   { text: 'Get in touch', href: '/contact' },
   { text: 'Pricing', href: '/pricing' },
-  { text: 'Book a Demo', href: '/book-a-demo' },
+  { text: 'Book a Demo', href: 'https://cal.com/globalpayroll/demo-25' },
 ];
 
 const serviceLinks = [
@@ -86,7 +86,7 @@ const contactInfo = [
 
 export default function Footer4Col() {
   return (
-    <footer className="bg-[#EAFDB3] dark:bg-secondary/20 mt-16 w-full place-self-end rounded-t-xl">
+    <footer className="bg-[#D1FF94] dark:bg-secondary/20 mt-16 w-full place-self-end rounded-t-xl">
       <div className="mx-auto max-w-screen-xl px-4 pt-16 pb-6 sm:px-6 lg:px-8 lg:pt-24">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>

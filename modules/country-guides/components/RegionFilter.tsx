@@ -17,7 +17,7 @@ export default function RegionFilter({ selectedRegion, onRegionChange }: RegionF
       <select
         value={selectedRegion}
         onChange={(e) => onRegionChange(e.target.value)}
-        className="appearance-none bg-white border border-black/10 rounded-lg px-4 py-3 pr-8 focus:ring-2 focus:ring-[#D6FF57] focus:border-[#D6FF57] transition-colors cursor-pointer"
+        className="appearance-none bg-white border border-black/10 rounded-lg px-4 py-3 pr-8 focus:ring-2 focus:ring-[#D1FF94] focus:border-[#D1FF94] transition-colors cursor-pointer"
       >
         {regions.map((region) => (
           <option key={region.value} value={region.value}>

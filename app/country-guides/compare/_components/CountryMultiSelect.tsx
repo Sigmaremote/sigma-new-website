@@ -150,7 +150,7 @@ export default function CountryMultiSelect({
                     disabled={isDisabled}
                     className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm transition-colors ${
                       isSelected
-                        ? 'bg-[#D6FF57] text-black border border-[#D6FF57]'
+                        ? 'bg-[#D1FF94] text-black border border-[#D1FF94]'
                         : isDisabled
                         ? 'text-black/40 cursor-not-allowed bg-black/5'
                         : 'bg-white border border-black/10 text-black hover:bg-black/5'

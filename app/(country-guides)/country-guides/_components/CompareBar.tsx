@@ -64,7 +64,7 @@ export default function CompareBar({ selectedCountries, onRemoveCountry, onClear
             </button>
             <button
               onClick={handleCompare}
-              className="px-4 py-1.5 bg-[#D6FF57] text-black rounded-full font-medium hover:bg-[#C4E84A] transition-colors text-sm"
+              className="px-4 py-1.5 bg-[#D1FF94] text-black rounded-full font-medium hover:bg-[#C8FF66] transition-colors text-sm"
             >
               Compare
             </button>

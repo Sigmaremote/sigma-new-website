@@ -8,7 +8,7 @@ export default function SocialProof() {
             have saved us thousands in fees and hours of admin work."
           </blockquote>
           <div className="flex items-center justify-center space-x-4">
-            <div className="h-12 w-12 rounded-full bg-[#D6FF57] flex items-center justify-center">
+            <div className="h-12 w-12 rounded-full bg-[#D1FF94] flex items-center justify-center">
               <span className="text-lg font-semibold text-black">JD</span>
             </div>
             <div className="text-left">
