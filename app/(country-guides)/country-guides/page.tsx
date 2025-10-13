@@ -1,6 +1,9 @@
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';
+
+// Force dynamic rendering since we use useSearchParams
+export const dynamic = 'force-dynamic';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Container from '../../../components/Container';
 import Hero from './_components/Hero';

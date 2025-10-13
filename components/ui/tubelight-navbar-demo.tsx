@@ -1,3 +1,5 @@
+"use client"
+
 import { Home, DollarSign, Users, FileText, MapPinned, BookOpen, Newspaper, MessageCircle } from 'lucide-react'
 import { NavBar } from "@/components/ui/tubelight-navbar"
 

@@ -1,5 +1,8 @@
 import { TubelightNavBarDemo } from "@/components/ui/tubelight-navbar-demo"
 
+// Force dynamic rendering since we use client components
+export const dynamic = 'force-dynamic';
+
 export default function NavbarDemoPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
