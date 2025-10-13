@@ -10,20 +10,20 @@ import TestimonialsCarousel from './_components/sections/TestimonialsCarousel';
 import CTAShowcase from './_components/sections/CTAShowcase';
 
 export const metadata: Metadata = {
-  title: 'Global Payroll That Keeps Dollars Whole | SigmaRemote',
+  title: 'Sigma - end-to-end global payroll platform',
   description: 'Hire and pay contractors and employees in 160+ countries with USD wallets, transparent FX, and compliance when you need it.',
   alternates: {
     canonical: 'https://sigmaremote.com/',
   },
   openGraph: {
-    title: 'Global Payroll That Keeps Dollars Whole | SigmaRemote',
+    title: 'Sigma - end-to-end global payroll platform',
     description: 'Hire and pay contractors and employees in 160+ countries with USD wallets, transparent FX, and compliance when you need it.',
     type: 'website',
     url: 'https://sigmaremote.com/',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Global Payroll That Keeps Dollars Whole | SigmaRemote',
+    title: 'Sigma - end-to-end global payroll platform',
     description: 'Hire and pay contractors and employees in 160+ countries with USD wallets, transparent FX, and compliance when you need it.',
   },
 };
@@ -54,7 +54,7 @@ const faqData = [
 export default function HomePage() {
   const jsonLd = buildJsonLd({
     type: 'home',
-    title: 'Global Payroll That Keeps Dollars Whole | SigmaRemote',
+    title: 'Sigma - end-to-end global payroll platform',
     description: 'Hire and pay contractors and employees in 160+ countries with USD wallets, transparent FX, and compliance when you need it.',
     url: 'https://sigmaremote.com/',
     faq: faqData,

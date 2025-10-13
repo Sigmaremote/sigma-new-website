@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, BookOpen, FileText, Newspaper, Globe, Network, Library } from 'lucide-react';
 
 const nav = [
   { label: 'Pricing', href: '/pricing' },
@@ -12,12 +12,42 @@ const nav = [
 ];
 
 const resources = [
-  { label: 'Blog', href: '/blog' },
-  { label: 'Glossary', href: '/glossary' },
-  { label: 'Press', href: '/press' },
-  { label: 'Country Guides', href: '/country-guides' },
-  { label: 'Network Coverage', href: '/network-coverage' },
-  { label: 'All Resources', href: '/resources' },
+  { 
+    label: 'Blog', 
+    href: '/blog', 
+    icon: BookOpen, 
+    description: 'Latest insights and updates' 
+  },
+  { 
+    label: 'Glossary', 
+    href: '/glossary', 
+    icon: FileText, 
+    description: 'Key terms and definitions' 
+  },
+  { 
+    label: 'Press', 
+    href: '/press', 
+    icon: Newspaper, 
+    description: 'News and announcements' 
+  },
+  { 
+    label: 'Country Guides', 
+    href: '/country-guides', 
+    icon: Globe, 
+    description: 'Employment guides by country' 
+  },
+  { 
+    label: 'Network Coverage', 
+    href: '/network-coverage', 
+    icon: Network, 
+    description: 'Global reach and coverage' 
+  },
+  { 
+    label: 'All Resources', 
+    href: '/resources', 
+    icon: Library, 
+    description: 'Complete resource library' 
+  },
 ];
 
 export default function Navbar() {
@@ -66,22 +96,40 @@ export default function Navbar() {
               aria-controls="resources-menu"
               className="flex items-center gap-1 text-[15px] font-medium text-black hover:opacity-70"
             >
-              Resources <ChevronDown size={16} className="translate-y-[1px] text-[#0C2E1C]" />
+              Resources <ChevronDown size={16} className={`translate-y-[1px] text-[#0C2E1C] transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
             </button>
             {open && (
               <div
                 id="resources-menu"
-                className="absolute right-0 mt-3 w-56 rounded-2xl border border-black/5 bg-white p-2 shadow-xl"
+                className="absolute right-0 mt-3 w-72 rounded-2xl border border-black/5 bg-white p-3 shadow-xl backdrop-blur-sm animate-in fade-in-0 zoom-in-95 duration-200"
               >
-                {resources.map((r) => (
-                  <Link
-                    key={r.label}
-                    href={r.href}
-                    className="block rounded-xl px-3 py-2 text-[15px] text-black hover:bg-black/5"
-                  >
-                    {r.label}
-                  </Link>
-                ))}
+                <div className="space-y-1">
+                  {resources.map((r) => {
+                    const IconComponent = r.icon;
+                    return (
+                      <Link
+                        key={r.label}
+                        href={r.href}
+                        className="group flex items-start gap-3 rounded-xl px-3 py-3 text-black transition-all duration-200 hover:bg-gradient-to-r hover:from-black/5 hover:to-black/3"
+                      >
+                        <div className="flex-shrink-0">
+                          <IconComponent 
+                            size={18} 
+                            className="text-neutral-600 transition-colors duration-200 group-hover:text-black" 
+                          />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="text-[15px] font-medium text-black group-hover:text-black">
+                            {r.label}
+                          </div>
+                          <div className="text-xs text-neutral-500 group-hover:text-neutral-600 transition-colors duration-200">
+                            {r.description}
+                          </div>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
               </div>
             )}
           </div>
@@ -142,11 +190,28 @@ function MobileSheet({ onClose }: { onClose: () => void }) {
             </button>
             {resOpen && (
               <div className="ml-2 flex flex-col gap-1">
-                {resources.map((r) => (
-                  <Link key={r.label} href={r.href} className="rounded-lg px-2 py-2 text-base text-black hover:bg-black/5" onClick={onClose}>
-                    {r.label}
-                  </Link>
-                ))}
+                {resources.map((r) => {
+                  const IconComponent = r.icon;
+                  return (
+                    <Link 
+                      key={r.label} 
+                      href={r.href} 
+                      className="group flex items-center gap-3 rounded-lg px-3 py-3 text-base text-black hover:bg-black/5 transition-all duration-200" 
+                      onClick={onClose}
+                    >
+                      <IconComponent 
+                        size={16} 
+                        className="text-neutral-600 transition-colors duration-200 group-hover:text-black" 
+                      />
+                      <div className="flex-1">
+                        <div className="font-medium">{r.label}</div>
+                        <div className="text-xs text-neutral-500 group-hover:text-neutral-600 transition-colors duration-200">
+                          {r.description}
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                })}
               </div>
             )}
 
