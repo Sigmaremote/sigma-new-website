@@ -27,7 +27,7 @@ export default function ContactPage() {
       />
       <ContactUsSection />
       <div className="py-16 lg:py-24">
-        <CTAShowcase />
+        <CTAShowcase title="Ready to get started?" />
       </div>
     </>
   );

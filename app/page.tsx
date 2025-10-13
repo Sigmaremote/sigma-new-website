@@ -89,7 +89,7 @@ export default function HomePage() {
           <TestimonialsCarousel />
         </div>
         <div className="py-16 lg:py-24">
-          <CTAShowcase />
+          <CTAShowcase title="Ready to get started?" />
         </div>
       </div>
     </>

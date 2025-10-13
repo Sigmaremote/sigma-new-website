@@ -14,10 +14,6 @@ export default function HeroCopy() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.6,
-        ease: [0.22, 1, 0.36, 1], // Custom cubic bezier for smooth easing
-      }
     }
   };
 
@@ -37,10 +33,6 @@ export default function HeroCopy() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.5,
-        ease: [0.22, 1, 0.36, 1],
-      }
     }
   };
 
@@ -57,6 +49,10 @@ export default function HeroCopy() {
             initial="hidden"
             animate="visible"
             variants={titleVariants}
+            transition={{
+              duration: 0.6,
+              ease: "easeOut",
+            }}
           >
             <HeroTitle id="hero-heading" className="text-black leading-[1.05] tracking-tight">
               Sigma helps you hire, pay
@@ -70,13 +66,19 @@ export default function HeroCopy() {
             animate="visible"
             variants={staggerContainer}
           >
-            <motion.div variants={fadeInUp}>
+            <motion.div 
+              variants={fadeInUp}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            >
               <Subhead className="leading-relaxed max-w-prose">
                 Easily hire and pay your global workforce. We handle W-8BEN forms, local
                 payments, and provide USD Wallets &amp; health benefits for your staff.
               </Subhead>
             </motion.div>
-            <motion.div variants={fadeInUp}>
+            <motion.div 
+              variants={fadeInUp}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            >
               <Body className="mt-3 leading-relaxed max-w-prose">
                 Make onboarding, payments, retention, and compliance painless with Sigma.
               </Body>
@@ -90,7 +92,10 @@ export default function HeroCopy() {
             animate="visible"
             variants={staggerContainer}
           >
-            <motion.div variants={fadeInUp}>
+            <motion.div 
+              variants={fadeInUp}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            >
               <Button 
                 variant="primary" 
                 size="lg" 
@@ -100,7 +105,10 @@ export default function HeroCopy() {
               </Button>
             </motion.div>
 
-            <motion.div variants={fadeInUp}>
+            <motion.div 
+              variants={fadeInUp}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            >
               <Button 
                 variant="ghost" 
                 size="lg" 

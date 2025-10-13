@@ -51,7 +51,11 @@ export default function TestimonialsSlider() {
     timerRef.current = setInterval(() => {
       setIdx((i) => (i + 1) % total);
     }, 7000);
-    return () => timerRef.current && clearInterval(timerRef.current);
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+      }
+    };
   }, [total]);
 
   const go = (dir: 'prev' | 'next') => {

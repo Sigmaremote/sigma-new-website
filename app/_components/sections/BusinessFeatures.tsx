@@ -10,15 +10,10 @@ export default function BusinessFeatures() {
 
   const cardVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: (i: number) => ({
-      opacity: 1,
+    visible: { 
+      opacity: 1, 
       y: 0,
-      transition: {
-        delay: i * 0.15,
-        duration: 0.6,
-        ease: [0.22, 1, 0.36, 1],
-      }
-    })
+    }
   };
 
   const cards = [
@@ -50,7 +45,7 @@ export default function BusinessFeatures() {
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <h2 className="text-3xl md:text-4xl font-semibold text-near-black mb-4">
             Sigma is designed for businesses powered by<br />
@@ -64,10 +59,14 @@ export default function BusinessFeatures() {
             <motion.div
               key={card.title}
               className="flex flex-col text-center"
-              custom={i}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
               variants={cardVariants}
+              transition={{
+                delay: i * 0.15,
+                duration: 0.6,
+                ease: "easeOut",
+              }}
             >
               <div className="mb-6 h-[250px] flex items-center justify-center">
                 <Image
