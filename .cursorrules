@@ -1,0 +1,75 @@
+# 🔒 WEBSITE COPY INTEGRITY — NON-EDITABLE CONTENT POLICY
+
+## Global Rule
+Any text provided by the user in a prompt that could be used in a website, app interface, or marketing asset (hero, heading, subtitle, paragraph, FAQ, button, meta, article, post, or any textual element)
+MUST be treated as FINAL COPY.
+
+## Prohibited actions
+❌ Do not rewrite, paraphrase, summarize, expand, shorten, "improve", fix grammar, or adjust tone.
+❌ Do not alter punctuation, dashes, spaces, capitalization, spelling, or quotes.
+❌ Do not normalize typography (e.g. replace "–" or "—" with "-", or vice versa).
+❌ Do not reflow or escape text strings when embedding them in code (preserve as-is).
+❌ Do not translate.
+❌ Do not auto-replace curly quotes, typographic dashes, or symbols.
+
+## Conditional behavior
+- If the user's message contains any block of text (multi-line, headline, paragraph, or bullet) intended for website or product copy, treat it as immutable content.
+- The only allowed modifications are:
+  ✅ wrapping the text in component props or template literals;
+  ✅ assigning it to variables/constants;
+  ✅ styling, layout, or responsive changes.
+
+## Permission handling
+If you believe a copy block needs changes (typo, consistency, readability, tone, or translation), you MUST:
+1. Ask explicit permission from the user: "May I edit or rephrase this text?"
+2. Proceed ONLY if the user answers yes.
+
+## Example enforcement
+Bad (disallowed):
+> Rewriting "Pay contractors in USD wallets" to "Easily pay your contractors via USD wallets."
+
+Good (allowed):
+> Keeping "Pay contractors in USD wallets" as-is, but changing its visual layout, typography, color, or component structure.
+
+## Hierarchy
+This rule overrides all other rewrite, grammar, or localization rules in this workspace.
+It applies automatically to any text given by the user — no special markers like <<<COPY>>> are required.
+
+---
+
+Implementation checklist for the agent:
+1. Detect any user-provided text content (multi-line strings, UI labels, hero sections, etc.).
+2. Assume it is website copy and lock it as immutable.
+3. Ask before changing or regenerating textual content.
+4. When saving or inserting into components, confirm that the string is byte-for-byte identical to what the user provided.
+
+## Code Implementation Guidelines
+
+### Copy Storage
+- Store all copy in dedicated constants files (e.g., `copy/compare/deel.ts`)
+- Use template strings (`...`) to preserve exact formatting
+- Avoid `.trim()`, `.replace()`, or any string manipulation methods
+- Pass copy as props to components
+
+### Example Structure
+```typescript
+// copy/compare/deel.ts
+export const deelCopy = {
+  hero: {
+    title: `Pay contractors in USD wallets`,
+    subtitle: `No more currency conversion headaches`
+  }
+} as const;
+```
+
+### Component Usage
+```typescript
+import { deelCopy } from '@/copy/compare/deel';
+
+export function HeroSection() {
+  return (
+    <h1>{deelCopy.hero.title}</h1>
+    <p>{deelCopy.hero.subtitle}</p>
+  );
+}
+```

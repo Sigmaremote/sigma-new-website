@@ -177,6 +177,8 @@ function parseSections(md: string): {
   keyTakeaways?: string[];
   faq: { q: string; a: string }[];
 } {
+  // Remove RAW_MD markers
+  md = md.replace(/<<<RAW_MD>>>/g, '').trim();
   const lines = md.split(/\r?\n/).map(l => l.trimEnd());
   let title = '';
   let dek: string|undefined;
@@ -311,7 +313,7 @@ const POST: BlogData = {
   author: { name: 'SigmaRemote Editorial', url: 'https://www.sigmaremote.com/about' },
   datePublished: new Date().toISOString(),
   tags: ['Compliance','Hiring','USD Wallets'], // adjust per post
-  coverImage: true,
+  coverImage: '/Blog images/How to Hire Blog 1/blog-image-1.png',
   keyTakeaways: parsed.keyTakeaways,
   sections: parsed.sections,   // exact wording preserved
   faq: parsed.faq,

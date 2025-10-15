@@ -17,7 +17,7 @@ const blogData = {
       author: "SigmaRemote Editorial",
       published: "15 Jan 2025",
       url: "/blog/hire-international-contractors-2025",
-      image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=450&fit=crop&crop=center",
+      image: "/Blog images/How to Hire Blog 1/blog-image-1.png",
     },
     {
       id: "post-1",

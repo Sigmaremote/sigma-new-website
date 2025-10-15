@@ -57,18 +57,18 @@ const aboutLinks = [
 ];
 
 const serviceLinks = [
-  { text: 'Sigma vs Deel', href: '/compare/sigma-vs-deel' },
-  { text: 'Sigma vs Remote', href: '/compare/sigma-vs-remote' },
-  { text: 'Sigma vs Rippling', href: '/compare/sigma-vs-rippling' },
-  { text: 'Sigma vs Gusto', href: '/compare/sigma-vs-gusto' },
+  { text: 'Sigma vs Deel', href: '/compare/deel' },
+  { text: 'Sigma vs Remote', href: '/compare/vs-remote' },
+  { text: 'Sigma vs Rippling', href: '/compare/vs-rippling' },
+  { text: 'Sigma vs Gusto', href: '/compare/vs-gusto' },
 ];
 
 const gigPlatformLinks = [
-  { text: 'Sigma vs Payoneer', href: '/compare/sigma-vs-payoneer' },
-  { text: 'Sigma vs Veem', href: '/compare/sigma-vs-veem' },
-  { text: 'Sigma vs PayPal', href: '/compare/sigma-vs-paypal' },
-  { text: 'Sigma vs Wise', href: '/compare/sigma-vs-wise' },
-  { text: 'Sigma vs Hyperwallet', href: '/compare/sigma-vs-hyperwallet' },
+  { text: 'Sigma vs Payoneer', href: '/compare/vs-payoneer' },
+  { text: 'Sigma vs Veem', href: '/compare/vs-veem' },
+  { text: 'Sigma vs PayPal', href: '/compare/vs-paypal' },
+  { text: 'Sigma vs Wise', href: '/compare/vs-wise' },
+  { text: 'Sigma vs Hyperwallet', href: '/compare/vs-hyperwallet' },
 ];
 
 const helpfulLinks = [

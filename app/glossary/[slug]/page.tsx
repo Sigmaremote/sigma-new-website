@@ -4,7 +4,7 @@ import * as React from 'react';
 import Link from 'next/link';
 import { notFound, useParams } from 'next/navigation';
 import Script from 'next/script';
-import { BookOpen, Link2 } from 'lucide-react';
+import { BookOpen, Link2, CheckCircle2, XCircle } from 'lucide-react';
 
 /**
  * Glossary Detail Template — /glossary/[slug]
@@ -25,11 +25,20 @@ type GlossaryItem = {
   excerpt: string;
   definition: string; // za "What is ..."
   how?: string[];
+  howTitle?: string; // Custom title for "How it works" section
   why?: string[];
+  whyTitle?: string; // Custom title for "Why it matters" section
   example?: string;
   related?: { label: string; href: string }[];
+  relatedTitle?: string; // Custom title for "Related Terms" section
   faqs?: { q: string; a: string }[];
   datePublished?: string; // ISO
+  tables?: {
+    title: string;
+    headers: string[];
+    rows: string[][];
+  }[];
+  tableFooter?: string; // Text to show after tables
 };
 
 const GLOSSARY_STORE: Record<string, GlossaryItem> = {
@@ -956,6 +965,136 @@ const GLOSSARY_STORE: Record<string, GlossaryItem> = {
     ],
     datePublished: new Date().toISOString(),
   },
+  'aor-cor-eor': {
+    slug: 'aor-cor-eor',
+    term: "AOR, CoR, and EOR?",
+    excerpt:
+      'Three different service models for hiring international talent: Agent of Record (AOR), Contractor of Record (CoR), and Employer of Record (EOR).',
+    definition:
+      'When hiring international talent, companies often face a tough question: What type of service do I actually need?\n\n• Do you want to hire full-time employees abroad?\n• Or pay independent contractors across borders?\n• Or stay in control while outsourcing compliance?\n\nThis is where EOR, CoR, and AOR come into play. They\'re often confused - but they solve very different problems.',
+    how: [
+      'A U.S. startup hires a full-time engineer in Argentina → uses an EOR to issue a compliant employment contract and handle taxes.',
+      'A design agency wants to pay a video editor in Brazil → uses a CoR to handle contracts and classification for a freelancer.',
+      'A marketing firm has contractors in Colombia and Kenya but wants to manage relationships directly → uses an AOR for compliance support while staying the legal payer.',
+    ],
+    howTitle: 'Real Use Case Examples',
+    why: [
+      'Choosing the wrong model can lead to:',
+      '❌ Worker misclassification fines',
+      '❌ "Permanent establishment" tax exposure',
+      '❌ Delays in onboarding or blocked payments',
+      '',
+      'SigmaRemote offers all three options, helping you grow your team globally - without the legal or operational friction.',
+    ],
+    whyTitle: 'Why It Matters',
+    example:
+      'Still not sure? Many companies start with AOR or CoR for flexibility, then shift to EOR if they scale into employee relationships.',
+    related: [
+      { label: 'Employer of Record (EOR)', href: '/glossary/employer-of-record' },
+      { label: 'Contractor of Record (CoR)', href: '/glossary/contractor-of-record' },
+      { label: 'Agent of Record (AOR)', href: '/glossary/agent-of-record' },
+      { label: 'Cross-Border Compliance', href: '/glossary/cross-border-compliance' },
+      { label: 'Contractor Classification', href: '/glossary/contractor-classification' },
+    ],
+    relatedTitle: 'Related Glossary Terms',
+    faqs: [
+      {
+        q: 'What is the difference between AOR, CoR, and EOR?',
+        a: 'An EOR (Employer of Record) hires full-time employees on your behalf. A CoR (Contractor of Record) contracts freelancers for you. An AOR (Agent of Record) helps you stay compliant while you retain the contractor relationship.',
+      },
+      {
+        q: 'When should I use an EOR vs CoR vs AOR?',
+        a: 'Use an EOR for full-time hires, a CoR for international freelancers when you want full offload, and an AOR when you want to keep control of the contractor but reduce compliance risk.',
+      },
+      {
+        q: 'Which is better for global contractor hiring?',
+        a: 'For global contractors, CoR offers full compliance handling, while AOR gives you more control. It depends on whether you want to offload or manage the relationship directly.',
+      },
+    ],
+    tables: [
+      {
+        title: '',
+        headers: ['Term', 'Stands For', 'Legal Employer?', 'Best For'],
+        rows: [
+          ['EOR', 'Employer of Record', '✅ Yes (They employ the worker)', 'Full-time employees in foreign countries'],
+          ['CoR', 'Contractor of Record', '✅ Yes (They contract the freelancer)', 'International freelancers, you want to be fully offloaded'],
+          ['AOR', 'Agent of Record', '❌ No (You remain the employer)', 'Contractors, where you want to stay in control but reduce risk']
+        ]
+      },
+      {
+        title: 'How to Choose: EOR vs CoR vs AOR',
+        headers: ['Scenario', 'Best Fit'],
+        rows: [
+          ['You want to hire employees with benefits, social security, and protections', '✅ EOR'],
+          ['You want to work with international freelancers and don\'t want to deal with contracts or compliance', '✅ CoR'],
+          ['You want to manage your own contractor relationships but need help with payments and compliance', '✅ AOR']
+        ]
+      }
+    ],
+    datePublished: new Date().toISOString(),
+  },
+  'payroll-cycle': {
+    slug: 'payroll-cycle',
+    term: 'Payroll Cycle',
+    excerpt:
+      'A payroll cycle is the recurring schedule a company follows to calculate wages, withhold taxes, and issue payments to employees or contractors.',
+    definition:
+      'A payroll cycle is the recurring schedule a company follows to calculate wages, withhold taxes, and issue payments to employees or contractors. Common cycles include weekly, biweekly, semi-monthly, and monthly pay periods.',
+    how: [
+      '__NO_BULLET__Payroll cycles vary by country, contract type, and company preference. Each cycle determines:',
+      '**When pay is calculated** (e.g. 1st–15th)',
+      '**When payments are made** (e.g. 5th and 20th)',
+      '**Compliance rules** (e.g. monthly in Brazil, semi-monthly in Mexico)',
+      '__NO_BULLET__For global teams, managing multiple cycles across borders adds complexity:',
+    ],
+    howTitle: 'How Payroll Cycles Work',
+    why: [
+      'Understanding and choosing the right payroll cycle is crucial because it affects:',
+      'Contractor trust – Predictable payments reduce churn',
+      'Cash flow – Different cycles create different funding demands',
+      'Compliance – Many countries legally require a specific cadence',
+      'Operations – Smooth payroll boosts team morale and reduces disputes',
+    ],
+    whyTitle: 'Why Payroll Cycles Matter',
+    example:
+      'A U.S. startup hires contractors in Brazil, Argentina, and Nigeria.\nEach country has different payout expectations. With SigmaRemote, they consolidate cycles into a biweekly contractor-friendly flow while maintaining local compliance and issuing automated reminders.',
+    related: [
+      { label: 'Global Payroll', href: '/glossary/global-payroll' },
+      { label: 'Managed Payroll', href: '/glossary/managed-payroll' },
+      { label: 'Payroll Taxes', href: '/glossary/payroll-taxes' },
+      { label: 'Cross-Border Compliance', href: '/glossary/cross-border-compliance' },
+      { label: '13th-Month Salary', href: '/glossary/13th-month-salary' },
+    ],
+    faqs: [
+      {
+        q: 'What is a payroll cycle?',
+        a: 'A payroll cycle is the schedule on which a company calculates earnings and pays workers. Common cycles include monthly, biweekly, and weekly schedules.',
+      },
+      {
+        q: 'Which payroll cycle is best for international teams?',
+        a: 'Biweekly or monthly cycles are most common globally. The best cycle depends on local law and contractor expectations. A global payroll platform can unify them.',
+      },
+      {
+        q: 'Can I use different payroll cycles in different countries?',
+        a: 'Yes, but managing them manually can be complex. Platforms like SigmaRemote streamline multi-country cycles while maintaining local compliance.',
+      },
+    ],
+    tables: [
+      {
+        title: '',
+        headers: ['Country', 'Standard Payroll Cycle'],
+        rows: [
+          ['🇧🇷 Brazil', 'Monthly (mandatory)'],
+          ['🇲🇽 Mexico', 'Biweekly (common)'],
+          ['🇵🇭 Philippines', 'Monthly with 13th-month split'],
+          ['🇳🇬 Nigeria', 'Monthly'],
+          ['🇺🇸 U.S.', 'Biweekly or Semi-monthly'],
+        ],
+      },
+    ],
+    tableFooter: 'Platforms like SigmaRemote help unify these timelines in one dashboard.',
+    datePublished: new Date().toISOString(),
+  },
 };
 
 // ---------- HELPER: Build JSON-LD ----------
@@ -1064,56 +1203,264 @@ export default function GlossaryDetailPage() {
             <h3 className="text-xl font-semibold text-neutral-900">
               What is {item.term}?
             </h3>
-            <p className="mt-3 text-neutral-800 leading-relaxed">{item.definition}</p>
+            <div className="mt-3 text-neutral-800 leading-relaxed whitespace-pre-line">{item.definition}</div>
           </div>
+
+          {/* For aor-cor-eor: Show first table after definition */}
+          {slug === 'aor-cor-eor' && item.tables && item.tables.length > 0 && item.tables[0] && (
+            <div className="mt-10">
+              <div className="mb-8">
+                {item.tables[0].title && <h3 className="text-xl font-semibold text-neutral-900 mb-4">{item.tables[0].title}</h3>}
+                <div className="overflow-x-auto rounded-lg border border-neutral-200 shadow-sm">
+                  <table className="w-full border-collapse">
+                    <thead>
+                      <tr className="bg-gradient-to-r from-neutral-50 to-neutral-100 border-b border-neutral-200">
+                        {item.tables[0].headers.map((header, headerIndex) => (
+                          <th
+                            key={headerIndex}
+                            className="px-6 py-4 text-left font-semibold text-neutral-900 text-sm uppercase tracking-wide"
+                          >
+                            {header}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-neutral-200">
+                      {item.tables[0].rows.map((row, rowIndex) => (
+                        <tr key={rowIndex} className="hover:bg-neutral-50 transition-colors">
+                          {row.map((cell, cellIndex) => {
+                            const hasCheckmark = cell.includes('✅');
+                            const hasXmark = cell.includes('❌');
+                            
+                            let content = cell;
+                            let icon = null;
+                            
+                            if (hasCheckmark) {
+                              content = cell.replace('✅', '').trim();
+                              icon = <CheckCircle2 className="h-5 w-5 text-green-600 inline-block mr-2" />;
+                            } else if (hasXmark) {
+                              content = cell.replace('❌', '').trim();
+                              icon = <XCircle className="h-5 w-5 text-red-600 inline-block mr-2" />;
+                            }
+                            
+                            return (
+                              <td
+                                key={cellIndex}
+                                className="px-6 py-4 text-neutral-800"
+                              >
+                                <div className="flex items-start">
+                                  {icon}
+                                  <span>{content}</span>
+                                </div>
+                              </td>
+                            );
+                          })}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* How it works */}
           {item.how && item.how.length > 0 && (
             <div className="mt-10">
-              <h3 className="text-xl font-semibold text-neutral-900">How it works</h3>
-              <ul className="mt-3 list-disc pl-5 text-neutral-800 space-y-2">
+              <h3 className="text-xl font-semibold text-neutral-900">
+                {item.howTitle || 'How it works'}
+              </h3>
+              <div className="mt-3">
                 {item.how.map((line, i) => {
                   const isWarning = line.startsWith('❌');
                   const isSuccess = line.startsWith('✅');
+                  const noBullet = line.startsWith('__NO_BULLET__');
                   const cleanText = isWarning ? line.replace('❌', '').trim() : 
-                                   isSuccess ? line.replace('✅', '').trim() : line;
+                                   isSuccess ? line.replace('✅', '').trim() : 
+                                   noBullet ? line.replace('__NO_BULLET__', '').trim() : line;
                   
                   if (isWarning) {
                     return (
-                      <li key={i} className="list-none -ml-5">
+                      <div key={i} className="mb-2">
                         <div className="bg-red-50 border border-red-100 rounded-lg px-4 py-3 text-red-900">
                           {cleanText}
                         </div>
-                      </li>
+                      </div>
                     );
                   }
                   
                   if (isSuccess) {
                     return (
-                      <li key={i} className="list-none -ml-5">
+                      <div key={i} className="mb-2">
                         <div className="bg-green-50 border border-green-100 rounded-lg px-4 py-3 text-green-900">
                           {cleanText}
                         </div>
-                      </li>
+                      </div>
                     );
                   }
                   
-                  return <li key={i}>{line}</li>;
+                  if (noBullet) {
+                    return (
+                      <p key={i} className="text-neutral-800 mb-2">
+                        {cleanText}
+                      </p>
+                    );
+                  }
+                  
+                  // Handle bold text with ** markers
+                  const parts = cleanText.split(/(\*\*.*?\*\*)/g);
+                  return (
+                    <ul key={i} className="list-disc pl-5 mb-2">
+                      <li className="text-neutral-800">
+                        {parts.map((part, idx) => {
+                          if (part.startsWith('**') && part.endsWith('**')) {
+                            return <strong key={idx}>{part.slice(2, -2)}</strong>;
+                          }
+                          return <span key={idx}>{part}</span>;
+                        })}
+                      </li>
+                    </ul>
+                  );
                 })}
-              </ul>
+              </div>
+            </div>
+          )}
+
+          {/* For payroll-cycle: Show table after "How it works" */}
+          {slug === 'payroll-cycle' && item.tables && item.tables.length > 0 && item.tables[0] && (
+            <div className="mt-10">
+              <div className="mb-8">
+                {item.tables[0].title && <h3 className="text-xl font-semibold text-neutral-900 mb-4">{item.tables[0].title}</h3>}
+                <div className="overflow-x-auto rounded-lg border border-neutral-200 shadow-sm">
+                  <table className="w-full border-collapse">
+                    <thead>
+                      <tr className="bg-gradient-to-r from-neutral-50 to-neutral-100 border-b border-neutral-200">
+                        {item.tables[0].headers.map((header, headerIndex) => (
+                          <th
+                            key={headerIndex}
+                            className="px-6 py-4 text-left font-semibold text-neutral-900 text-sm uppercase tracking-wide"
+                          >
+                            {header}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-neutral-200">
+                      {item.tables[0].rows.map((row, rowIndex) => (
+                        <tr key={rowIndex} className="hover:bg-neutral-50 transition-colors">
+                          {row.map((cell, cellIndex) => {
+                            const hasCheckmark = cell.includes('✅');
+                            const hasXmark = cell.includes('❌');
+                            
+                            let content = cell;
+                            let icon = null;
+                            
+                            if (hasCheckmark) {
+                              content = cell.replace('✅', '').trim();
+                              icon = <CheckCircle2 className="h-5 w-5 text-green-600 inline-block mr-2" />;
+                            } else if (hasXmark) {
+                              content = cell.replace('❌', '').trim();
+                              icon = <XCircle className="h-5 w-5 text-red-600 inline-block mr-2" />;
+                            }
+                            
+                            return (
+                              <td
+                                key={cellIndex}
+                                className="px-6 py-4 text-neutral-800"
+                              >
+                                <div className="flex items-start">
+                                  {icon}
+                                  <span>{content}</span>
+                                </div>
+                              </td>
+                            );
+                          })}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                {item.tableFooter && (
+                  <p className="mt-4 text-neutral-800">{item.tableFooter}</p>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* For aor-cor-eor: Show second table after "How it works" */}
+          {slug === 'aor-cor-eor' && item.tables && item.tables.length > 1 && item.tables[1] && (
+            <div className="mt-10">
+              <div className="mb-8">
+                {item.tables[1].title && <h3 className="text-xl font-semibold text-neutral-900 mb-4">{item.tables[1].title}</h3>}
+                <div className="overflow-x-auto rounded-lg border border-neutral-200 shadow-sm">
+                  <table className="w-full border-collapse">
+                    <thead>
+                      <tr className="bg-gradient-to-r from-neutral-50 to-neutral-100 border-b border-neutral-200">
+                        {item.tables[1].headers.map((header, headerIndex) => (
+                          <th
+                            key={headerIndex}
+                            className="px-6 py-4 text-left font-semibold text-neutral-900 text-sm uppercase tracking-wide"
+                          >
+                            {header}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-neutral-200">
+                      {item.tables[1].rows.map((row, rowIndex) => (
+                        <tr key={rowIndex} className="hover:bg-neutral-50 transition-colors">
+                          {row.map((cell, cellIndex) => {
+                            const hasCheckmark = cell.includes('✅');
+                            const hasXmark = cell.includes('❌');
+                            
+                            let content = cell;
+                            let icon = null;
+                            
+                            if (hasCheckmark) {
+                              content = cell.replace('✅', '').trim();
+                              icon = <CheckCircle2 className="h-5 w-5 text-green-600 inline-block mr-2" />;
+                            } else if (hasXmark) {
+                              content = cell.replace('❌', '').trim();
+                              icon = <XCircle className="h-5 w-5 text-red-600 inline-block mr-2" />;
+                            }
+                            
+                            return (
+                              <td
+                                key={cellIndex}
+                                className="px-6 py-4 text-neutral-800"
+                              >
+                                <div className="flex items-start">
+                                  {icon}
+                                  <span>{content}</span>
+                                </div>
+                              </td>
+                            );
+                          })}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           )}
 
           {/* Why it matters */}
           {item.why && item.why.length > 0 && (
             <div className="mt-10">
-              <h3 className="text-xl font-semibold text-neutral-900">Why it matters</h3>
+              <h3 className="text-xl font-semibold text-neutral-900">
+                {item.whyTitle || 'Why it matters'}
+              </h3>
               <ul className="mt-3 list-disc pl-5 text-neutral-800 space-y-2">
                 {item.why.map((line, i) => {
                   const isWarning = line.startsWith('❌');
                   const isSuccess = line.startsWith('✅');
                   const cleanText = isWarning ? line.replace('❌', '').trim() : 
                                    isSuccess ? line.replace('✅', '').trim() : line;
+                  
+                  if (line === '') {
+                    return <div key={i} className="h-2"></div>;
+                  }
                   
                   if (isWarning) {
                     return (
@@ -1144,15 +1491,80 @@ export default function GlossaryDetailPage() {
           {/* Example */}
           {item.example && (
             <div className="mt-10">
-              <h3 className="text-xl font-semibold text-neutral-900">Example</h3>
-              <p className="mt-3 text-neutral-800 leading-relaxed">{item.example}</p>
+              {slug !== 'aor-cor-eor' && (
+                <h3 className="text-xl font-semibold text-neutral-900">Example</h3>
+              )}
+              <p className={slug === 'aor-cor-eor' ? 'text-neutral-800 leading-relaxed' : 'mt-3 text-neutral-800 leading-relaxed'}>{item.example}</p>
+            </div>
+          )}
+
+          {/* Tables - Show normally for non-aor-cor-eor and non-payroll-cycle pages */}
+          {slug !== 'aor-cor-eor' && slug !== 'payroll-cycle' && item.tables && item.tables.length > 0 && (
+            <div className="mt-10">
+              {item.tables.map((table, tableIndex) => (
+                <div key={tableIndex} className="mb-8">
+                  {table.title && <h3 className="text-xl font-semibold text-neutral-900 mb-4">{table.title}</h3>}
+                  <div className="overflow-x-auto rounded-lg border border-neutral-200 shadow-sm">
+                    <table className="w-full border-collapse">
+                      <thead>
+                        <tr className="bg-gradient-to-r from-neutral-50 to-neutral-100 border-b border-neutral-200">
+                          {table.headers.map((header, headerIndex) => (
+                            <th
+                              key={headerIndex}
+                              className="px-6 py-4 text-left font-semibold text-neutral-900 text-sm uppercase tracking-wide"
+                            >
+                              {header}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-neutral-200">
+                        {table.rows.map((row, rowIndex) => (
+                          <tr key={rowIndex} className="hover:bg-neutral-50 transition-colors">
+                            {row.map((cell, cellIndex) => {
+                              // Check if cell contains checkmark or X icons
+                              const hasCheckmark = cell.includes('✅');
+                              const hasXmark = cell.includes('❌');
+                              
+                              let content = cell;
+                              let icon = null;
+                              
+                              if (hasCheckmark) {
+                                content = cell.replace('✅', '').trim();
+                                icon = <CheckCircle2 className="h-5 w-5 text-green-600 inline-block mr-2" />;
+                              } else if (hasXmark) {
+                                content = cell.replace('❌', '').trim();
+                                icon = <XCircle className="h-5 w-5 text-red-600 inline-block mr-2" />;
+                              }
+                              
+                              return (
+                                <td
+                                  key={cellIndex}
+                                  className="px-6 py-4 text-neutral-800"
+                                >
+                                  <div className="flex items-start">
+                                    {icon}
+                                    <span>{content}</span>
+                                  </div>
+                                </td>
+                              );
+                            })}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              ))}
             </div>
           )}
 
           {/* Related terms */}
           {item.related && item.related.length > 0 && (
             <div className="mt-12">
-              <h3 className="text-xl font-semibold text-neutral-900">Related Terms</h3>
+              <h3 className="text-xl font-semibold text-neutral-900">
+                {item.relatedTitle || 'Related Terms'}
+              </h3>
               <div className="mt-4 flex flex-wrap gap-2">
                 {item.related.map((r) => (
                   <Link
@@ -1167,7 +1579,6 @@ export default function GlossaryDetailPage() {
               </div>
             </div>
           )}
-
 
           {/* Back link */}
           <div className="mt-8">

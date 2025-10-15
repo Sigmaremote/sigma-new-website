@@ -98,3 +98,19 @@
     transform: translateY(0) 
   } 
 }
+
+/* Shimmer animation for skeleton loading */
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

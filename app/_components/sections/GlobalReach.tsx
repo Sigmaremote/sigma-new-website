@@ -42,9 +42,9 @@ export default function GlobalReach() {
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center font-satoshi font-medium text-[15px] md:text-[16px] bg-[#E8F843] text-black rounded-full h-11 px-5 hover:shadow-[0_6px_24px_rgba(0,0,0,0.12)]"
-                aria-label="Get a Free Payroll Setup"
+                aria-label="Book a demo"
               >
-                Get a Free Payroll Setup <span aria-hidden className="ml-2">→</span>
+                Book a demo <span aria-hidden className="ml-2">→</span>
               </Link>
             </motion.div>
           </div>

@@ -32,7 +32,7 @@ export type BlogData = {
   author: { name: string; url: string };
   datePublished: string;
   tags?: string[];
-  coverImage?: boolean;
+  coverImage?: boolean | string;
   keyTakeaways?: string[];
   sections: Section[];
   faq?: FAQ[];
@@ -342,7 +342,17 @@ export function BlogArticle({ data }: { data: BlogData }) {
         {/* Cover Image - Solid Color Instead of Gradient */}
         {data.coverImage && (
           <div className="max-w-6xl mx-auto px-6 mb-16">
-            <div className="rounded-3xl bg-[#CFF86A]/50 h-96 md:h-[500px] shadow-2xl" />
+            {typeof data.coverImage === 'string' ? (
+              <div className="rounded-3xl overflow-hidden shadow-2xl">
+                <img 
+                  src={data.coverImage} 
+                  alt={data.title}
+                  className="w-full h-96 md:h-[500px] object-cover"
+                />
+              </div>
+            ) : (
+              <div className="rounded-3xl bg-[#CFF86A]/50 h-96 md:h-[500px] shadow-2xl" />
+            )}
           </div>
         )}
 

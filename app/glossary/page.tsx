@@ -26,6 +26,12 @@ type GlossaryItem = {
   related?: { label: string; href: string }[];
   faqs?: { q: string; a: string }[];
   datePublished?: string;
+  tables?: {
+    title: string;
+    headers: string[];
+    rows: string[][];
+  }[];
+  tableFooter?: string;
 };
 
 const GLOSSARY_STORE: Record<string, GlossaryItem> = {
@@ -950,6 +956,133 @@ const GLOSSARY_STORE: Record<string, GlossaryItem> = {
         a: 'USD wallets help eliminate FX fees, speed up payments, and give contractors control over when to convert their funds. They are especially valuable in countries with inflation or volatile exchange rates.',
       },
     ],
+    datePublished: new Date().toISOString(),
+  },
+  'aor-cor-eor': {
+    slug: 'aor-cor-eor',
+    term: 'AOR, CoR, and EOR?',
+    excerpt:
+      'Three different service models for hiring international talent: Agent of Record (AOR), Contractor of Record (CoR), and Employer of Record (EOR).',
+    definition:
+      'When hiring international talent, companies often face a tough question: What type of service do I actually need? Do you want to hire full-time employees abroad? Or pay independent contractors across borders? Or stay in control while outsourcing compliance? This is where EOR, CoR, and AOR come into play. They\'re often confused - but they solve very different problems.',
+    how: [
+      'Each service model serves different hiring needs:',
+      'EOR (Employer of Record): They employ the worker and handle all legal employment responsibilities',
+      'CoR (Contractor of Record): They contract the freelancer and handle compliance for independent contractors',
+      'AOR (Agent of Record): You remain the employer but they help with payments and compliance',
+      'The choice depends on whether you want full-time employees, independent contractors, or to maintain control while reducing risk.',
+    ],
+    why: [
+      'Choosing the right model is crucial for:',
+      '✅ Legal compliance – Avoid misclassification fines and permanent establishment risk',
+      '✅ Cost efficiency – Match the service to your actual hiring needs',
+      '✅ Operational control – Balance between convenience and maintaining relationships',
+      '✅ Scalability – Start with simpler models and evolve as your team grows',
+      'Many companies start with AOR or CoR for flexibility, then shift to EOR if they scale into employee relationships.',
+    ],
+    example:
+      'A U.S. startup hires a full-time engineer in Argentina → uses an EOR to issue a compliant employment contract and handle taxes. A design agency wants to pay a video editor in Brazil → uses a CoR to handle contracts and classification for a freelancer. A marketing firm has contractors in Colombia and Kenya but wants to manage relationships directly → uses an AOR for compliance support while staying the legal payer.',
+    related: [
+      { label: 'Employer of Record (EOR)', href: '/glossary/employer-of-record' },
+      { label: 'Contractor of Record (CoR)', href: '/glossary/contractor-of-record' },
+      { label: 'Agent of Record (AOR)', href: '/glossary/agent-of-record' },
+      { label: 'Cross-Border Compliance', href: '/glossary/cross-border-compliance' },
+      { label: 'Contractor Classification', href: '/glossary/contractor-classification' },
+    ],
+    faqs: [
+      {
+        q: 'What is the difference between AOR, CoR, and EOR?',
+        a: 'An EOR (Employer of Record) hires full-time employees on your behalf. A CoR (Contractor of Record) contracts freelancers for you. An AOR (Agent of Record) helps you stay compliant while you retain the contractor relationship.',
+      },
+      {
+        q: 'When should I use an EOR vs CoR vs AOR?',
+        a: 'Use an EOR for full-time hires, a CoR for international freelancers when you want full offload, and an AOR when you want to keep control of the contractor but reduce compliance risk.',
+      },
+      {
+        q: 'Which is better for global contractor hiring?',
+        a: 'For global contractors, CoR offers full compliance handling, while AOR gives you more control. It depends on whether you want to offload or manage the relationship directly.',
+      },
+    ],
+    tables: [
+      {
+        title: 'What\'s the Difference Between AOR, CoR, and EOR?',
+        headers: ['Term', 'Stands For', 'Legal Employer?', 'Best For'],
+        rows: [
+          ['EOR', 'Employer of Record', '✅ Yes (They employ the worker)', 'Full-time employees in foreign countries'],
+          ['CoR', 'Contractor of Record', '✅ Yes (They contract the freelancer)', 'International freelancers, you want to be fully offloaded'],
+          ['AOR', 'Agent of Record', '❌ No (You remain the employer)', 'Contractors, where you want to stay in control but reduce risk']
+        ]
+      },
+      {
+        title: 'How to Choose: EOR vs CoR vs AOR',
+        headers: ['Scenario', 'Best Fit'],
+        rows: [
+          ['You want to hire employees with benefits, social security, and protections', '✅ EOR'],
+          ['You want to work with international freelancers and don\'t want to deal with contracts or compliance', '✅ CoR'],
+          ['You want to manage your own contractor relationships but need help with payments and compliance', '✅ AOR']
+        ]
+      }
+    ],
+    datePublished: new Date().toISOString(),
+  },
+  'payroll-cycle': {
+    slug: 'payroll-cycle',
+    term: 'Payroll Cycle',
+    excerpt:
+      'A payroll cycle is the recurring schedule a company follows to calculate wages, withhold taxes, and issue payments to employees or contractors.',
+    definition:
+      'A payroll cycle is the recurring schedule a company follows to calculate wages, withhold taxes, and issue payments to employees or contractors. Common cycles include weekly, biweekly, semi-monthly, and monthly pay periods.',
+    how: [
+      '__NO_BULLET__Payroll cycles vary by country, contract type, and company preference. Each cycle determines:',
+      '**When pay is calculated** (e.g. 1st–15th)',
+      '**When payments are made** (e.g. 5th and 20th)',
+      '**Compliance rules** (e.g. monthly in Brazil, semi-monthly in Mexico)',
+      '__NO_BULLET__For global teams, managing multiple cycles across borders adds complexity:',
+    ],
+    why: [
+      'Understanding and choosing the right payroll cycle is crucial because it affects:',
+      'Contractor trust – Predictable payments reduce churn',
+      'Cash flow – Different cycles create different funding demands',
+      'Compliance – Many countries legally require a specific cadence',
+      'Operations – Smooth payroll boosts team morale and reduces disputes',
+    ],
+    example:
+      'A U.S. startup hires contractors in Brazil, Argentina, and Nigeria.\nEach country has different payout expectations. With SigmaRemote, they consolidate cycles into a biweekly contractor-friendly flow while maintaining local compliance and issuing automated reminders.',
+    related: [
+      { label: 'Global Payroll', href: '/glossary/global-payroll' },
+      { label: 'Managed Payroll', href: '/glossary/managed-payroll' },
+      { label: 'Payroll Taxes', href: '/glossary/payroll-taxes' },
+      { label: 'Cross-Border Compliance', href: '/glossary/cross-border-compliance' },
+      { label: '13th-Month Salary', href: '/glossary/13th-month-salary' },
+    ],
+    faqs: [
+      {
+        q: 'What is a payroll cycle?',
+        a: 'A payroll cycle is the schedule on which a company calculates earnings and pays workers. Common cycles include monthly, biweekly, and weekly schedules.',
+      },
+      {
+        q: 'Which payroll cycle is best for international teams?',
+        a: 'Biweekly or monthly cycles are most common globally. The best cycle depends on local law and contractor expectations. A global payroll platform can unify them.',
+      },
+      {
+        q: 'Can I use different payroll cycles in different countries?',
+        a: 'Yes, but managing them manually can be complex. Platforms like SigmaRemote streamline multi-country cycles while maintaining local compliance.',
+      },
+    ],
+    tables: [
+      {
+        title: '',
+        headers: ['Country', 'Standard Payroll Cycle'],
+        rows: [
+          ['🇧🇷 Brazil', 'Monthly (mandatory)'],
+          ['🇲🇽 Mexico', 'Biweekly (common)'],
+          ['🇵🇭 Philippines', 'Monthly with 13th-month split'],
+          ['🇳🇬 Nigeria', 'Monthly'],
+          ['🇺🇸 U.S.', 'Biweekly or Semi-monthly'],
+        ],
+      },
+    ],
+    tableFooter: 'Platforms like SigmaRemote help unify these timelines in one dashboard.',
     datePublished: new Date().toISOString(),
   },
 };
