@@ -19,17 +19,6 @@ const blogData = {
       url: "/blog/hire-international-contractors-2025",
       image: "/Blog images/How to Hire Blog 1/blog-image-1.png",
     },
-    {
-      id: "post-1",
-      title: "Best Payoneer Alternatives for Global Payroll in 2025",
-      summary:
-        "Discover the top alternatives to Payoneer for international contractor payments and global payroll management.",
-      label: "Payoneer Alternatives",
-      author: "SigmaRemote Editorial",
-      published: "20 Jan 2025",
-      url: "/blog/best-payoneer-alternatives-2025",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=450&fit=crop&crop=center",
-    },
   ],
 };
 

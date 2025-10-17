@@ -1,27 +1,26 @@
-import { cn } from "@/lib/utils";
+import * as React from 'react';
 
-export function Prose({ children, className }: { children: React.ReactNode; className?: string }) {
+export function Prose({children}:{children:React.ReactNode}) {
   return (
-    <div
-      className={cn(
-        "prose prose-lg max-w-none",
-        "prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-[var(--sr-text)]",
-        "prose-h1:text-4xl prose-h1:tracking-tight prose-h1:mb-3",
-        "prose-h2:mt-12 prose-h2:mb-4 prose-h2:text-2xl",
-        "prose-h3:mt-8 prose-h3:mb-3 prose-h3:text-xl",
-        "prose-p:text-[17px] prose-p:leading-7 prose-p:text-[var(--sr-text)]",
-        "prose-a:text-[var(--sr-accent)] prose-a:no-underline hover:prose-a:underline",
-        "prose-strong:text-[var(--sr-text)] prose-strong:font-semibold",
-        "prose-ul:my-3 prose-ol:my-3",
-        "prose-li:my-1.5 prose-li:text-[var(--sr-text)]",
-        "prose-blockquote:border-l-2 prose-blockquote:border-[var(--sr-accent)] prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-[var(--sr-text)]",
-        "prose-hr:my-10 prose-hr:border-[var(--sr-border)]",
-        "prose-code:text-sm prose-code:bg-[var(--sr-card)] prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:font-mono prose-code:text-[var(--sr-text)]",
-        "prose-pre:bg-[var(--sr-card)] prose-pre:text-[var(--sr-text)] prose-pre:rounded-xl prose-pre:p-4",
-        "prose-img:rounded-xl prose-img:shadow-md",
-        className
-      )}
-    >
+    <div className={[
+      "prose max-w-none",
+      // H1 (u hero-u, ali fallback)
+      "[&>h1]:text-[40px] [&>h1]:leading-[1.15] [&>h1]:mb-3 [&>h1]:text-gray-900",
+      // H2
+      "[&>h2]:mt-12 [&>h2]:mb-3 [&>h2]:text-[28px] [&>h2]:leading-[1.2] [&>h2]:tracking-tight [&>h2]:text-gray-900 [&>h2]:font-semibold",
+      // H3
+      "[&>h3]:mt-7 [&>h3]:mb-2.5 [&>h3]:text-[20px] [&>h3]:leading-[1.25] [&>h3]:text-gray-900",
+      // Body
+      "prose-p:text-[17px] prose-p:leading-7 prose-p:text-gray-800",
+      "prose-ul:my-3 prose-ol:my-3 prose-li:my-1.5 prose-li:text-gray-800",
+      // Link
+      "prose-a:text-lime-600 hover:prose-a:underline prose-a:font-medium",
+      // Blockquote manji
+      "prose-blockquote:border-l-2 prose-blockquote:pl-4 prose-blockquote:italic",
+      "prose-blockquote:text-[18px] prose-blockquote:leading-8 prose-blockquote:text-gray-700",
+      // Slike
+      "prose-img:rounded-xl"
+    ].join(" ")}>
       {children}
     </div>
   );

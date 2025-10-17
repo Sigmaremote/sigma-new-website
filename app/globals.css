@@ -30,6 +30,19 @@
   --sr-accent: #D6FF57;
   --sr-accent-ink: #0B0C10;
   --sr-border: #1C2030;
+  --sr-hero: #0F141C;
+  
+  /* Blog V2 (Deel-style) tokens */
+  --v2-text: #3B3A38;
+  --v2-heading: #1A1A18;
+  --v2-muted: #6E6B67;
+  --v2-bg: #0B0C10;
+  --v2-card: #11131A;
+  --v2-border: #1C2030;
+  --v2-accent: #D6FF57;
+  --v2-hero: #0F141C;
+  --v2-beige: #F6F0E3;
+  --v2-beige-border: #E6DBC8;
 }
 
 @layer base {

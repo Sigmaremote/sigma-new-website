@@ -89,7 +89,7 @@ const Blog7 = ({
           </p>
           <Button 
             variant="link" 
-            className="w-full sm:w-auto text-sigma-lime hover:text-deep-green" 
+            className="w-full sm:w-auto text-navy hover:text-deep-green" 
             asChild
           >
             <a href={buttonUrl} target="_blank">
@@ -142,7 +142,7 @@ const Blog7 = ({
         <div className="mt-12 text-center">
           <Button 
             variant="outline" 
-            className="border-deep-green text-deep-green hover:bg-deep-green hover:text-white px-8 py-3 text-lg font-semibold rounded-full transition-all duration-200"
+            className="border-navy text-navy hover:bg-navy hover:text-white px-8 py-3 text-lg font-semibold rounded-full transition-all duration-200"
             asChild
           >
             <a href={buttonUrl}>
