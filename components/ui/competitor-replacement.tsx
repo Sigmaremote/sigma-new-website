@@ -2,12 +2,12 @@
 import Image from "next/image";
 
 const logos = [
-  { src: "/images/competitors-logos/deel.avif", alt: "Deel", width: 140, height: 48, className: "h-10 w-auto" },
-  { src: "/images/competitors-logos/payoneer.png", alt: "Payoneer", width: 140, height: 40, className: "h-8 w-auto" },
-  { src: "/images/competitors-logos/gusto.avif", alt: "Gusto", width: 120, height: 40, className: "h-8 w-auto" },
-  { src: "/images/competitors-logos/safety-wings.avif", alt: "Safety Wing", width: 150, height: 48, className: "h-10 w-auto" },
-  { src: "/images/competitors-logos/workday.avif", alt: "Workday", width: 150, height: 48, className: "h-10 w-auto" },
-  { src: "/images/competitors-logos/checkr.avif", alt: "Checkr", width: 120, height: 40, className: "h-8 w-auto" },
+  { src: "/competitors-logos/deel.avif", alt: "Deel", width: 140, height: 48, className: "h-10 w-auto" },
+  { src: "/competitors-logos/payoneer.png", alt: "Payoneer", width: 140, height: 40, className: "h-8 w-auto" },
+  { src: "/competitors-logos/gusto.avif", alt: "Gusto", width: 120, height: 40, className: "h-8 w-auto" },
+  { src: "/competitors-logos/safety-wings.avif", alt: "Safety Wing", width: 150, height: 48, className: "h-10 w-auto" },
+  { src: "/competitors-logos/workday.avif", alt: "Workday", width: 150, height: 48, className: "h-10 w-auto" },
+  { src: "/competitors-logos/checkr.avif", alt: "Checkr", width: 120, height: 40, className: "h-8 w-auto" },
 ];
 
 export function CompetitorReplacementSection() {
