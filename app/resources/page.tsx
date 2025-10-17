@@ -49,7 +49,7 @@ const CARDS: Card[] = [
     title: 'Network Coverage',
     description:
       'Where Sigma works today: payout rails, wallets, and local integrations.',
-    href: '/network-coverage',
+    href: '/resources/network-coverage',
     color: 'bg-[#EDEDED]',
     icon: <Globe2 className="h-6 w-6" />,
   },

@@ -12,7 +12,7 @@ export function ResourcesDropdown() {
     { label: 'Glossary', href: '/glossary' },
     { label: 'Press', href: '/press' },
     { label: 'Country Guides', href: '/country-guides' },
-    { label: 'Network Coverage', href: '/network-coverage' },
+    { label: 'Network Coverage', href: '/resources/network-coverage' },
     { label: 'All Resources', href: '/resources' },
   ];
 

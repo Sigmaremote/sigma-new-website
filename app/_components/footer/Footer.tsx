@@ -67,7 +67,7 @@ const resourceLinks = [
   { text: 'Glossary', href: '/glossary' },
   { text: 'Press', href: routes.press, hasIndicator: true },
   { text: 'Country Guides', href: routes.countryGuides },
-  { text: 'Network Coverage', href: '/network-coverage' },
+  { text: 'Network Coverage', href: '/resources/network-coverage' },
 ];
 
 const legalLinks = [
