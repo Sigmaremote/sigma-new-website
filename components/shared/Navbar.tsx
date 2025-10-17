@@ -38,7 +38,7 @@ const resources = [
   },
   { 
     label: 'Network Coverage', 
-    href: '/network-coverage', 
+    href: '/resources/network-coverage', 
     icon: Network, 
     description: 'Global reach and coverage' 
   },
