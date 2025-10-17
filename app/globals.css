@@ -11,6 +11,25 @@
   --about-peach:  #F7B187;   /* peach card bg */
   --about-text:   #2B1E13;   /* deep brown headline */
   --about-body:   rgba(43,30,19,0.72); /* ~70% for body */
+  
+  /* Blog prose variables */
+  --color-primary: #0E2C1E;
+  --color-secondary: #CFF86A;
+  --color-accent: #FFE95C;
+  --color-muted: #6B7280;
+  --color-border: #E5E7EB;
+  --color-background: #FFFFFF;
+  --color-foreground: #111827;
+  
+  /* Brand tokens */
+  --sr-bg: #0B0C10;
+  --sr-surface: #0F1117;
+  --sr-card: #11131A;
+  --sr-text: #E6E8EC;
+  --sr-muted: #A6ADBB;
+  --sr-accent: #D6FF57;
+  --sr-accent-ink: #0B0C10;
+  --sr-border: #1C2030;
 }
 
 @layer base {

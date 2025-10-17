@@ -5,6 +5,11 @@ import Link from 'next/link';
 import Script from 'next/script';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Calendar, Clock, Tag, Quote, Info, ShieldAlert, CheckCircle, ArrowUp } from 'lucide-react';
+import { Prose } from './Prose';
+import { Callout as CalloutComponent } from './Callout';
+import { PullQuote } from './PullQuote';
+import { StickyToc } from './StickyToc';
+import { MidCta } from './MidCta';
 
 /** Sigma palette */
 const COLORS = { dark: '#0E2C1E', lime: '#CFF86A', yellow: '#FFE95C', peach: '#FFB480' };
@@ -15,11 +20,12 @@ export type ComparisonRow = { left: string; middle: string; right: string };
 
 export type Section =
   | { type: 'h2'; text: string }
+  | { type: 'h3'; text: string }
   | { type: 'p'; text: string }
   | { type: 'bullets'; items: string[] }
   | { type: 'steps'; items: string[] }
   | { type: 'quote'; text: string; cite?: string }
-  | { type: 'callout'; tone: 'note'|'warning'|'success'; text: string }
+  | { type: 'callout'; tone: 'note'|'warning'|'success'|'stat'|'case'|'example'; text: string }
   | { type: 'labeled'; kind: 'example'|'stat'|'case'; text: string }
   | { type: 'table'; caption?: string; rows: ComparisonRow[] }
   | { type: 'image'; alt: string; src?: string };
@@ -41,11 +47,23 @@ export type BlogData = {
 };
 
 /** ---------- Helpers ---------- */
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/[\s_-]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+function replaceEmDashes(text: string): string {
+  return text.replace(/—/g, ':');
+}
+
 function calculateReadingTime(sections: Section[]): number {
   let wordCount = 0;
   sections.forEach((s) => {
     if (s.type === 'p') wordCount += s.text.split(' ').length;
-    if (s.type === 'h2') wordCount += s.text.split(' ').length;
+    if (s.type === 'h2' || s.type === 'h3') wordCount += s.text.split(' ').length;
     if (s.type === 'bullets' || s.type === 'steps') {
       s.items.forEach((item) => (wordCount += item.split(' ').length));
     }
@@ -92,18 +110,20 @@ function Pill({ children }: { children: React.ReactNode }) {
 function KeyTakeaways({ items }: { items: string[] }) {
   if (!items?.length) return null;
   return (
-    <div className="rounded-3xl bg-[#CFF86A] p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
-      <h3 className="text-xl font-bold text-[#0E2C1E] mb-5">
-        Key Takeaways
-      </h3>
-      <ul className="space-y-3 text-[#0E2C1E]">
-        {items.map((item, i) => (
-          <li key={i} className="flex items-start group">
-            <span className="mr-3 mt-1.5 h-2 w-2 rounded-full bg-[#0E2C1E] flex-shrink-0 group-hover:scale-125 transition-transform duration-200" />
-            <span className="leading-relaxed">{item}</span>
-          </li>
-        ))}
-      </ul>
+    <div className="my-6 rounded-xl border border-[var(--sr-border)] bg-[var(--sr-card)]">
+      <div className="px-5 py-4 border-l-4" style={{ borderColor: "var(--sr-accent)" }}>
+        <h3 className="text-lg font-semibold text-[var(--sr-text)] mb-3">
+          Key Takeaways
+        </h3>
+        <ul className="space-y-2 text-[var(--sr-text)]">
+          {items.map((item, i) => (
+            <li key={i} className="flex items-start">
+              <span className="mr-3 mt-1.5 h-1.5 w-1.5 rounded-full bg-[var(--sr-accent)] flex-shrink-0" />
+              <span className="text-[15px] leading-6">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
@@ -162,34 +182,6 @@ function TableOfContents({ sections, className }: { sections: Section[]; classNa
   );
 }
 
-function Callout({ tone, text }: { tone: 'note' | 'warning' | 'success'; text: string }) {
-  const config = {
-    note: {
-      bg: 'bg-[#FFE95C]/90',
-      icon: Info,
-      border: 'border-[#FFE95C]',
-    },
-    warning: {
-      bg: 'bg-[#FFB480]/90',
-      icon: ShieldAlert,
-      border: 'border-[#FFB480]',
-    },
-    success: {
-      bg: 'bg-[#CFF86A]/90',
-      icon: CheckCircle,
-      border: 'border-[#CFF86A]',
-    },
-  };
-
-  const { bg, icon: Icon, border } = config[tone];
-
-  return (
-    <div className={`rounded-3xl p-8 flex gap-4 backdrop-blur-sm border shadow-sm hover:shadow-md transition-shadow duration-300 ${bg} ${border}`}>
-      <Icon className="h-6 w-6 flex-shrink-0 text-[#0E2C1E] mt-0.5" />
-      <p className="text-[#0E2C1E] leading-relaxed">{text}</p>
-    </div>
-  );
-}
 
 function LabeledBlock({ kind, text }: { kind: 'example' | 'stat' | 'case'; text: string }) {
   const labels = {
@@ -289,30 +281,46 @@ function ScrollToTop() {
 /** ---------- Main Component ---------- */
 export function BlogArticle({ data }: { data: BlogData }) {
   const readingTime = calculateReadingTime(data.sections);
-  const schema = buildJsonLd(data);
+  
+  // Build ToC from H2s and H3s
+  const tocItems = data.sections
+    .map((section, idx) => {
+      if (section.type === 'h2' || section.type === 'h3') {
+        return {
+          id: slugify(section.text),
+          text: section.text,
+          level: section.type === 'h2' ? 0 : 1
+        };
+      }
+      return null;
+    })
+    .filter(Boolean) as { id: string; text: string; level: number }[];
+
+  // Track H2 count for MidCta insertion
+  let h2Count = 0;
+  let midCtaInserted = false;
 
   return (
     <>
-      <Script id="blog-jsonld" type="application/ld+json" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: schema }} />
       <ScrollToTop />
       
-      <article className="min-h-screen bg-gradient-to-b from-neutral-100 to-white">
+      <article className="min-h-screen" style={{ backgroundColor: "var(--sr-bg)" }}>
         {/* Hero Section */}
-        <div className="max-w-4xl mx-auto px-6 pt-24 pb-16">
+        <div className="max-w-[820px] mx-auto px-6 pt-24 pb-16">
           <div className="text-center space-y-8">
             <Badge>Latest insights</Badge>
             
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-neutral-900 max-w-4xl mx-auto leading-[1.1]">
-              {data.title}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--sr-text)] max-w-[820px] mx-auto leading-[1.1]">
+              {replaceEmDashes(data.title)}
             </h1>
             
             {data.dek && (
-              <p className="text-xl md:text-2xl text-neutral-800 leading-relaxed max-w-3xl mx-auto font-light">
-                {data.dek}
+              <p className="text-xl md:text-2xl text-[var(--sr-muted)] leading-relaxed max-w-[820px] mx-auto font-light">
+                {replaceEmDashes(data.dek)}
               </p>
             )}
             
-            <div className="flex items-center justify-center gap-8 text-sm text-neutral-600 pt-4">
+            <div className="flex items-center justify-center gap-8 text-sm text-[var(--sr-muted)] pt-4">
               <div className="flex items-center gap-2">
                 <Calendar className="h-4 w-4" />
                 <time dateTime={data.datePublished}>
@@ -339,11 +347,11 @@ export function BlogArticle({ data }: { data: BlogData }) {
           </div>
         </div>
 
-        {/* Cover Image - Solid Color Instead of Gradient */}
+        {/* Cover Image */}
         {data.coverImage && (
           <div className="max-w-6xl mx-auto px-6 mb-16">
             {typeof data.coverImage === 'string' ? (
-              <div className="rounded-3xl overflow-hidden shadow-2xl">
+              <div className="rounded-xl overflow-hidden shadow-md">
                 <img 
                   src={data.coverImage} 
                   alt={data.title}
@@ -351,180 +359,199 @@ export function BlogArticle({ data }: { data: BlogData }) {
                 />
               </div>
             ) : (
-              <div className="rounded-3xl bg-[#CFF86A]/50 h-96 md:h-[500px] shadow-2xl" />
+              <div className="rounded-xl bg-[var(--sr-card)] h-96 md:h-[500px] shadow-md" />
             )}
           </div>
         )}
 
-        {/* Double Cards: Key Takeaways + ToC */}
-        <div className="max-w-6xl mx-auto px-6 mb-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {data.keyTakeaways && <KeyTakeaways items={data.keyTakeaways} />}
-            <TableOfContents sections={data.sections} className="lg:hidden" />
+        {/* Key Takeaways */}
+        {data.keyTakeaways && (
+          <div className="max-w-6xl mx-auto px-6 mb-16">
+            <KeyTakeaways items={data.keyTakeaways} />
           </div>
-        </div>
+        )}
 
-        {/* Main Content Grid */}
+        {/* Main Content Grid - 720px max width, centered on xl, with 240px ToC on lg+ */}
         <div className="max-w-7xl mx-auto px-6 pb-24">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr,320px] gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr,240px] gap-12 xl:justify-center">
             {/* Main Content */}
-            <div className="space-y-10">
-              {data.sections.map((section, idx) => {
-                const isFirstPAfterH2 =
-                  idx > 0 &&
-                  section.type === 'p' &&
-                  data.sections[idx - 1].type === 'h2';
+            <div className="lg:w-[720px] xl:mx-auto">
+              <Prose>
+                {data.sections.map((section, idx) => {
+                  // Track H2s for MidCta insertion
+                  if (section.type === 'h2') {
+                    h2Count++;
+                  }
 
-                switch (section.type) {
-                  case 'h2':
-                    return (
-                      <h2
-                        key={idx}
-                        id={`s-${idx}`}
-                        className="mt-20 scroll-mt-24 text-[32px] md:text-[40px] font-extrabold tracking-tight text-neutral-900 leading-[1.15]"
-                      >
-                        {section.text}
-                      </h2>
-                    );
+                  // Insert MidCta after 3rd H2
+                  const shouldInsertMidCta = h2Count === 3 && !midCtaInserted && section.type === 'h2';
+                  if (shouldInsertMidCta) {
+                    midCtaInserted = true;
+                  }
 
-                  case 'p':
-                    return (
-                      <p
-                        key={idx}
-                        className={`text-neutral-800 leading-[1.8] ${
-                          isFirstPAfterH2 ? 'text-[19px] md:text-[21px] font-light' : 'text-[17px]'
-                        }`}
-                      >
-                        {section.text}
-                      </p>
-                    );
+                  let content = null;
 
-                  case 'bullets':
-                    return (
-                      <ul key={idx} className="space-y-3 list-disc ml-6 marker:text-neutral-600/40">
-                        {section.items.map((item, i) => (
-                          <li key={i} className="text-neutral-800 leading-[1.8] text-[17px]">
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    );
+                  switch (section.type) {
+                    case 'h2':
+                      content = (
+                        <h2
+                          key={idx}
+                          id={slugify(section.text)}
+                          className="scroll-mt-24"
+                        >
+                          {replaceEmDashes(section.text)}
+                        </h2>
+                      );
+                      break;
 
-                  case 'steps':
-                    return (
-                      <ol key={idx} className="space-y-3 list-decimal ml-6 marker:text-[#0E2C1E] marker:font-bold">
-                        {section.items.map((item, i) => (
-                          <li key={i} className="text-neutral-800 leading-[1.8] text-[17px] pl-2">
-                            {item}
-                          </li>
-                        ))}
-                      </ol>
-                    );
-
-                  case 'quote':
-                    return (
-                      <blockquote key={idx} className="border-l-4 border-[#0E2C1E] pl-8 py-4 italic text-neutral-800 text-lg bg-neutral-100/50 rounded-r-2xl">
-                        "{section.text}"
-                        {section.cite && (
-                          <cite className="block mt-3 text-sm not-italic text-neutral-600 font-medium">
-                            - {section.cite}
-                          </cite>
-                        )}
-                      </blockquote>
-                    );
-
-                  case 'callout':
-                    return <Callout key={idx} tone={section.tone} text={section.text} />;
-
-                  case 'labeled':
-                    return <LabeledBlock key={idx} kind={section.kind} text={section.text} />;
-
-                  case 'table':
-                    return <CompTable key={idx} rows={section.rows} caption={section.caption} />;
-
-                  case 'image':
-                    return (
-                      <figure key={idx} className="rounded-3xl overflow-hidden bg-[#CFF86A]/30 shadow-lg">
-                        {section.src ? (
-                          <img src={section.src} alt={section.alt} className="w-full" />
-                        ) : (
-                          <div className="h-80 flex items-center justify-center text-neutral-600">
-                            {section.alt}
-                          </div>
-                        )}
-                      </figure>
-                    );
-
-                  default:
-                    return null;
-                }
-              })}
-
-              {/* Mid-post CTA */}
-              <motion.div
-                initial={{ opacity: 0, y: 8 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45 }}
-              >
-                <MidPostCTA />
-              </motion.div>
-
-              {/* FAQs */}
-              {data.faq && data.faq.length > 0 && (
-                <div className="space-y-8 mt-20">
-                  <h2 className="text-[32px] md:text-[40px] font-extrabold tracking-tight text-neutral-900">
-                    Frequently Asked Questions
-                  </h2>
-                  {data.faq.map((faq, i) => (
-                    <div key={i} className="space-y-3 p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-black/10 hover:shadow-md transition-shadow">
-                      <h3 className="text-xl font-bold text-neutral-900">{faq.q}</h3>
-                      <p className="text-neutral-800 leading-[1.8] text-[17px]">{faq.a}</p>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {/* Related Articles */}
-              {data.related && data.related.length > 0 && (
-                <div className="space-y-8 mt-20">
-                  <h2 className="text-[32px] md:text-[40px] font-extrabold tracking-tight text-neutral-900">
-                    Related Articles
-                  </h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {data.related.map((article, i) => (
-                      <Link
-                        key={i}
-                        href={article.href}
-                        className="block rounded-3xl border border-black/10 bg-white/80 backdrop-blur-sm p-8 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group"
-                      >
-                        <h3 className="font-bold text-lg text-neutral-900 group-hover:text-[#0E2C1E] transition-colors">
-                          {article.title}
+                    case 'h3':
+                      content = (
+                        <h3
+                          key={idx}
+                          id={slugify(section.text)}
+                          className="scroll-mt-24"
+                        >
+                          {replaceEmDashes(section.text)}
                         </h3>
-                        <span className="mt-2 inline-block text-sm text-neutral-600">Read more →</span>
-                      </Link>
+                      );
+                      break;
+
+                    case 'p':
+                      content = (
+                        <p key={idx}>
+                          {replaceEmDashes(section.text)}
+                        </p>
+                      );
+                      break;
+
+                    case 'bullets':
+                      content = (
+                        <ul key={idx}>
+                          {section.items.map((item, i) => (
+                            <li key={i}>{replaceEmDashes(item)}</li>
+                          ))}
+                        </ul>
+                      );
+                      break;
+
+                    case 'steps':
+                      content = (
+                        <ol key={idx}>
+                          {section.items.map((item, i) => (
+                            <li key={i}>{replaceEmDashes(item)}</li>
+                          ))}
+                        </ol>
+                      );
+                      break;
+
+                    case 'quote':
+                      content = (
+                        <PullQuote key={idx} cite={section.cite}>
+                          {replaceEmDashes(section.text)}
+                        </PullQuote>
+                      );
+                      break;
+
+                    case 'callout':
+                      content = (
+                        <CalloutComponent key={idx} tone={section.tone}>
+                          {replaceEmDashes(section.text)}
+                        </CalloutComponent>
+                      );
+                      break;
+
+                    case 'labeled':
+                      content = (
+                        <CalloutComponent key={idx} tone={section.kind}>
+                          {replaceEmDashes(section.text)}
+                        </CalloutComponent>
+                      );
+                      break;
+
+                    case 'table':
+                      content = <CompTable key={idx} rows={section.rows} caption={section.caption} />;
+                      break;
+
+                    case 'image':
+                      content = (
+                        <figure key={idx} className="rounded-xl overflow-hidden bg-[var(--sr-card)] shadow-md">
+                          {section.src ? (
+                            <img src={section.src} alt={section.alt} className="w-full" />
+                          ) : (
+                            <div className="h-80 flex items-center justify-center text-[var(--sr-muted)]">
+                              {section.alt}
+                            </div>
+                          )}
+                        </figure>
+                      );
+                      break;
+
+                    default:
+                      content = null;
+                  }
+
+                  return (
+                    <React.Fragment key={idx}>
+                      {content}
+                      {shouldInsertMidCta && <MidCta />}
+                    </React.Fragment>
+                  );
+                })}
+
+                {/* FAQs */}
+                {data.faq && data.faq.length > 0 && (
+                  <div className="space-y-6 mt-16">
+                    <h2 className="scroll-mt-24" id="faq">
+                      Frequently Asked Questions
+                    </h2>
+                    {data.faq.map((faq, i) => (
+                      <div key={i} className="space-y-3 p-6 rounded-xl border border-[var(--sr-border)] bg-[var(--sr-card)]">
+                        <h3 className="text-xl font-bold text-[var(--sr-text)]">{replaceEmDashes(faq.q)}</h3>
+                        <p className="text-[var(--sr-text)] leading-7 text-[17px]">{replaceEmDashes(faq.a)}</p>
+                      </div>
                     ))}
                   </div>
-                </div>
-              )}
+                )}
 
-              {/* Back Link */}
-              <div className="pt-16 border-t border-black/10">
-                <Link
-                  href="/blog"
-                  className="inline-flex items-center gap-2 text-neutral-700 hover:text-[#0E2C1E] transition-colors font-medium"
-                >
-                  <ArrowLeft className="h-4 w-4" />
-                  Back to all articles
-                </Link>
-              </div>
+                {/* Related Articles */}
+                {data.related && data.related.length > 0 && (
+                  <div className="space-y-6 mt-16">
+                    <h2 className="scroll-mt-24" id="related">
+                      Related Articles
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {data.related.slice(0, 3).map((article, i) => (
+                        <Link
+                          key={i}
+                          href={article.href}
+                          className="block rounded-xl border border-[var(--sr-border)] bg-[var(--sr-card)] p-6 hover:border-[var(--sr-accent)] transition-colors duration-200 group"
+                        >
+                          <h3 className="font-semibold text-lg text-[var(--sr-text)] group-hover:text-[var(--sr-accent)] transition-colors">
+                            {replaceEmDashes(article.title)}
+                          </h3>
+                          <span className="mt-2 inline-block text-sm text-[var(--sr-muted)]">Read more →</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Back Link */}
+                <div className="pt-12 border-t border-[var(--sr-border)]">
+                  <Link
+                    href="/blog"
+                    className="inline-flex items-center gap-2 text-[var(--sr-muted)] hover:text-[var(--sr-accent)] transition-colors font-medium"
+                  >
+                    <ArrowLeft className="h-4 w-4" />
+                    Back to all articles
+                  </Link>
+                </div>
+              </Prose>
             </div>
 
-            {/* Sticky ToC - Desktop Only */}
-            <div className="hidden lg:block">
-              <div className="sticky top-28">
-                <TableOfContents sections={data.sections} />
-              </div>
+            {/* Sticky ToC */}
+            <div className="lg:col-start-2">
+              <StickyToc items={tocItems} />
             </div>
           </div>
         </div>

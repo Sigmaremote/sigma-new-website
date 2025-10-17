@@ -7,7 +7,9 @@
 'use client';
 
 import * as React from 'react';
+import Script from 'next/script';
 import { BlogArticle, BlogData, Section } from '@/components/blog/BlogArticle';
+import { blogSchema } from '@/lib/schema';
 import { notFound } from 'next/navigation';
 
 /** 0) PASTE YOUR ORIGINAL ARTICLE TEXT HERE (VERBATIM) */
@@ -325,5 +327,18 @@ const POST: BlogData = {
 
 export default function Page({ params }: { params: { slug: string } }) {
   if (params.slug !== SLUG) notFound();
-  return <BlogArticle data={POST} />;
+  
+  const schema = blogSchema(POST);
+  
+  return (
+    <>
+      <Script 
+        id="blog-jsonld" 
+        type="application/ld+json" 
+        strategy="afterInteractive" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} 
+      />
+      <BlogArticle data={POST} />
+    </>
+  );
 }
