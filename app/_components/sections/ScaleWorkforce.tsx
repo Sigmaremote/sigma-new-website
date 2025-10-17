@@ -27,7 +27,7 @@ export default function ScaleWorkforce() {
     {
       id: 'payroll',
       title: 'Run Payroll',
-      description: 'Paying your global team shouldn\'t be a hassle. Our platform lets you manage payments in multiple currencies with just a few clicks. Pay via US ACH, and your team can choose how to receive their money—whether through direct withdrawal or saving it in their Sigma wallet.'
+      description: 'Paying your global team shouldn\'t be a hassle. Our platform lets you manage payments in multiple currencies with just a few clicks. Pay via US ACH, and your team can choose how to receive their money-whether through direct withdrawal or saving it in their Sigma wallet.'
     },
     {
       id: 'retain',

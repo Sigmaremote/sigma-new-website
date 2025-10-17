@@ -58,17 +58,18 @@ const aboutLinks = [
 
 const serviceLinks = [
   { text: 'Sigma vs Deel', href: '/compare/deel' },
-  { text: 'Sigma vs Remote', href: '/compare/vs-remote' },
-  { text: 'Sigma vs Rippling', href: '/compare/vs-rippling' },
-  { text: 'Sigma vs Gusto', href: '/compare/vs-gusto' },
+  { text: 'Sigma vs Remote', href: '/compare/remote' },
+  { text: 'Sigma vs Rippling', href: '/compare/rippling' },
+  { text: 'Sigma vs Gusto', href: '/compare/gusto' },
+  { text: 'Sigma vs Ontop', href: '/compare/ontop' },
 ];
 
 const gigPlatformLinks = [
-  { text: 'Sigma vs Payoneer', href: '/compare/vs-payoneer' },
-  { text: 'Sigma vs Veem', href: '/compare/vs-veem' },
-  { text: 'Sigma vs PayPal', href: '/compare/vs-paypal' },
-  { text: 'Sigma vs Wise', href: '/compare/vs-wise' },
-  { text: 'Sigma vs Hyperwallet', href: '/compare/vs-hyperwallet' },
+  { text: 'Sigma vs Payoneer', href: '/compare/payoneer' },
+  { text: 'Sigma vs Veem', href: '/compare/veem' },
+  { text: 'Sigma vs PayPal', href: '/compare/paypal' },
+  { text: 'Sigma vs Wise', href: '/compare/wise' },
+  { text: 'Sigma vs Hyperwallet', href: '/compare/hyperwallet' },
 ];
 
 const helpfulLinks = [

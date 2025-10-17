@@ -48,25 +48,31 @@ const aboutLinks = [
 
 const serviceLinks = [
   { text: 'Sigma vs Deel', href: '/compare/deel' },
-  { text: 'Sigma vs Remote', href: routes.compare('vs-remote') },
-  { text: 'Sigma vs Rippling', href: routes.compare('vs-rippling') },
-  { text: 'Sigma vs Gusto', href: routes.compare('vs-gusto') },
-  { text: 'Sigma vs Ontop', href: routes.compare('vs-ontop') },
+  { text: 'Sigma vs Remote', href: '/compare/remote' },
+  { text: 'Sigma vs Rippling', href: '/compare/rippling' },
+  { text: 'Sigma vs Gusto', href: '/compare/gusto' },
+  { text: 'Sigma vs Ontop', href: '/compare/ontop' },
 ];
 
 const gigPlatformLinks = [
-  { text: 'Sigma vs Payoneer', href: routes.compare('vs-payoneer') },
-  { text: 'Sigma vs Veem', href: routes.compare('vs-veem') },
-  { text: 'Sigma vs PayPal', href: routes.compare('vs-paypal') },
-  { text: 'Sigma vs Wise', href: routes.compare('vs-wise') },
-  { text: 'Sigma vs Hyperwallet', href: routes.compare('vs-hyperwallet') },
+  { text: 'Sigma vs Payoneer', href: '/compare/payoneer' },
+  { text: 'Sigma vs Veem', href: '/compare/veem' },
+  { text: 'Sigma vs PayPal', href: '/compare/paypal' },
+  { text: 'Sigma vs Wise', href: '/compare/wise' },
+  { text: 'Sigma vs Hyperwallet', href: '/compare/hyperwallet' },
 ];
 
-const helpfulLinks = [
+const resourceLinks = [
+  { text: 'Blog', href: routes.blog },
+  { text: 'Glossary', href: '/glossary' },
+  { text: 'Press', href: routes.press, hasIndicator: true },
+  { text: 'Country Guides', href: routes.countryGuides },
+  { text: 'Network Coverage', href: '/network-coverage' },
+];
+
+const legalLinks = [
   { text: 'Privacy Policy', href: '/privacy' },
   { text: 'Terms of Service', href: '/terms' },
-  { text: 'Blog', href: '/blog' },
-  { text: 'Press', href: '/press', hasIndicator: true },
 ];
 
 const contactInfo = [
@@ -113,8 +119,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:col-span-2">
-            {/* First row - Company, Why Remote Teams choose us, and Why Gig Platforms choose us */}
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:col-span-2">
+            {/* First row - Company, Remote Teams, Gig Platforms, and Resources */}
             <div className="text-center sm:text-left">
               <div className="flex items-center justify-center gap-2 sm:justify-start">
                 <Building2 className="h-4 w-4" />
@@ -172,14 +178,13 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Second row - Trust & Resources and Contact Us */}
-            <div className="text-center sm:text-left sm:col-span-2 lg:col-span-1">
+            <div className="text-center sm:text-left">
               <div className="flex items-center justify-center gap-2 sm:justify-start">
                 <Shield className="h-4 w-4" />
                 <p className="text-lg font-medium text-black">Resources</p>
               </div>
               <ul className="mt-8 space-y-4 text-sm">
-                {helpfulLinks.map(({ text, href, hasIndicator }) => (
+                {resourceLinks.map(({ text, href, hasIndicator }) => (
                   <li key={text}>
                     <Link
                       href={href}
@@ -198,6 +203,26 @@ export default function Footer() {
                           <span className="bg-[#0C2E1C] relative inline-flex size-2 rounded-full" />
                         </span>
                       )}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Second row - Legal and Contact Us */}
+            <div className="text-center sm:text-left sm:col-span-2 lg:col-span-1">
+              <div className="flex items-center justify-center gap-2 sm:justify-start">
+                <BookOpen className="h-4 w-4" />
+                <p className="text-lg font-medium text-black">Legal</p>
+              </div>
+              <ul className="mt-8 space-y-4 text-sm">
+                {legalLinks.map(({ text, href }) => (
+                  <li key={text}>
+                    <Link
+                      className="text-black/70 hover:text-black transition hover:underline"
+                      href={href}
+                    >
+                      {text}
                     </Link>
                   </li>
                 ))}

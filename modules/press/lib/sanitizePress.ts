@@ -8,8 +8,8 @@ export function sanitizePressMarkdown(raw: string): string {
     .split('\n')
     .map(line => {
       const trimmed = line.trimStart();
-      if (/^(\*|•|–|—|-|\u2022|\u2013|\u2014)\s+/.test(trimmed)) {
-        return '- ' + trimmed.replace(/^(\*|•|–|—|-|\u2022|\u2013|\u2014)\s+/, '');
+      if (/^(\*|•|-|-|-|\u2022|\u2013|\u2014)\s+/.test(trimmed)) {
+        return '- ' + trimmed.replace(/^(\*|•|-|-|-|\u2022|\u2013|\u2014)\s+/, '');
       }
       // convert lines starting with digits (1) 2) etc.) into ordered list
       if (/^\d+[\).\)]\s+/.test(trimmed)) {

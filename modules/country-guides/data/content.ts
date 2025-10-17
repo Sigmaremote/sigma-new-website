@@ -85,7 +85,7 @@ export const countryContent: Record<string, CountryGuideContent> = {
       population: '128M',
       payrollFrequency: 'Semi-monthly'
     },
-    misclassificationRisks: 'Mexico treats contractors vs. employees strictly—misclassifying can lead to back taxes, fines (up to MXN 500k), and reclassification. Use EOR for compliance.',
+    misclassificationRisks: 'Mexico treats contractors vs. employees strictly-misclassifying can lead to back taxes, fines (up to MXN 500k), and reclassification. Use EOR for compliance.',
     payingWorkers: 'Pay workers in Mexico through our USDC wallet system with zero fees. Zero-fee USDC-to-MXN auto-conversion via wallet. Funds are automatically converted to Mexican Pesos at competitive rates and deposited directly to employee bank accounts. No wire transfer fees, no hidden costs, and full transparency on exchange rates.',
     uxRows: [
       {

@@ -8,7 +8,7 @@ import React from 'react';
 /**
  * WhySigmaExistsSection
  * - Prvi deo About sekcije (identičan layoutu sa slike)
- * - Svi "image" elementi su prazni slotovi (div) sa zaobljenim ivicama — ubacićeš slike kasnije
+ * - Svi "image" elementi su prazni slotovi (div) sa zaobljenim ivicama - ubacićeš slike kasnije
  * - Boje i tipografija prilagođene da izgledaju kao referenca
  *
  * Kako dodati slike kasnije:
@@ -35,7 +35,7 @@ export default function WhySigmaExistsSection() {
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {/* LEFT COL */}
           <div className="flex flex-col gap-6 md:gap-8">
-            {/* Left Top – Lime Text Card */}
+            {/* Left Top - Lime Text Card */}
             <motion.div
               initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -60,7 +60,7 @@ export default function WhySigmaExistsSection() {
               </p>
             </motion.div>
 
-            {/* Left Bottom – Kevin Image */}
+            {/* Left Bottom - Kevin Image */}
             <motion.div
               initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -69,7 +69,7 @@ export default function WhySigmaExistsSection() {
               className="rounded-3xl overflow-hidden relative h-64 md:h-80"
             >
               <Image
-                src="/images/About Us/sigma-kevin.avif"
+                src="/About Us/sigma-kevin.avif"
                 alt="Kevin - Sigma Co-founder"
                 fill
                 className="object-cover object-[50%_20%]"
@@ -79,7 +79,7 @@ export default function WhySigmaExistsSection() {
 
           {/* MIDDLE COL */}
           <div className="flex flex-col gap-6 md:gap-8">
-            {/* Middle Top – Sigma Dog Image */}
+            {/* Middle Top - Sigma Dog Image */}
             <motion.div
               initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -88,14 +88,14 @@ export default function WhySigmaExistsSection() {
               className="rounded-3xl overflow-hidden relative h-64 md:h-72"
             >
               <Image
-                src="/images/About Us/sigma-dog.avif"
+                src="/About Us/sigma-dog.avif"
                 alt="Sigma team"
                 fill
                 className="object-cover"
               />
             </motion.div>
 
-            {/* Middle Bottom – Street Signs Image */}
+            {/* Middle Bottom - Street Signs Image */}
             <motion.div
               initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -104,7 +104,7 @@ export default function WhySigmaExistsSection() {
               className="rounded-3xl overflow-hidden relative h-64 md:h-72"
             >
               <Image
-                src="/images/About Us/sigma-street-signs.avif"
+                src="/About Us/sigma-street-signs.avif"
                 alt="San Francisco street signs"
                 fill
                 className="object-cover"
@@ -114,7 +114,7 @@ export default function WhySigmaExistsSection() {
 
           {/* RIGHT COL */}
           <div className="flex flex-col gap-6 md:gap-8">
-            {/* Right Top – Guillie Image */}
+            {/* Right Top - Guillie Image */}
             <motion.div
               initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -123,14 +123,14 @@ export default function WhySigmaExistsSection() {
               className="rounded-3xl overflow-hidden relative h-72 md:h-[22rem]"
             >
               <Image
-                src="/images/About Us/sigma-guillie.avif"
+                src="/About Us/sigma-guillie.avif"
                 alt="Guillermo - Sigma Co-founder"
                 fill
                 className="object-cover"
               />
             </motion.div>
 
-            {/* Right Bottom – Dark Green Text Card */}
+            {/* Right Bottom - Dark Green Text Card */}
             <motion.div
               initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}

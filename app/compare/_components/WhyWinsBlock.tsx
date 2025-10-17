@@ -52,7 +52,7 @@ export default function WhyWinsBlock({
               )}>
                 <Image
                   src={imageSrc}
-                  alt="Why SigmaRemote Wins — product overview"
+                  alt="Why SigmaRemote Wins - product overview"
                   width={640}
                   height={800}
                   className="w-full h-auto object-contain rounded-xl"

@@ -26,18 +26,18 @@ A step-by-step playbook for hiring fast, saving on costs, and staying compliant 
 
 The global hiring shift is undeniable. By 2027, over 86.5 million Americans will be freelancers, representing more than 50% of the U.S. workforce. Meanwhile, the freelance platform market has already reached $4.39 billion, and it's growing at a rapid 16.5% annually.
 
-Demand for global remote talent — especially in LATAM — has surged, with a 285% increase in tech hiring from the region over the last five years.
+Demand for global remote talent - especially in LATAM - has surged, with a 285% increase in tech hiring from the region over the last five years.
 
 - 86.5M+ freelancers expected in the U.S. by 2027
 - $4.39B+ global freelance platform market
 - 16.5% annual growth in freelance platforms
 - 285% surge in LATAM tech hiring (past 5 years)
 
-These trends show why businesses of all sizes are increasingly turning to international contractors — and why tools like SigmaRemote make global hiring simple, compliant, and scalable.
+These trends show why businesses of all sizes are increasingly turning to international contractors - and why tools like SigmaRemote make global hiring simple, compliant, and scalable.
 
 ## Key Benefits of Hiring International Contractors
 
-The ability to hire contractors from anywhere in the world expands your talent pool exponentially. Instead of settling for local options, you can pinpoint top talent from emerging hubs like Latin America, Eastern Europe, or Asia — all at competitive rates.
+The ability to hire contractors from anywhere in the world expands your talent pool exponentially. Instead of settling for local options, you can pinpoint top talent from emerging hubs like Latin America, Eastern Europe, or Asia - all at competitive rates.
 
 Example: Companies in the tech industry have witnessed a 45% increase in productivity by partnering with remote software developers from tech-savvy regions like India and Brazil.
 
@@ -119,7 +119,7 @@ Streamline your international hiring process with solutions like SigmaRemote, wh
 
 - Built-in compliance tools reduce legal risks
 - USD wallet feature shields contractors from exchange rate volatility
-- Competitive pricing — saving you up to 70% on global payroll costs
+- Competitive pricing - saving you up to 70% on global payroll costs
 
 3. Onboard Contractors Properly
 Provide contractors with a structured onboarding process that includes setting expectations, delivering resources, and introducing them to collaboration systems like project management tools.
@@ -301,7 +301,7 @@ function parseSections(md: string): {
   return { sections, title, dek, keyTakeaways, faq };
 }
 
-/** 3) Map parsed content into the global template (BlogArticle) — NO wording changes */
+/** 3) Map parsed content into the global template (BlogArticle) - NO wording changes */
 const SLUG = 'hire-international-contractors-2025'; // ← change per post
 const parsed = parseSections(normalizeMd(RAW_MD));
 

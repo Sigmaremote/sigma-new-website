@@ -427,7 +427,7 @@ export function BlogArticle({ data }: { data: BlogData }) {
                         "{section.text}"
                         {section.cite && (
                           <cite className="block mt-3 text-sm not-italic text-neutral-600 font-medium">
-                            — {section.cite}
+                            - {section.cite}
                           </cite>
                         )}
                       </blockquote>

@@ -7,7 +7,7 @@ import { Search, BookOpen, ArrowRight } from 'lucide-react';
 import Script from 'next/script';
 
 /**
- * Glossary Index Page — /glossary
+ * Glossary Index Page - /glossary
  * - Displays all glossary terms in a searchable grid
  * - Includes search functionality and filtering
  * - JSON-LD for the main glossary page
@@ -41,7 +41,7 @@ const GLOSSARY_STORE: Record<string, GlossaryItem> = {
     excerpt:
       'A full-service solution where a third-party provider handles the entire payroll process on your behalf.',
     definition:
-      'Managed payroll is a full-service solution where a third-party provider handles the entire payroll process on your behalf — including salary calculations, tax filings, compliance, deductions, and payouts. It removes the need for internal payroll teams, especially in global or multi-country operations.',
+      'Managed payroll is a full-service solution where a third-party provider handles the entire payroll process on your behalf - including salary calculations, tax filings, compliance, deductions, and payouts. It removes the need for internal payroll teams, especially in global or multi-country operations.',
     how: [
       'With managed payroll, businesses outsource payroll operations to an external provider like SigmaRemote. This includes:',
       'Wage calculation (salary, bonuses, overtime)',
@@ -54,15 +54,15 @@ const GLOSSARY_STORE: Record<string, GlossaryItem> = {
     ],
     why: [
       'A managed payroll solution unlocks major benefits for globally scaling businesses:',
-      '✅ Saves time – No need to build or manage in-house payroll operations',
-      '✅ Ensures compliance – Avoid penalties and misclassification risk',
-      '✅ Scales fast – Expand into 180+ countries without setting up local entities',
-      '✅ Supports contractors + employees – Flexibility across different workforce types',
-      '✅ Transparent cost – Predictable fees vs internal staffing + legal cost',
+      '✅ Saves time - No need to build or manage in-house payroll operations',
+      '✅ Ensures compliance - Avoid penalties and misclassification risk',
+      '✅ Scales fast - Expand into 180+ countries without setting up local entities',
+      '✅ Supports contractors + employees - Flexibility across different workforce types',
+      '✅ Transparent cost - Predictable fees vs internal staffing + legal cost',
       'For startups, NGOs, and remote-first companies, managed payroll is a shortcut to legal, fast, and stress-free hiring across borders.',
     ],
     example:
-      'A U.S. SaaS company wants to pay 12 contractors in Mexico, Nigeria, and Indonesia — without hiring a full-time payroll team. With SigmaRemote\'s managed payroll, they onboard everyone via WhatsApp, issue compliant contracts, and run biweekly payouts in USD wallets. No tax stress, no FX fees, and no internal bottlenecks.',
+      'A U.S. SaaS company wants to pay 12 contractors in Mexico, Nigeria, and Indonesia - without hiring a full-time payroll team. With SigmaRemote\'s managed payroll, they onboard everyone via WhatsApp, issue compliant contracts, and run biweekly payouts in USD wallets. No tax stress, no FX fees, and no internal bottlenecks.',
     related: [
       { label: 'Global Payroll', href: '/glossary/global-payroll' },
       { label: 'Employer of Record (EOR)', href: '/glossary/eor' },
@@ -98,7 +98,7 @@ const GLOSSARY_STORE: Record<string, GlossaryItem> = {
       'Employer Contributions: Social security (e.g. INSS in Brazil, NIC in the UK), Health insurance, Workers\' compensation, Unemployment insurance',
       'Employee Withholdings: Income tax (e.g. IRS in the U.S., SAT in Mexico), Pension or retirement deductions, National contributions (e.g. NSSF in Kenya)',
       'These are calculated per payroll cycle and vary widely by location, worker classification, and even salary level.',
-      'Global payroll platforms like SigmaRemote calculate and file these taxes in-country — helping avoid fines, audits, and payment delays.',
+      'Global payroll platforms like SigmaRemote calculate and file these taxes in-country - helping avoid fines, audits, and payment delays.',
     ],
     why: [
       'Understanding and managing payroll taxes is crucial to:',
@@ -149,10 +149,10 @@ const GLOSSARY_STORE: Record<string, GlossaryItem> = {
     ],
     why: [
       'Payroll deductions are essential for:',
-      '✅ Legal compliance — Errors can trigger audits or penalties',
-      '✅ Accurate reporting — Essential for tax authorities and employees',
-      '✅ Transparency — Workers trust employers who clearly show gross vs net pay',
-      '✅ Cross-border scaling — Understanding local deduction norms avoids misclassification',
+      '✅ Legal compliance - Errors can trigger audits or penalties',
+      '✅ Accurate reporting - Essential for tax authorities and employees',
+      '✅ Transparency - Workers trust employers who clearly show gross vs net pay',
+      '✅ Cross-border scaling - Understanding local deduction norms avoids misclassification',
     ],
     example:
       'A U.S. company hires contractors in Colombia and Kenya. One contractor needs tax withholding; the other operates under a no-deduction agreement. SigmaRemote applies the correct deduction policy per country, adds it to the contract, and reflects it in each pay stub.',
@@ -185,7 +185,7 @@ const GLOSSARY_STORE: Record<string, GlossaryItem> = {
     excerpt:
       'A legal and tax concept that determines whether a foreign company is considered to have a taxable presence in another country.',
     definition:
-      'Permanent Establishment (PE) is a legal and tax concept that determines whether a foreign company is considered to have a taxable presence in another country. If your company hires workers, signs contracts, or generates income in a country without a legal entity, you could unknowingly trigger a PE — making your company liable for corporate taxes, audits, and compliance obligations in that jurisdiction.',
+      'Permanent Establishment (PE) is a legal and tax concept that determines whether a foreign company is considered to have a taxable presence in another country. If your company hires workers, signs contracts, or generates income in a country without a legal entity, you could unknowingly trigger a PE - making your company liable for corporate taxes, audits, and compliance obligations in that jurisdiction.',
     how: [
       'Each country has its own PE rules (often based on OECD standards), but common triggers include:',
       'Hiring full-time employees locally',
@@ -240,10 +240,10 @@ const GLOSSARY_STORE: Record<string, GlossaryItem> = {
       'Contractor classification refers to the process of determining whether a worker is legally considered an independent contractor or an employee, based on the nature of the work and the level of control exerted by the company. Misclassifying a contractor as an employee - or vice versa - can lead to serious legal penalties, tax liabilities, and reputational damage. Each country has its own criteria for classification, and U.S. companies working globally must comply with local labor laws, not just IRS rules.',
     how: [
       'Classification depends on factors like:',
-      'Level of control – Do you dictate how, when, and where they work?',
-      'Exclusivity – Are they allowed to work for other clients?',
-      'Tools and equipment – Do they use your resources, or their own?',
-      'Integration – Are they embedded in your team structure?',
+      'Level of control - Do you dictate how, when, and where they work?',
+      'Exclusivity - Are they allowed to work for other clients?',
+      'Tools and equipment - Do they use your resources, or their own?',
+      'Integration - Are they embedded in your team structure?',
       'Countries use different frameworks:',
       'U.S.: IRS 3-part test (behavioral, financial, relationship)',
       'UK: IR35 rules',
@@ -260,7 +260,7 @@ const GLOSSARY_STORE: Record<string, GlossaryItem> = {
       'Contractor classification is the legal foundation of remote hiring. If you get this part wrong, everything else - payments, taxes, contracts - may collapse later.',
     ],
     example:
-      'A U.S. startup hires a graphic designer in France through SigmaRemote.\nThe system flags that the current contract includes fixed working hours and exclusive scope — which risks misclassification under French law.\nSigmaRemote updates the agreement to reflect true contractor independence and removes risk.',
+      'A U.S. startup hires a graphic designer in France through SigmaRemote.\nThe system flags that the current contract includes fixed working hours and exclusive scope - which risks misclassification under French law.\nSigmaRemote updates the agreement to reflect true contractor independence and removes risk.',
     related: [
       { label: 'Employer of Record (EOR)', href: '/glossary/eor' },
       { label: 'Contractor of Record (CoR)', href: '/glossary/cor' },
@@ -292,7 +292,7 @@ const GLOSSARY_STORE: Record<string, GlossaryItem> = {
     definition:
       'The W‑8BEN (Certificate of Foreign Status of Beneficial Owner for United States Tax Withholding) is a U.S. tax form used by non-U.S. individuals to declare that they are not subject to U.S. income tax on certain types of income - including payments for freelance or contract work. If you\'re a U.S. company paying an international contractor, this form helps avoid backup withholding and ensures proper IRS reporting.',
     how: [
-      'Filed by: Non-U.S. individual (not companies – they use W‑8BEN‑E)',
+      'Filed by: Non-U.S. individual (not companies - they use W‑8BEN‑E)',
       'Submitted to: The paying company or platform, not the IRS',
       'Purpose: Certify foreign status + claim reduced withholding under a tax treaty (if available)',
       'The form includes:',
@@ -329,7 +329,7 @@ const GLOSSARY_STORE: Record<string, GlossaryItem> = {
       },
       {
         q: 'Do I send the W‑8BEN to the IRS?',
-        a: 'No, the W‑8BEN is submitted to the U.S. company or platform that is paying you—not directly to the IRS.',
+        a: 'No, the W‑8BEN is submitted to the U.S. company or platform that is paying you-not directly to the IRS.',
       },
     ],
     datePublished: new Date().toISOString(),
@@ -401,10 +401,10 @@ const GLOSSARY_STORE: Record<string, GlossaryItem> = {
     ],
     why: [
       'AOR services strike a balance between DIY and full outsourcing:',
-      '✅ Control – You own the relationship with the contractor',
-      '✅ Compliance – Local labor laws are respected',
-      '✅ Cost-Efficiency – Cheaper than setting up a foreign entity or using an EOR',
-      '✅ Scalability – You can grow into new markets without legal overhead',
+      '✅ Control - You own the relationship with the contractor',
+      '✅ Compliance - Local labor laws are respected',
+      '✅ Cost-Efficiency - Cheaper than setting up a foreign entity or using an EOR',
+      '✅ Scalability - You can grow into new markets without legal overhead',
       'Platforms like SigmaRemote act as an Agent of Record for global teams that want to move fast without giving up control.',
     ],
     example:
@@ -419,7 +419,7 @@ const GLOSSARY_STORE: Record<string, GlossaryItem> = {
     faqs: [
       {
         q: 'What is an Agent of Record (AOR)?',
-        a: 'An Agent of Record (AOR) is a service that helps companies hire international contractors by handling compliance, contracts, and payments—without becoming the legal employer.',
+        a: 'An Agent of Record (AOR) is a service that helps companies hire international contractors by handling compliance, contracts, and payments-without becoming the legal employer.',
       },
       {
         q: 'How does an AOR work?',
@@ -447,16 +447,16 @@ const GLOSSARY_STORE: Record<string, GlossaryItem> = {
       'Global hiring through platforms like SigmaRemote or Deel',
       'Timezone-aware scheduling and documentation-first culture',
       'Famous examples of remote-first companies include:',
-      'GitLab – Fully remote with 1,000+ team members in 65+ countries',
-      'Zapier – Runs without a central office and hires globally',
-      'Doist, Basecamp, Remote.com – Built for async global teams',
+      'GitLab - Fully remote with 1,000+ team members in 65+ countries',
+      'Zapier - Runs without a central office and hires globally',
+      'Doist, Basecamp, Remote.com - Built for async global teams',
     ],
     why: [
       'Remote-first is more than a policy - it\'s a competitive advantage for modern businesses.',
-      '✅ Access better talent – Hire globally without borders',
-      '✅ Lower operating costs – No office leases, relocation, or commuting expenses',
-      '✅ Inclusive culture – Team members in emerging markets, caregivers, digital nomads',
-      '✅ Faster scaling – Tap into regions like LATAM, Africa, or SEA with compliant onboarding',
+      '✅ Access better talent - Hire globally without borders',
+      '✅ Lower operating costs - No office leases, relocation, or commuting expenses',
+      '✅ Inclusive culture - Team members in emerging markets, caregivers, digital nomads',
+      '✅ Faster scaling - Tap into regions like LATAM, Africa, or SEA with compliant onboarding',
       'Platforms like SigmaRemote help remote-first companies manage payroll, legal compliance, and contractor onboarding - without needing a local entity.',
     ],
     example:
@@ -475,7 +475,7 @@ const GLOSSARY_STORE: Record<string, GlossaryItem> = {
       },
       {
         q: 'How is remote-first different from remote-friendly?',
-        a: 'Remote-friendly companies allow remote work but still prioritize in-office presence. Remote-first companies design everything—processes, communication, hiring—for a distributed team from day one.',
+        a: 'Remote-friendly companies allow remote work but still prioritize in-office presence. Remote-first companies design everything-processes, communication, hiring-for a distributed team from day one.',
       },
       {
         q: 'Why are remote-first companies growing?',
@@ -501,10 +501,10 @@ const GLOSSARY_STORE: Record<string, GlossaryItem> = {
     ],
     why: [
       'For global teams and remote-first companies, crypto solves multiple problems at once:',
-      '✅ No FX fees – Avoid 2–5% lost to conversion and banking charges',
-      '✅ Instant payouts – Funds settle in seconds, not days',
-      '✅ Banking independence – No need for local accounts in underbanked markets',
-      '✅ Inflation protection – Workers can store value in USD-pegged stablecoins',
+      '✅ No FX fees - Avoid 2-5% lost to conversion and banking charges',
+      '✅ Instant payouts - Funds settle in seconds, not days',
+      '✅ Banking independence - No need for local accounts in underbanked markets',
+      '✅ Inflation protection - Workers can store value in USD-pegged stablecoins',
       'Companies using crypto payroll can scale faster into countries like Venezuela, Nigeria, Argentina, El Salvador, etc. - where traditional banking is slow, costly, or broken.',
     ],
     example:
@@ -523,7 +523,7 @@ const GLOSSARY_STORE: Record<string, GlossaryItem> = {
       },
       {
         q: 'Why use crypto for payroll?',
-        a: 'Crypto payroll eliminates FX fees, speeds up payments, and removes reliance on traditional banks—especially useful in countries with inflation or banking restrictions.',
+        a: 'Crypto payroll eliminates FX fees, speeds up payments, and removes reliance on traditional banks-especially useful in countries with inflation or banking restrictions.',
       },
       {
         q: 'Is crypto payroll legal?',
@@ -583,25 +583,25 @@ const GLOSSARY_STORE: Record<string, GlossaryItem> = {
     excerpt:
       'Cryptocurrencies pegged to real-world assets like the U.S. dollar, designed to maintain stable value while enabling fast, borderless payments.',
     definition:
-      'Stablecoins are cryptocurrencies pegged to real-world assets like the U.S. dollar, designed to maintain a stable value. They combine blockchain\'s speed and global reach with the reliability of fiat currencies — revolutionizing international payroll and cross-border payments.',
+      'Stablecoins are cryptocurrencies pegged to real-world assets like the U.S. dollar, designed to maintain a stable value. They combine blockchain\'s speed and global reach with the reliability of fiat currencies - revolutionizing international payroll and cross-border payments.',
     how: [
       'Stablecoins fall into three main types:',
-      'Fiat-backed – Pegged 1:1 to currencies like USD (e.g. USDC, USDT), held in reserve',
-      'Crypto-backed – Secured by collateralized crypto assets (e.g. DAI)',
-      'Algorithmic – Maintains price through supply control, but considered riskier',
-      'They enable instant, peer-to-peer transactions across borders — without banks, FX fees, or delays.',
+      'Fiat-backed - Pegged 1:1 to currencies like USD (e.g. USDC, USDT), held in reserve',
+      'Crypto-backed - Secured by collateralized crypto assets (e.g. DAI)',
+      'Algorithmic - Maintains price through supply control, but considered riskier',
+      'They enable instant, peer-to-peer transactions across borders - without banks, FX fees, or delays.',
     ],
     why: [
       'For international teams and startups, stablecoins deliver:',
-      '✅ Cost savings – Skip FX and wire fees',
-      '✅ Speed – Instant transfers, even across continents',
-      '✅ Financial access – Works in underbanked regions like LATAM or Africa',
-      '✅ Earnings protection – Hedge against local currency depreciation',
-      '✅ Scalability – Expand into new countries without needing local banks',
+      '✅ Cost savings - Skip FX and wire fees',
+      '✅ Speed - Instant transfers, even across continents',
+      '✅ Financial access - Works in underbanked regions like LATAM or Africa',
+      '✅ Earnings protection - Hedge against local currency depreciation',
+      '✅ Scalability - Expand into new countries without needing local banks',
       'They\'re ideal for remote teams, freelancers, and platforms operating globally.',
     ],
     example:
-      'A Brazilian developer earns $2,000 in USDC via SigmaRemote: Funds arrive instantly — no SWIFT or intermediary delays. No 3% FX markup — they receive the full amount. They can hold USDC or convert to Reais when rates are favorable.',
+      'A Brazilian developer earns $2,000 in USDC via SigmaRemote: Funds arrive instantly - no SWIFT or intermediary delays. No 3% FX markup - they receive the full amount. They can hold USDC or convert to Reais when rates are favorable.',
     related: [
       { label: 'USDC', href: '/glossary/usdc' },
       { label: 'USDT', href: '/glossary/usdt' },
@@ -636,7 +636,7 @@ const GLOSSARY_STORE: Record<string, GlossaryItem> = {
       'Locally compliant contracts',
       'Payroll processing and tax contributions',
       'Social security and employee benefits administration',
-      'Onboarding and offboarding procedures — often faster than opening a local entity',
+      'Onboarding and offboarding procedures - often faster than opening a local entity',
       'By using an EOR, companies avoid the complexity and cost of setting up foreign subsidiaries.',
     ],
     why: [
@@ -645,10 +645,10 @@ const GLOSSARY_STORE: Record<string, GlossaryItem> = {
       '✅ Avoid permanent establishment risk',
       '✅ Ensure compliance with local labor laws',
       '✅ Expand into new markets without legal bottlenecks',
-      'This is especially useful for startups and NGOs hiring across LATAM, Africa, or Southeast Asia — where entity setup is costly or slow.',
+      'This is especially useful for startups and NGOs hiring across LATAM, Africa, or Southeast Asia - where entity setup is costly or slow.',
     ],
     example:
-      'A U.S.-based startup wants to hire a full-time engineer in Argentina. Instead of opening a local entity, they partner with an EOR that: Drafts a compliant employment contract under Argentine law. Handles tax registration and monthly filings. Pays the engineer in USD (via wallet) or Argentine pesos. Ensures full cross-border compliance — no misclassification risk.',
+      'A U.S.-based startup wants to hire a full-time engineer in Argentina. Instead of opening a local entity, they partner with an EOR that: Drafts a compliant employment contract under Argentine law. Handles tax registration and monthly filings. Pays the engineer in USD (via wallet) or Argentine pesos. Ensures full cross-border compliance - no misclassification risk.',
     related: [
       { label: 'Global Payroll', href: '/glossary/global-payroll' },
       { label: 'Cross-Border Compliance', href: '/glossary/cross-border-compliance' },
@@ -677,25 +677,25 @@ const GLOSSARY_STORE: Record<string, GlossaryItem> = {
     excerpt:
       'A U.S.-regulated stablecoin issued by Circle, pegged 1:1 to the U.S. dollar, enabling fast, transparent, and low-cost global payments.',
     definition:
-      'USDC is a U.S.-regulated stablecoin issued by Circle, pegged 1:1 to the U.S. dollar. Built on leading blockchains like Ethereum and Solana, it enables fast, transparent, and low-cost global payments — ideal for compliant cross-border payroll.',
+      'USDC is a U.S.-regulated stablecoin issued by Circle, pegged 1:1 to the U.S. dollar. Built on leading blockchains like Ethereum and Solana, it enables fast, transparent, and low-cost global payments - ideal for compliant cross-border payroll.',
     how: [
       'USDC combines dollar stability with blockchain flexibility. Key features include:',
-      'Full reserves – 100% dollar-backed and audited monthly',
-      'Multi-chain support – Runs on Ethereum (compatibility) and Solana (speed)',
-      'Smart contracts – Supports automated finance and programmable payroll',
-      'Fintech-ready – Integrated with major exchanges, wallets, and payroll platforms',
+      'Full reserves - 100% dollar-backed and audited monthly',
+      'Multi-chain support - Runs on Ethereum (compatibility) and Solana (speed)',
+      'Smart contracts - Supports automated finance and programmable payroll',
+      'Fintech-ready - Integrated with major exchanges, wallets, and payroll platforms',
       'Its regulatory clarity and trusted reserve structure make USDC a go-to choice for startups, NGOs, and payroll platforms.',
     ],
     why: [
       'USDC helps modern global teams move money better:',
-      '✅ Regulatory trust – Backed by audited U.S. reserves',
-      '✅ Instant payouts – No bank delays or intermediaries',
-      '✅ Zero FX fees – Protects both sender and receiver',
-      '✅ Stable store of value – Useful in volatile markets',
-      'USDC is perfect for international teams that need transparent, fast, and secure payouts — without compromise.',
+      '✅ Regulatory trust - Backed by audited U.S. reserves',
+      '✅ Instant payouts - No bank delays or intermediaries',
+      '✅ Zero FX fees - Protects both sender and receiver',
+      '✅ Stable store of value - Useful in volatile markets',
+      'USDC is perfect for international teams that need transparent, fast, and secure payouts - without compromise.',
     ],
     example:
-      'An El Salvador-based designer receives $1,000 in USDC via SigmaRemote. Funds arrive in seconds — no bank needed, no FX losses. They hold USDC, convert to local currency when needed, or swap to crypto — all with full regulatory clarity.',
+      'An El Salvador-based designer receives $1,000 in USDC via SigmaRemote. Funds arrive in seconds - no bank needed, no FX losses. They hold USDC, convert to local currency when needed, or swap to crypto - all with full regulatory clarity.',
     related: [
       { label: 'USDT', href: '/glossary/usdt' },
       { label: 'Stablecoins', href: '/glossary/stablecoins' },
@@ -727,22 +727,22 @@ const GLOSSARY_STORE: Record<string, GlossaryItem> = {
       'USDT is a stablecoin pegged 1:1 to the U.S. dollar, issued by Tether Ltd. It operates on multiple blockchains - including Ethereum (ERC-20) and Tron (TRC-20) - enabling instant, low-cost global payments without traditional banks. It\'s widely used for international payroll, especially in emerging markets.',
     how: [
       'USDT combines blockchain speed with dollar stability. Key features include:',
-      'Stable value – Pegged 1 USDT ≈ 1 USD',
-      'Multi-chain support – Runs on Ethereum for DeFi access; on Tron for low-fee payments',
-      'Wallet compatibility – Usable via MetaMask, Trust Wallet, and major crypto exchanges',
-      'Borderless access – Ideal for underbanked regions like LATAM and Africa',
+      'Stable value - Pegged 1 USDT ≈ 1 USD',
+      'Multi-chain support - Runs on Ethereum for DeFi access; on Tron for low-fee payments',
+      'Wallet compatibility - Usable via MetaMask, Trust Wallet, and major crypto exchanges',
+      'Borderless access - Ideal for underbanked regions like LATAM and Africa',
       'Despite concerns around reserves, USDT remains dominant due to liquidity, familiarity, and ease of use.',
     ],
     why: [
       'USDT solves real-world pain points for global teams:',
-      '✅ No FX fees – Eliminate 2–4% lost on currency conversion',
-      '✅ Instant settlement – Payouts process in seconds',
-      '✅ Banking freedom – Accessible without a local bank account',
-      '✅ Financial control – Freelancers can hold or convert when local rates are favorable',
+      '✅ No FX fees - Eliminate 2-4% lost on currency conversion',
+      '✅ Instant settlement - Payouts process in seconds',
+      '✅ Banking freedom - Accessible without a local bank account',
+      '✅ Financial control - Freelancers can hold or convert when local rates are favorable',
       'For startups and remote teams, USDT unlocks faster, cheaper international payroll.',
     ],
     example:
-      'A Venezuelan freelancer earns $2,500 in USDT via SigmaRemote. The funds arrive instantly in their Trust Wallet — no FX losses, no banking delays. They hold the USDT as a hedge against inflation and convert it locally when needed.',
+      'A Venezuelan freelancer earns $2,500 in USDT via SigmaRemote. The funds arrive instantly in their Trust Wallet - no FX losses, no banking delays. They hold the USDT as a hedge against inflation and convert it locally when needed.',
     related: [
       { label: 'USDC', href: '/glossary/usdc' },
       { label: 'Stablecoins', href: '/glossary/stablecoins' },
@@ -771,26 +771,26 @@ const GLOSSARY_STORE: Record<string, GlossaryItem> = {
     excerpt:
       'The practice of ensuring that hiring, paying, and managing international workers aligns with each country\'s labor, tax, immigration, and data protection laws.',
     definition:
-      'Cross-border compliance is the practice of ensuring that hiring, paying, and managing international workers aligns with each country\'s labor, tax, immigration, and data protection laws. It protects global teams from fines, audits, and permanent establishment risks — while enabling fast, legal expansion across markets.',
+      'Cross-border compliance is the practice of ensuring that hiring, paying, and managing international workers aligns with each country\'s labor, tax, immigration, and data protection laws. It protects global teams from fines, audits, and permanent establishment risks - while enabling fast, legal expansion across markets.',
     how: [
       'Managing compliance across countries means adapting to unique local rules. Key areas include:',
-      'Labor laws – e.g. Brazil\'s 13th-month salary and FGTS; the Philippines\' 13th-month pay',
-      'Taxes and social contributions – e.g. UK\'s National Insurance; Singapore\'s CPF',
-      'Permanent establishment (PE) – Avoiding unintended tax presence from remote team structures',
-      'Immigration – Ensuring remote workers and digital nomads meet visa/residency rules',
-      'Data protection – Aligning with regulations like GDPR, CCPA, or China\'s PIPL',
+      'Labor laws - e.g. Brazil\'s 13th-month salary and FGTS; the Philippines\' 13th-month pay',
+      'Taxes and social contributions - e.g. UK\'s National Insurance; Singapore\'s CPF',
+      'Permanent establishment (PE) - Avoiding unintended tax presence from remote team structures',
+      'Immigration - Ensuring remote workers and digital nomads meet visa/residency rules',
+      'Data protection - Aligning with regulations like GDPR, CCPA, or China\'s PIPL',
       'Platforms like SigmaRemote automate these layers, making it easy to stay compliant while scaling internationally.',
     ],
     why: [
       'Cross-border compliance reduces legal, financial, and operational risks. It enables:',
-      '✅ Risk mitigation – Avoid fines, audits, or shutdowns',
-      '✅ Reputation protection – Prevents misclassification and payment errors',
-      '✅ Operational continuity – Keeps your business running globally without disruption',
-      '✅ Scalability – Allows fast entry into new markets without legal delays',
+      '✅ Risk mitigation - Avoid fines, audits, or shutdowns',
+      '✅ Reputation protection - Prevents misclassification and payment errors',
+      '✅ Operational continuity - Keeps your business running globally without disruption',
+      '✅ Scalability - Allows fast entry into new markets without legal delays',
       'Without it, companies can face six- or seven-figure fines, public exposure, and blocked operations in key regions.',
     ],
     example:
-      'A U.S. startup hires developers in Brazil, where employers are required to provide a 13th-month salary and contribute to FGTS (a social security fund). SigmaRemote ensures compliance by automating required filings and payments — preventing tax exposure and misclassification risk while keeping operations smooth.',
+      'A U.S. startup hires developers in Brazil, where employers are required to provide a 13th-month salary and contribute to FGTS (a social security fund). SigmaRemote ensures compliance by automating required filings and payments - preventing tax exposure and misclassification risk while keeping operations smooth.',
     related: [
       { label: 'Global Payroll', href: '/glossary/global-payroll' },
       { label: 'Employer of Record (EOR)', href: '/glossary/employer-of-record' },
@@ -858,7 +858,7 @@ const GLOSSARY_STORE: Record<string, GlossaryItem> = {
       },
       {
         q: 'Do I need a local entity to run global payroll?',
-        a: 'No, many companies use global payroll providers or Employer of Record (EOR) services to hire and pay workers legally in other countries—without setting up a local legal entity.',
+        a: 'No, many companies use global payroll providers or Employer of Record (EOR) services to hire and pay workers legally in other countries-without setting up a local legal entity.',
       },
     ],
     datePublished: new Date().toISOString(),
@@ -869,11 +869,11 @@ const GLOSSARY_STORE: Record<string, GlossaryItem> = {
     excerpt:
       'Foreign exchange fees are charges applied when converting one currency to another during international payments, including flat transaction costs and hidden markups.',
     definition:
-      'FX fees (foreign exchange fees) are charges applied when converting one currency to another - usually during international payments. These fees often include both: Flat transaction charges (e.g., $10–$50) and Hidden markups on the exchange rate (2–4% above the real mid-market rate). They commonly affect international payroll, global hiring, and cross-border contractor payouts.',
+      'FX fees (foreign exchange fees) are charges applied when converting one currency to another - usually during international payments. These fees often include both: Flat transaction charges (e.g., $10-$50) and Hidden markups on the exchange rate (2-4% above the real mid-market rate). They commonly affect international payroll, global hiring, and cross-border contractor payouts.',
     how: [
       'FX fees typically include:',
       'Flat fees: Fixed per-transaction costs charged by banks or processors (e.g., $25 per wire).',
-      'Exchange rate markups: A hidden 2–4% increase over the real mid-market rate.',
+      'Exchange rate markups: A hidden 2-4% increase over the real mid-market rate.',
       'Some platforms claim "no fees" but profit from these markups behind the scenes.',
       'Example:',
       'Paying $2,500 to a contractor with a 3.2% markup = $80 per transaction',
@@ -917,25 +917,25 @@ const GLOSSARY_STORE: Record<string, GlossaryItem> = {
     excerpt:
       'A digital account for receiving, storing, and sending U.S. dollars without needing a U.S. bank account, used by global contractors and remote teams.',
     definition:
-      'A USD wallet is a digital account for receiving, storing, and sending U.S. dollars—without needing a U.S. bank account. Used by global contractors and remote teams, it speeds up payments and avoids forced currency conversion.',
+      'A USD wallet is a digital account for receiving, storing, and sending U.S. dollars-without needing a U.S. bank account. Used by global contractors and remote teams, it speeds up payments and avoids forced currency conversion.',
     how: [
       'USD wallets are virtual dollar-denominated accounts provided by fintech platforms or licensed U.S. institutions. Core features include:',
-      'Instant payouts – Receive USD in minutes',
-      'Store USD – No forced conversion to local currency',
-      'Withdraw anywhere – Send to banks, cards, or crypto wallets',
-      'Global access – Contractors in LATAM, Africa, or Asia can use without local banking',
+      'Instant payouts - Receive USD in minutes',
+      'Store USD - No forced conversion to local currency',
+      'Withdraw anywhere - Send to banks, cards, or crypto wallets',
+      'Global access - Contractors in LATAM, Africa, or Asia can use without local banking',
       'Example: SigmaRemote helps a Kenyan developer receive USD directly into their wallet, avoiding local bank delays and exchange markups.',
     ],
     why: [
       'USD wallets deliver four major benefits:',
-      '✅ No FX fees – Save 2–4% per transaction',
-      '✅ Speed – Instant funds, not multi-day delays',
-      '✅ Control – Choose when to convert',
-      '✅ Stability – Shield against local currency depreciation',
+      '✅ No FX fees - Save 2-4% per transaction',
+      '✅ Speed - Instant funds, not multi-day delays',
+      '✅ Control - Choose when to convert',
+      '✅ Stability - Shield against local currency depreciation',
       'They\'re especially valuable in emerging markets with inflation or capital controls.',
     ],
     example:
-      'A Nigerian developer earns $2,500 monthly through SigmaRemote\'s USD wallet. By skipping a 3% FX fee, they save ~$75 per payout—or $900 annually. They can hold USD or convert to Naira when exchange rates are favorable.',
+      'A Nigerian developer earns $2,500 monthly through SigmaRemote\'s USD wallet. By skipping a 3% FX fee, they save ~$75 per payout-or $900 annually. They can hold USD or convert to Naira when exchange rates are favorable.',
     related: [
       { label: 'FX Fees', href: '/glossary/fx-fees' },
       { label: 'Stablecoin Payroll', href: '/glossary/crypto-payroll' },
@@ -974,10 +974,10 @@ const GLOSSARY_STORE: Record<string, GlossaryItem> = {
     ],
     why: [
       'Choosing the right model is crucial for:',
-      '✅ Legal compliance – Avoid misclassification fines and permanent establishment risk',
-      '✅ Cost efficiency – Match the service to your actual hiring needs',
-      '✅ Operational control – Balance between convenience and maintaining relationships',
-      '✅ Scalability – Start with simpler models and evolve as your team grows',
+      '✅ Legal compliance - Avoid misclassification fines and permanent establishment risk',
+      '✅ Cost efficiency - Match the service to your actual hiring needs',
+      '✅ Operational control - Balance between convenience and maintaining relationships',
+      '✅ Scalability - Start with simpler models and evolve as your team grows',
       'Many companies start with AOR or CoR for flexibility, then shift to EOR if they scale into employee relationships.',
     ],
     example:
@@ -1034,17 +1034,17 @@ const GLOSSARY_STORE: Record<string, GlossaryItem> = {
       'A payroll cycle is the recurring schedule a company follows to calculate wages, withhold taxes, and issue payments to employees or contractors. Common cycles include weekly, biweekly, semi-monthly, and monthly pay periods.',
     how: [
       '__NO_BULLET__Payroll cycles vary by country, contract type, and company preference. Each cycle determines:',
-      '**When pay is calculated** (e.g. 1st–15th)',
+      '**When pay is calculated** (e.g. 1st-15th)',
       '**When payments are made** (e.g. 5th and 20th)',
       '**Compliance rules** (e.g. monthly in Brazil, semi-monthly in Mexico)',
       '__NO_BULLET__For global teams, managing multiple cycles across borders adds complexity:',
     ],
     why: [
       'Understanding and choosing the right payroll cycle is crucial because it affects:',
-      'Contractor trust – Predictable payments reduce churn',
-      'Cash flow – Different cycles create different funding demands',
-      'Compliance – Many countries legally require a specific cadence',
-      'Operations – Smooth payroll boosts team morale and reduces disputes',
+      'Contractor trust - Predictable payments reduce churn',
+      'Cash flow - Different cycles create different funding demands',
+      'Compliance - Many countries legally require a specific cadence',
+      'Operations - Smooth payroll boosts team morale and reduces disputes',
     ],
     example:
       'A U.S. startup hires contractors in Brazil, Argentina, and Nigeria.\nEach country has different payout expectations. With SigmaRemote, they consolidate cycles into a biweekly contractor-friendly flow while maintaining local compliance and issuing automated reminders.',
@@ -1096,7 +1096,7 @@ function buildGlossaryJsonLd() {
   const webPage = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    name: 'Glossary — SigmaRemote',
+    name: 'Glossary - SigmaRemote',
     url,
     description: 'Comprehensive glossary of global payroll, payments, and remote work terms.',
     inLanguage: 'en',

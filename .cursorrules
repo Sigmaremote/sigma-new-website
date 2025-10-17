@@ -73,3 +73,23 @@ export function HeroSection() {
   );
 }
 ```
+
+---
+
+# 📝 TYPOGRAPHY RULES
+
+## Em Dash Policy
+❌ NEVER use em dashes (—) in this project
+✅ ALWAYS use regular hyphens (-) instead
+
+### Implementation
+- When user provides text with em dashes, automatically replace them with regular hyphens
+- When writing new content, use regular hyphens only
+- This applies to all text content: headings, paragraphs, comments, alt text, etc.
+
+### Examples
+Bad: "Why SigmaRemote Wins — product overview"
+Good: "Why SigmaRemote Wins - product overview"
+
+Bad: "Born in San Francisco — Built for the World"
+Good: "Born in San Francisco - Built for the World"

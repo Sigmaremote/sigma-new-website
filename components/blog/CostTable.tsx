@@ -25,7 +25,7 @@ export function CostTable({ rows }: { rows: CostRow[] }) {
           <div className="px-4 py-3">{r.platformFee}</div>
           <div className="px-4 py-3">{r.fx}</div>
           <div className="px-4 py-3">{r.payoutSpeed}</div>
-          <div className="px-4 py-3 text-neutral-600">{r.notes || '—'}</div>
+          <div className="px-4 py-3 text-neutral-600">{r.notes || '-'}</div>
         </div>
       ))}
     </div>

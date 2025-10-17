@@ -63,7 +63,7 @@ export default function Page() {
       <Script id="ld-compare-deel" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }} />
       <FadeIn>
         <AnimatedSection animation="fadeUp" delay={0}>
-          <CompareHero />
+          <CompareHero competitorKey="deel" />
         </AnimatedSection>
         
         <AnimatedSection animation="fadeUp" delay={100}>

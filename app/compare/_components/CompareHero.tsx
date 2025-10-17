@@ -2,8 +2,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import BrandStars from "./BrandStars";
+import { COMPARE_DATA } from "../_data/compare-data";
 
-export default function CompareHero() {
+export default function CompareHero({
+  competitorKey = "deel",
+}: {
+  competitorKey?: keyof typeof COMPARE_DATA;
+}) {
+  const data = COMPARE_DATA[competitorKey];
   return (
     <section className="relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-20 md:pt-24 md:pb-28">
@@ -14,7 +20,7 @@ export default function CompareHero() {
             <li aria-hidden="true" className="text-slate-400">›</li>
             <li><Link href="/compare" className="hover:underline">Compare</Link></li>
             <li aria-hidden="true" className="text-slate-400">›</li>
-            <li aria-current="page" className="text-slate-800 font-medium">Deel</li>
+            <li aria-current="page" className="text-slate-800 font-medium">{data.competitorName}</li>
           </ol>
         </nav>
 
@@ -22,10 +28,10 @@ export default function CompareHero() {
           {/* Left column */}
           <div>
             <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 leading-tight">
-              SigmaRemote vs Deel - Lower Costs, Faster Global Payroll for Your Team
+              {data.hero.title}
             </h1>
             <p className="mt-5 max-w-2xl text-lg text-slate-600">
-              Deel's high per-contractor fees and payout restrictions can slow your team down. See why scaling businesses choose SigmaRemote for predictable costs, faster onboarding, and global payouts without forced conversion.
+              {data.hero.subtitle}
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">

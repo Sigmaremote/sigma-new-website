@@ -40,7 +40,7 @@ const CARDS: Card[] = [
   {
     title: 'Country Guides',
     description:
-      'Hiring, payments, and compliance insights by country—taxes, FX, onboarding.',
+      'Hiring, payments, and compliance insights by country-taxes, FX, onboarding.',
     href: '/country-guides',
     color: 'bg-[#E5F0E6]',
     icon: <MapPinned className="h-6 w-6" />,

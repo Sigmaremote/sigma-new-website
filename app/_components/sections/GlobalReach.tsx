@@ -11,7 +11,7 @@ export default function GlobalReach() {
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   return (
-    <div aria-label="Global reach" className="relative isolate">
+    <div aria-label="Global reach" className="relative isolate py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" ref={sectionRef}>
         <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-[minmax(280px,1fr)_minmax(420px,1.1fr)_minmax(420px,1fr)]">
           {/* Left copy + CTA */}

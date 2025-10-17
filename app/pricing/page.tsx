@@ -5,7 +5,7 @@ import { GlobalPayrollSection } from '@/components/ui/global-payroll-section';
 import { CompetitorReplacementSection } from '@/components/ui/competitor-replacement';
 import { FeaturesCompare } from '@/components/ui/features-compare';
 import FaqSection from '@/components/ui/FaqSection';
-import GlobalReachSection from '@/components/ui/GlobalReachSection';
+import GlobalReach from '@/app/_components/sections/GlobalReach';
 
 export const metadata: Metadata = {
   title: 'Pricing - SigmaRemote',
@@ -48,7 +48,7 @@ export default function PricingPage() {
         rows={rows}
       />
       <FaqSection />
-      <GlobalReachSection />
+      <GlobalReach />
     </>
   );
 }
