@@ -1,27 +1,9 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { coverageCadanaCountries as ALL, type CoverageCountry } from "./data";
 import CountryTableView from "./table-view";
-import CountryCardsView from "./card-view";
 
 export default function CountryDetailClient({ country }: { country: CoverageCountry }) {
-  const [view, setView] = useState<"table" | "cards">("table");
-
-  useEffect(() => {
-    const p = new URLSearchParams(window.location.search);
-    setView(p.get("view") === "cards" ? "cards" : "table");
-    const onPop = () => setView(new URLSearchParams(window.location.search).get("view") === "cards" ? "cards" : "table");
-    window.addEventListener("popstate", onPop);
-    return () => window.removeEventListener("popstate", onPop);
-  }, []);
-
-  const changeView = (v: "table" | "cards") => {
-    const p = new URLSearchParams(window.location.search);
-    if (v === "cards") p.set("view", "cards"); else p.delete("view");
-    history.replaceState({}, "", `?${p.toString()}`);
-    setView(v);
-  };
 
   return (
     <main className="mx-auto w-full max-w-6xl px-4 md:px-8 py-8 space-y-8">
@@ -44,17 +26,11 @@ export default function CountryDetailClient({ country }: { country: CoverageCoun
         </div>
       </section>
 
-      {/* Toggle */}
-      <section className="flex items-center justify-between">
-        <h2 className="text-base font-semibold text-[#0C2E1C]">Coverage Details</h2>
-        <div className="flex items-center gap-2">
-          <ToggleBtn active={view === "cards"} onClick={() => changeView("cards")}>Cards</ToggleBtn>
-          <ToggleBtn active={view === "table"} onClick={() => changeView("table")}>Table</ToggleBtn>
-        </div>
+      {/* Coverage Details */}
+      <section>
+        <h2 className="text-base font-semibold text-[#0C2E1C] mb-6">Coverage Details</h2>
+        <CountryTableView c={country} />
       </section>
-
-      {/* View */}
-      {view === "table" ? <CountryTableView c={country} /> : <CountryCardsView c={country} />}
 
       {/* Similar region */}
       <section className="mt-8">
@@ -107,17 +83,3 @@ function Stat({ label, value }: { label: string; value: string }) {
   );
 }
 
-function ToggleBtn({
-  active, children, onClick,
-}: { active: boolean; children: React.ReactNode; onClick: () => void }) {
-  return (
-    <button
-      onClick={onClick}
-      className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold transition-colors ${
-        active ? "bg-[#0C2E1C] text-white" : "bg-white border border-black/10 text-[#0C2E1C] hover:bg-black/[0.03]"
-      }`}
-    >
-      {children}
-    </button>
-  );
-}
