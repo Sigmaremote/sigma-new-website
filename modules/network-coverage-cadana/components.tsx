@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useMemo, useState, ReactNode } from "react";
-import { Briefcase, CreditCard, FileText, Wallet } from "lucide-react";
+import { Briefcase, CreditCard, FileText, Wallet, Grid3X3, Table2 } from "lucide-react";
 import type { CoverageCountry, CoverageRegion } from "./data";
 import { coverageCadanaCountries as ALL } from "./data";
 
@@ -173,18 +173,42 @@ function CountryDetailHero({
   const gradient = regionGradients[region] ?? "from-[#0C2E1C] to-[#1F3B2E]";
   
   return (
-    <div className={`relative overflow-hidden rounded-3xl bg-gradient-to-r ${gradient} p-10 text-white mb-10`}>
-      <div className="absolute -top-10 -right-10 h-48 w-48 bg-white/10 blur-2xl rounded-full" />
-      <div className="relative">
-        <h1 className="text-4xl font-semibold tracking-tight flex items-center gap-3">
-          <span>{flag}</span> {name}
-          <span className="text-lg font-normal">{iso2}</span>
-        </h1>
-        <p className="mt-1 text-md/6 text-white/80">{region}</p>
-        <div className="mt-4 flex flex-wrap gap-6 text-sm text-white/90">
-          <Metric label="Payout Rails" value={paymentSupported.length.toString()} />
-          <Metric label="Avg. Settlement" value={payoutCutoff ?? "1–2 days"} />
-          <Metric label="FX Fee" value="0–1 %" />
+    <div className={`relative overflow-hidden rounded-3xl bg-gradient-to-br ${gradient} p-12 text-white mb-12`}>
+      {/* Background decorative elements */}
+      <div className="absolute -top-20 -right-20 h-80 w-80 bg-white/5 blur-3xl rounded-full" />
+      <div className="absolute -bottom-16 -left-16 h-64 w-64 bg-white/3 blur-2xl rounded-full" />
+      
+      <div className="relative z-10">
+        {/* Header with flag and country info */}
+        <div className="flex items-start justify-between mb-8">
+          <div>
+            <h1 className="text-5xl font-bold tracking-tight flex items-center gap-4 mb-2">
+              <span className="text-6xl">{flag}</span>
+              <div>
+                <div className="flex items-baseline gap-3">
+                  <span>{name}</span>
+                  <span className="text-2xl font-normal text-white/70">{iso2}</span>
+                </div>
+                <p className="text-xl text-white/80 mt-1">{region}</p>
+              </div>
+            </h1>
+          </div>
+        </div>
+
+        {/* Key metrics grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+            <div className="text-sm text-white/70 mb-1">Payout Rails</div>
+            <div className="text-3xl font-bold">{paymentSupported.length}</div>
+          </div>
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+            <div className="text-sm text-white/70 mb-1">Avg. Settlement</div>
+            <div className="text-3xl font-bold">{payoutCutoff ?? "1–2 days"}</div>
+          </div>
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+            <div className="text-sm text-white/70 mb-1">FX Fee</div>
+            <div className="text-3xl font-bold">0–1%</div>
+          </div>
         </div>
       </div>
     </div>
@@ -202,23 +226,31 @@ function Metric({ label, value }: { label: string; value: string }) {
 
 function DataCard({ title, icon, children }: { title: string; icon: ReactNode; children: ReactNode }) {
   return (
-    <section className="rounded-2xl bg-gradient-to-b from-white to-[#FAFAFA] p-6 shadow-sm hover:shadow-md transition-all duration-150">
-      <h2 className="flex items-center gap-2 text-xl font-semibold text-[#0C2E1C]">
-        {icon} {title}
-      </h2>
-      <div className="mt-4">{children}</div>
+    <section className="group relative overflow-hidden rounded-3xl bg-white border border-gray-100 p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+      {/* Subtle background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      
+      <div className="relative z-10">
+        <h2 className="flex items-center gap-3 text-2xl font-bold text-[#0C2E1C] mb-6">
+          <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br from-[#0C2E1C] to-[#1F3B2E] text-white shadow-lg">
+            {icon}
+          </div>
+          {title}
+        </h2>
+        <div className="space-y-4">{children}</div>
+      </div>
     </section>
   );
 }
 
 function TagRow({ items }: { items: string[] }) {
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap gap-3">
       {items.map((t) => (
         <div
           key={t}
-          className="inline-flex items-center rounded-md bg-[#F2F3F1] px-3 py-1.5 text-xs font-medium text-[#0C2E1C] shadow-inner hover:shadow-sm transition-all duration-150 cursor-default"
-          title={`${t} - Click for more details`}
+          className="inline-flex items-center rounded-xl bg-gradient-to-r from-[#F8F9F7] to-[#F2F3F1] px-4 py-2.5 text-sm font-semibold text-[#0C2E1C] border border-gray-200/50 shadow-sm hover:shadow-md hover:scale-105 transition-all duration-200 cursor-default"
+          title={`${t} - Available in this country`}
         >
           {t}
         </div>
@@ -229,14 +261,150 @@ function TagRow({ items }: { items: string[] }) {
 
 function KeyVal({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-lg border border-black/10 bg-white p-4 shadow-sm">
-      <div className="text-xs text-[#0C2E1C]/60">{label}</div>
-      <div className="text-sm font-semibold text-[#0C2E1C] mt-1">{value}</div>
+    <div className="group relative overflow-hidden rounded-2xl border border-gray-200/50 bg-gradient-to-br from-white to-gray-50/30 p-6 shadow-sm hover:shadow-lg transition-all duration-200">
+      <div className="text-sm font-medium text-[#0C2E1C]/70 mb-2">{label}</div>
+      <div className="text-xl font-bold text-[#0C2E1C]">{value}</div>
+      {/* Subtle accent line */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#0C2E1C] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+    </div>
+  );
+}
+
+// --- NEW: Cadana-style Table Component ---
+function CountryDetailTable({ c }: { c: CoverageCountry }) {
+  return (
+    <div className="mt-8 overflow-hidden rounded-2xl border border-gray-200/50 bg-white shadow-sm">
+      {/* Table Header */}
+      <div className="bg-gradient-to-r from-gray-50 to-gray-100/50 border-b border-gray-200/50">
+        <div className="grid grid-cols-4 px-6 py-4">
+          <div className="text-sm font-semibold text-[#0C2E1C] uppercase tracking-wide">Category</div>
+          <div className="text-sm font-semibold text-[#0C2E1C] uppercase tracking-wide">Offerings</div>
+          <div className="text-sm font-semibold text-[#0C2E1C] uppercase tracking-wide">Details</div>
+          <div className="text-sm font-semibold text-[#0C2E1C] uppercase tracking-wide">Status</div>
+        </div>
+      </div>
+
+      {/* Table Rows */}
+      <div className="divide-y divide-gray-100">
+        {/* Solutions Row */}
+        <div className="grid grid-cols-4 px-6 py-5 hover:bg-gray-50/50 transition-colors duration-150">
+          <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-[#0C2E1C] to-[#1F3B2E] text-white">
+              <Briefcase className="h-4 w-4" />
+            </div>
+            <span className="font-semibold text-[#0C2E1C]">Solutions</span>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {c.solutions.map((solution) => (
+              <span
+                key={solution}
+                className="inline-flex items-center rounded-lg bg-green-50 text-green-700 px-2.5 py-1 text-xs font-medium border border-green-200/50"
+              >
+                {solution}
+              </span>
+            ))}
+          </div>
+          <div className="text-sm text-[#0C2E1C]/70">
+            Manage contractor payments and compliance administration efficiently
+          </div>
+          <div className="flex items-center">
+            <span className="inline-flex items-center rounded-full bg-green-100 text-green-800 px-2.5 py-1 text-xs font-medium">
+              Available
+            </span>
+          </div>
+        </div>
+
+        {/* Payment Row */}
+        <div className="grid grid-cols-4 px-6 py-5 hover:bg-gray-50/50 transition-colors duration-150">
+          <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-[#0C2E1C] to-[#1F3B2E] text-white">
+              <CreditCard className="h-4 w-4" />
+            </div>
+            <span className="font-semibold text-[#0C2E1C]">Payment</span>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {c.paymentSupported.map((method) => (
+              <span
+                key={method}
+                className="inline-flex items-center rounded-lg bg-blue-50 text-blue-700 px-2.5 py-1 text-xs font-medium border border-blue-200/50"
+              >
+                {method}
+              </span>
+            ))}
+          </div>
+          <div className="text-sm text-[#0C2E1C]/70">
+            {c.payoutLimits && `Limits: ${c.payoutLimits}`} • {c.payoutCutoff && `Settlement: ${c.payoutCutoff}`}
+          </div>
+          <div className="flex items-center">
+            <span className="inline-flex items-center rounded-full bg-green-100 text-green-800 px-2.5 py-1 text-xs font-medium">
+              Active
+            </span>
+          </div>
+        </div>
+
+        {/* EOR Row */}
+        <div className="grid grid-cols-4 px-6 py-5 hover:bg-gray-50/50 transition-colors duration-150">
+          <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-[#0C2E1C] to-[#1F3B2E] text-white">
+              <FileText className="h-4 w-4" />
+            </div>
+            <span className="font-semibold text-[#0C2E1C]">EOR</span>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {(c.eorOfferings ?? ["Gross to net calculations"]).map((offering) => (
+              <span
+                key={offering}
+                className="inline-flex items-center rounded-lg bg-purple-50 text-purple-700 px-2.5 py-1 text-xs font-medium border border-purple-200/50"
+              >
+                {offering}
+              </span>
+            ))}
+          </div>
+          <div className="text-sm text-[#0C2E1C]/70">
+            SigmaRemote calculates compliant payroll lines; statutory remittance varies by market
+          </div>
+          <div className="flex items-center">
+            <span className="inline-flex items-center rounded-full bg-green-100 text-green-800 px-2.5 py-1 text-xs font-medium">
+              Available
+            </span>
+          </div>
+        </div>
+
+        {/* Wallet Row */}
+        <div className="grid grid-cols-4 px-6 py-5 hover:bg-gray-50/50 transition-colors duration-150">
+          <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-[#0C2E1C] to-[#1F3B2E] text-white">
+              <Wallet className="h-4 w-4" />
+            </div>
+            <span className="font-semibold text-[#0C2E1C]">Wallet</span>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {(c.walletOfferings ?? ["Card", "Crypto", "Foreign Bank Accounts"]).map((offering) => (
+              <span
+                key={offering}
+                className="inline-flex items-center rounded-lg bg-orange-50 text-orange-700 px-2.5 py-1 text-xs font-medium border border-orange-200/50"
+              >
+                {offering}
+              </span>
+            ))}
+          </div>
+          <div className="text-sm text-[#0C2E1C]/70">
+            Access your funds through multiple channels with integrated wallet solutions
+          </div>
+          <div className="flex items-center">
+            <span className="inline-flex items-center rounded-full bg-green-100 text-green-800 px-2.5 py-1 text-xs font-medium">
+              Available
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
 
 export function CountryDetailContent({ c }: { c: CoverageCountry }) {
+  const [viewMode, setViewMode] = useState<'cards' | 'table'>('cards');
+
   return (
     <>
       <CountryDetailHero
@@ -248,54 +416,139 @@ export function CountryDetailContent({ c }: { c: CoverageCountry }) {
         payoutCutoff={c.payoutCutoff}
       />
 
-      <div className="space-y-8">
-        <DataCard title="Solutions" icon={<Briefcase className="h-5 w-5 text-[#0C2E1C]" />}>
+      {/* View Toggle */}
+      <div className="flex items-center justify-between mb-8">
+        <h2 className="text-2xl font-bold text-[#0C2E1C]">Coverage Details</h2>
+        <div className="flex items-center gap-2 rounded-xl border border-gray-200/50 bg-white p-1 shadow-sm">
+          <button
+            onClick={() => setViewMode('cards')}
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+              viewMode === 'cards'
+                ? 'bg-[#0C2E1C] text-white shadow-sm'
+                : 'text-[#0C2E1C]/70 hover:text-[#0C2E1C] hover:bg-gray-50'
+            }`}
+          >
+            <Grid3X3 className="h-4 w-4" />
+            Cards
+          </button>
+          <button
+            onClick={() => setViewMode('table')}
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+              viewMode === 'table'
+                ? 'bg-[#0C2E1C] text-white shadow-sm'
+                : 'text-[#0C2E1C]/70 hover:text-[#0C2E1C] hover:bg-gray-50'
+            }`}
+          >
+            <Table2 className="h-4 w-4" />
+            Table
+          </button>
+        </div>
+      </div>
+
+      {viewMode === 'table' ? (
+        <CountryDetailTable c={c} />
+      ) : (
+        <div className="space-y-10">
+        <DataCard title="Solutions" icon={<Briefcase className="h-6 w-6" />}>
           <TagRow items={c.solutions} />
-          <p className="mt-3 text-sm text-[#0C2E1C]/75">
-            Manage contractor payments and compliance administration efficiently.
+          <p className="mt-4 text-base text-[#0C2E1C]/75 leading-relaxed">
+            Manage contractor payments and compliance administration efficiently with our comprehensive suite of tools.
           </p>
         </DataCard>
 
-        <DataCard title="Payment" icon={<CreditCard className="h-5 w-5 text-[#0C2E1C]" />}>
-          <p className="text-sm font-medium text-[#0C2E1C]/80">Supported</p>
-          <TagRow items={c.paymentSupported} />
-          <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <KeyVal label="Local Payout Limits" value={c.payoutLimits ?? "None"} />
-            <KeyVal label="Payout Cutoff Times" value={c.payoutCutoff ?? "1–2 days"} />
+        <DataCard title="Payment" icon={<CreditCard className="h-6 w-6" />}>
+          <div className="space-y-6">
+            <div>
+              <p className="text-base font-semibold text-[#0C2E1C] mb-3">Supported Payment Methods</p>
+              <TagRow items={c.paymentSupported} />
+            </div>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <KeyVal label="Local Payout Limits" value={c.payoutLimits ?? "None"} />
+              <KeyVal label="Payout Cutoff Times" value={c.payoutCutoff ?? "1–2 days"} />
+            </div>
           </div>
         </DataCard>
 
-        <DataCard title="EOR" icon={<FileText className="h-5 w-5 text-[#0C2E1C]" />}>
-          <TagRow items={c.eorOfferings ?? ["Gross to net calculations"]} />
-          <p className="mt-2 text-sm text-[#0C2E1C]/75">
-            SigmaRemote calculates compliant payroll lines; statutory remittance varies by market.
-          </p>
+        <DataCard title="EOR" icon={<FileText className="h-6 w-6" />}>
+          <div className="space-y-4">
+            <TagRow items={c.eorOfferings ?? ["Gross to net calculations"]} />
+            <p className="text-base text-[#0C2E1C]/75 leading-relaxed">
+              SigmaRemote calculates compliant payroll lines; statutory remittance varies by market.
+            </p>
+          </div>
         </DataCard>
 
-        <DataCard title="Wallet" icon={<Wallet className="h-5 w-5 text-[#0C2E1C]" />}>
-          <TagRow items={c.walletOfferings ?? ["Card", "Crypto", "Foreign Bank Accounts"]} />
+        <DataCard title="Wallet" icon={<Wallet className="h-6 w-6" />}>
+          <div className="space-y-4">
+            <TagRow items={c.walletOfferings ?? ["Card", "Crypto", "Foreign Bank Accounts"]} />
+            <p className="text-base text-[#0C2E1C]/75 leading-relaxed">
+              Access your funds through multiple channels with our integrated wallet solutions.
+            </p>
+          </div>
         </DataCard>
+        </div>
+      )}
 
-        <section className="mt-10">
-          <h3 className="text-lg font-semibold text-[#0C2E1C] mb-3">
-            Similar Region: {c.region}
-          </h3>
-          <div className="flex overflow-x-auto gap-3 pb-3 snap-x snap-mandatory">
-            {ALL.filter((x) => x.region === c.region).map((x) => (
+      <section className="mt-12">
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-2xl font-bold text-[#0C2E1C]">
+              Similar Region: {c.region}
+            </h3>
+            <div className="h-px flex-1 bg-gradient-to-r from-gray-300 to-transparent ml-6" />
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            {ALL.filter((x) => x.region === c.region && x.iso2 !== c.iso2).map((x) => (
               <Link
                 key={x.iso2}
                 href={`/resources/network-coverage/${x.iso2.toLowerCase()}`}
-                className="snap-start flex-shrink-0"
+                className="group"
               >
-                <div className="rounded-xl border border-black/5 bg-white p-3 shadow-sm hover:shadow-md transition-all duration-150 flex items-center gap-2">
-                  <span className="text-lg">{x.flag}</span>
-                  <span className="text-sm font-medium text-[#0C2E1C]">{x.name}</span>
+                <div className="relative overflow-hidden rounded-2xl border border-gray-200/50 bg-white p-4 shadow-sm hover:shadow-lg transition-all duration-200 hover:-translate-y-1">
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">{x.flag}</span>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-sm font-semibold text-[#0C2E1C] truncate">{x.name}</div>
+                      <div className="text-xs text-[#0C2E1C]/60">{x.iso2}</div>
+                    </div>
+                  </div>
+                  {/* Hover effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#0C2E1C]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                 </div>
               </Link>
             ))}
           </div>
         </section>
-      </div>
+
+        {/* Professional CTA Section */}
+        <section className="mt-16 relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0C2E1C] via-[#1F3B2E] to-[#2D4A3A] p-12 text-white">
+          {/* Background decorative elements */}
+          <div className="absolute -top-20 -right-20 h-80 w-80 bg-white/5 blur-3xl rounded-full" />
+          <div className="absolute -bottom-16 -left-16 h-64 w-64 bg-white/3 blur-2xl rounded-full" />
+          
+          <div className="relative z-10 text-center">
+            <h3 className="text-4xl font-bold mb-4">
+              Ready to expand to {c.name}?
+            </h3>
+            <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+              Start paying contractors in {c.name} with our comprehensive payroll and payment solutions. 
+              Get set up in minutes with our expert team.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-2xl bg-white text-[#0C2E1C] px-8 py-4 text-lg font-bold hover:bg-gray-100 transition-colors duration-200 shadow-lg"
+              >
+                Get Started Today
+              </Link>
+              <Link
+                href="/pricing"
+                className="inline-flex items-center justify-center rounded-2xl border-2 border-white/30 text-white px-8 py-4 text-lg font-semibold hover:bg-white/10 transition-colors duration-200"
+              >
+                View Pricing
+              </Link>
+            </div>
+          </div>
+        </section>
     </>
   );
 }
