@@ -6,7 +6,7 @@ import { useRef } from 'react';
 
 type SecondaryCTAProps = {
   eyebrow?: string;
-  title: string;
+  title?: string;
   description?: string;
   ctaLabel?: string;
   ctaHref?: string;

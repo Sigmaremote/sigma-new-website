@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react';
 
 type SecondaryBlogCTAProps = {
   eyebrow?: string;
-  title: string;
+  title?: string;
   description?: string;
   ctaLabel?: string;
   ctaHref?: string;

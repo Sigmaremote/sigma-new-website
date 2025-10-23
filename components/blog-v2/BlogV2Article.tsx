@@ -35,6 +35,8 @@ export type V2Section =
   | { type:'image'; src:string; alt?:string }
   | { type:'hr' }
   | { type:'comparison-table'; data: any[] }
+  | { type:'payoneer-comparison-table' }
+  | { type:'platform-experience-table' }
   | { type:'blog-cta'; eyebrow?: string; title?: string; description?: string; ctaLabel?: string; ctaHref?: string; imageSrc?: string; imageAlt?: string }
   | { type:'secondary-cta'; eyebrow?: string; title?: string; description?: string; ctaLabel?: string; ctaHref?: string }
   | { type:'inline-cta'; eyebrow?: string; title?: string; description?: string; ctaLabel?: string; ctaHref?: string }

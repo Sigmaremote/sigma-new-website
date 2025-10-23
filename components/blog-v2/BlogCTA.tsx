@@ -7,7 +7,7 @@ import { useRef } from 'react';
 
 type BlogCTAProps = {
   eyebrow?: string;
-  title: string;
+  title?: string;
   description?: string;
   ctaLabel?: string;
   ctaHref?: string;

@@ -201,16 +201,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
 
   // Add article-specific metadata
   if (type === 'article') {
-    metadata.openGraph!.type = 'article';
-    if (publishedTime) {
-      metadata.openGraph!.publishedTime = publishedTime;
-    }
-    if (modifiedTime) {
-      metadata.openGraph!.modifiedTime = modifiedTime;
-    }
-    if (author) {
-      metadata.openGraph!.authors = [author];
-    }
+    // Note: OpenGraph article properties are handled by Next.js automatically
   }
 
   return metadata;
